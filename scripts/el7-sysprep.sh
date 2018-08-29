@@ -21,8 +21,8 @@
 # Update packages
 /usr/bin/yum update -y
 
-# Install open-vm-tools and yum-utils
-/usr/bin/yum install -y open-vm-tools yum-utils
+# Install packages required or recommended for sysprep
+/usr/bin/yum install -y bc bzip2 perl mlocate open-vm-tools wget yum-utils
 
 # Remove old kernels
 /bin/package-cleanup --oldkernels --count=1
