@@ -17,11 +17,8 @@
 # Update packages
 /usr/bin/yum update -y
 
-# Install open-vm-tools
-/usr/bin/yum install -y open-vm-tools
-
-# Install yum-utils
-/usr/bin/yum install -y yum-utils
+# Install open-vm-tools and yum-utils
+/usr/bin/yum install -y open-vm-tools yum-utils
 
 # Remove old kernels
 /bin/package-cleanup --oldkernels --count=1
