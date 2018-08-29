@@ -8,7 +8,7 @@
 # You can run it directly with curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/centos7-install-cockpit.sh | sudo bash
 
 # Install cockpit
-yum install -y cockpit
+yum install cockpit -y
 
 # Enable cockpit
 systemctl enable --now cockpit.socket
