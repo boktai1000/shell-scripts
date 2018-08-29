@@ -3,7 +3,10 @@
 # Script to prepare Enterprise Linux 7 (CentOS/RHEL) base-image for deploying as a template
 # Created by: Keegan Jacobson
 # Based on: 
+#   https://notesfrommwhite.net/2015/06/11/how-to-create-a-linux-vmware-template/
 #   https://linuxacademy.com/community/posts/show/topic/5298-centos-71-vmware-template-script
+#   https://gist.github.com/AfroThundr3007730/ff5229c5b1f9a018091b14ceac95aa55
+#   https://github.com/frapposelli/packer-templates/blob/master/scripts/centos-vmware-vcloud_cleanup.sh
 #   https://github.com/jonatasbaldin/shell-script/blob/master/centos-sysprep.sh
 #   https://lonesysadmin.net/2013/03/26/preparing-linux-template-vms/
 #   http://libguestfs.org/virt-sysprep.1.html
