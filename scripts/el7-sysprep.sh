@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to prepare CentOS base-image for deploying as a template
+# Script to prepare Enterprise Linux 7 (CentOS/RHEL) base-image for deploying as a template
 # Created by: Keegan Jacobson
 # Based on: 
 #   https://linuxacademy.com/community/posts/show/topic/5298-centos-71-vmware-template-script
