@@ -28,6 +28,7 @@
 
 # Clean yum
 /usr/bin/yum clean all
+/bin/rm -rf /var/cache/yum
 
 # Force logs rotate and remove old logs
 /usr/sbin/logrotate -f /etc/logrotate.conf
