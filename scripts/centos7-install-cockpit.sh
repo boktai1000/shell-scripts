@@ -7,7 +7,7 @@
 # Tested on CentOS 7
 # You can run it directly with curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/centos7-install-cockpit.sh | sudo bash
 
-# Install cockpit
+# Install cockpit test
 sudo yum -y install cockpit
 
 # Enable cockpit
