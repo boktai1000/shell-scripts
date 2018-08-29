@@ -8,6 +8,7 @@
 #   https://lonesysadmin.net/2013/03/26/preparing-linux-template-vms/
 #   http://libguestfs.org/virt-sysprep.1.html
 # Tested on CentOS 7
+# This script is indended to be used to create a template, such as a VMware Template for example
 # You can run it directly with curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/el7-sysprep.sh | sudo bash
 
 # Stop logging servers
