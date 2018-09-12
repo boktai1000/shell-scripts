@@ -25,7 +25,7 @@
 /usr/bin/yum install -y bc bzip2 perl mlocate open-vm-tools wget yum-utils
 
 # Remove old kernels
-/bin/package-cleanup --oldkernels --count=1
+/bin/package-cleanup -y --oldkernels --count=1
 
 # Clean yum
 /usr/bin/yum clean all
