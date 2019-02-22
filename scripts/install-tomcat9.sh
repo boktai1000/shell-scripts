@@ -1,5 +1,6 @@
 # You can run it directly with curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/install-tomcat9.sh | sudo bash
 
+cd /tmp
 curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz
 tar -xzvf apache-tomcat-9.0.16.tar.gz -C /opt
 
