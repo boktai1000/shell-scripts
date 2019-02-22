@@ -17,7 +17,3 @@ systemctl enable --now cockpit.socket
 # Configure firewall
 firewall-cmd --permanent --zone=public --add-service=cockpit
 firewall-cmd --reload
-
-# Fix https://github.com/cockpit-project/cockpit/issues/9193
-# Remove subscription-manager as it is not desirable, this should be able to be removed when CentOS 7.6 is released
-rpm -e --nodeps subscription-manager
