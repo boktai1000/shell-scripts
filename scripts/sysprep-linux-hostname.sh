@@ -1,7 +1,6 @@
 #!/bin/bash
 # Does the equivalent of sysprep for linux boxes to prepare them for cloning.
 # Based on https://lonesysadmin.net/2013/03/26/preparing-linux-template-vms/
-# You can run it directly with curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/sysprep-linux-hostname.sh | sudo bash
 
 AUTHOR='AfroThundr'
 BASENAME="${0##*/}"
