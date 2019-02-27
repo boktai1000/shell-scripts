@@ -6,7 +6,8 @@
 #   https://cockpit-project.org/running#centos
 #   https://www.vultr.com/docs/how-to-install-cockpit-on-centos-7
 # Tested on CentOS 7
-# You can run it directly with curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/centos7-install-cockpit.sh | sudo bash
+# You can run it directly with the follow command
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/centos7-install-cockpit.sh | sudo bash
 
 # Install cockpit
 yum -y install cockpit sos
