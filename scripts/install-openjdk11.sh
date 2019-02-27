@@ -12,6 +12,3 @@ echo 'export PATH=$PATH:$JAVA_HOME/bin' >> /etc/profile.d/jdk11.sh
 
 source /etc/profile.d/jdk11.sh
 java -version
-
-cd
-exec bash
