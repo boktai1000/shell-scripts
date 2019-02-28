@@ -11,7 +11,7 @@
 #   https://lonesysadmin.net/2013/03/26/preparing-linux-template-vms/
 #   http://libguestfs.org/virt-sysprep.1.html
 # Tested on CentOS 7
-# This script is intended to be run on a machine created to be a template, such as a VMware Template for example
+# This script is intended to be run on a machine after it is created to get it updated and configured
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/el7-initial-prep.sh | sudo bash
 
