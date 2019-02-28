@@ -26,7 +26,7 @@ After=network.target
 [Service]
 Type=forking
 
-Environment=JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+Environment=JAVA_HOME=/usr/local/jdk-11.0.2
 Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
 Environment=CATALINA_HOME=/opt/tomcat
 Environment=CATALINA_BASE=/opt/tomcat
