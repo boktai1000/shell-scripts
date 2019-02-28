@@ -12,7 +12,8 @@
 #   http://libguestfs.org/virt-sysprep.1.html
 # Tested on CentOS 7
 # This script is intended to be run on a cloned machine that you want to mirror the source which means not adding, changing, or updating packages and not removing kernels
-# You can run it directly with curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/el7-clone-prep.sh | sudo bash
+# You can run this script directly with the following command
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/el7-clone-prep.sh | sudo bash
 
 # Stop logging servers
 /sbin/service rsyslog stop > /dev/null
