@@ -1,4 +1,4 @@
-# You can run it directly with the following command
+# You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/install-tomcat9.sh | sudo bash
 
 cd /tmp
