@@ -19,31 +19,31 @@ chown -R tomcat:tomcat /opt/tomcat/
 firewall-cmd --zone=public --permanent --add-port=8080/tcp
 firewall-cmd --reload
 
-echo "[Unit]" > /etc/systemd/system/tomcat.service
-echo "Description=Apache Tomcat Web Application Container" >> /etc/systemd/system/tomcat.service
-echo "After=network.target" >> /etc/systemd/system/tomcat.service
-echo >> /etc/systemd/system/tomcat.service
-echo "[Service]" >> /etc/systemd/system/tomcat.service
-echo "Type=forking" >> /etc/systemd/system/tomcat.service
-echo >> /etc/systemd/system/tomcat.service
-echo "Environment=JAVA_HOME=/usr/local/jdk-11.0.2" >> /etc/systemd/system/tomcat.service
-echo "Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid" >> /etc/systemd/system/tomcat.service
-echo "Environment=CATALINA_HOME=/opt/tomcat" >> /etc/systemd/system/tomcat.service
-echo "Environment=CATALINA_BASE=/opt/tomcat" >> /etc/systemd/system/tomcat.service
-echo "Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'" >> /etc/systemd/system/tomcat.service
-echo "Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'" >> /etc/systemd/system/tomcat.service
-echo >> /etc/systemd/system/tomcat.service
-echo "ExecStart=/opt/tomcat/bin/startup.sh" >> /etc/systemd/system/tomcat.service
-echo "ExecStop=/opt/tomcat/bin/shutdown.sh" >> /etc/systemd/system/tomcat.service
-echo >> /etc/systemd/system/tomcat.service
-echo "User=tomcat" >> /etc/systemd/system/tomcat.service
-echo "Group=tomcat" >> /etc/systemd/system/tomcat.service
-echo "UMask=0007" >> /etc/systemd/system/tomcat.service
-echo "RestartSec=10" >> /etc/systemd/system/tomcat.service
-echo "Restart=always" >> /etc/systemd/system/tomcat.service
-echo >> /etc/systemd/system/tomcat.service
-echo "[Install]" >> /etc/systemd/system/tomcat.service
-echo "WantedBy=multi-user.target" >> /etc/systemd/system/tomcat.service
+echo "[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+
+Environment=JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
+Environment=CATALINA_HOME=/opt/tomcat
+Environment=CATALINA_BASE=/opt/tomcat
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+User=tomcat
+Group=tomcat
+UMask=0007
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/tomcat.service
 
 systemctl daemon-reload
 systemctl enable tomcat
