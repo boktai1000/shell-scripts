@@ -16,7 +16,7 @@ enabled=1
 autorefresh=1
 type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 
-sudo yum install elasticsearch -y
+sudo yum install -y elasticsearch
 
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable elasticsearch.service
@@ -33,7 +33,7 @@ enabled=1
 autorefresh=1
 type=rpm-md" > /etc/yum.repos.d/kibana.repo
 
-sudo yum install kibana -y
+sudo yum install -y kibana
 
 # This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
