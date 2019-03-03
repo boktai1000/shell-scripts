@@ -23,9 +23,6 @@ sudo /bin/systemctl enable elasticsearch.service
 
 sudo systemctl start elasticsearch.service
 
-# Test Elasticsearch
-curl -X GET http://localhost:9200
-
 # Install Kibana
 echo "[kibana-6.x]
 name=Kibana repository for 6.x packages
@@ -37,6 +34,12 @@ autorefresh=1
 type=rpm-md" > /etc/yum.repos.d/kibana.repo
 
 sudo yum install kibana -y
+
+# This tweak needs to be validated further
+# sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
+
+# firewall-cmd --add-port=5601/tcp
+# firewall-cmd --add-port=5601/tcp --permanent
 
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable kibana.service
