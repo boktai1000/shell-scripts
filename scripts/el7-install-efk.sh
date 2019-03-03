@@ -23,6 +23,9 @@ sudo /bin/systemctl enable elasticsearch.service
 
 sudo systemctl start elasticsearch.service
 
+# Test Elasticsearch
+curl -X GET http://localhost:9200
+
 # Install Kibana
 echo "[kibana-6.x]
 name=Kibana repository for 6.x packages
