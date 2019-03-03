@@ -93,3 +93,4 @@ logger -t test foobar
 # tail -f /var/log/td-agent/td-agent.log
 # tail -n 20 /var/log/td-agent/td-agent.log
 # less /var/log/td-agent/td-agent.log
+tail -n 20 /var/log/td-agent/td-agent.log
