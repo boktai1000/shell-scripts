@@ -50,3 +50,46 @@ sudo systemctl start kibana.service
 
 # Test Elasticsearch
 curl -X GET http://localhost:9200
+
+# Install Fluentd (td-agent v3)
+
+curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
+
+sudo /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch --no-document
+
+sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak
+
+echo "# get logs from syslog
+<source>
+  @type syslog
+  port 42185
+  tag syslog
+</source>
+
+# get logs from fluent-logger, fluent-cat or other fluentd instances
+<source>
+  @type forward
+</source>
+
+<match syslog.**>
+  @type elasticsearch
+  logstash_format true
+  <buffer>
+    flush_interval 10s # for testing
+  </buffer>
+</match>" > /etc/td-agent/td-agent.conf
+
+# sudo systemctl restart td-agent.service
+sudo systemctl start td-agent.service
+
+echo "*.* @127.0.0.1:42185" >> /etc/rsyslog.conf
+
+sudo systemctl restart rsyslog
+
+# To manually send logs to Elasticsearch, please use the logger command.
+logger -t test foobar
+
+# Check for errors
+# tail -f /var/log/td-agent/td-agent.log
+# tail -n 20 /var/log/td-agent/td-agent.log
+# less /var/log/td-agent/td-agent.log
