@@ -53,7 +53,7 @@ curl -X GET http://localhost:9200
 
 
 # Pre-Fluentd Configuration
-
+ulimit -n
 cp /etc/security/limits.conf /etc/security/limits.conf.bak
 echo "root soft nofile 65536
 root hard nofile 65536
@@ -73,9 +73,9 @@ net.ipv4.tcp_tw_reuse = 1
 net.ipv4.ip_local_port_range = 10240 65535" >> /etc/sysctl.conf
 
 sysctl -p
+ulimit -n
 
 # Install Fluentd (td-agent v3)
-
 curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
 sudo /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch --no-document
 
