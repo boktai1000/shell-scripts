@@ -44,5 +44,5 @@ sudo /bin/systemctl enable kibana.service
 
 sudo systemctl start kibana.service
 
-firewall-cmd --add-port=5601/tcp
-firewall-cmd --add-port=5601/tcp --permanent
+# firewall-cmd --add-port=5601/tcp
+# firewall-cmd --add-port=5601/tcp --permanent
