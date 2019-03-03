@@ -35,13 +35,14 @@ type=rpm-md" > /etc/yum.repos.d/kibana.repo
 
 sudo yum install kibana -y
 
-# This tweak needs to be validated further
+# This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
-
-# firewall-cmd --add-port=5601/tcp
-# firewall-cmd --add-port=5601/tcp --permanent
+# echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
 
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable kibana.service
 
 sudo systemctl start kibana.service
+
+firewall-cmd --add-port=5601/tcp
+firewall-cmd --add-port=5601/tcp --permanent
