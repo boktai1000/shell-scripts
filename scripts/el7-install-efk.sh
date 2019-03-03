@@ -39,10 +39,10 @@ sudo yum install kibana -y
 # sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
 # echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
 
+firewall-cmd --add-port=5601/tcp
+firewall-cmd --add-port=5601/tcp --permanent
+
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable kibana.service
 
 sudo systemctl start kibana.service
-
-# firewall-cmd --add-port=5601/tcp
-# firewall-cmd --add-port=5601/tcp --permanent
