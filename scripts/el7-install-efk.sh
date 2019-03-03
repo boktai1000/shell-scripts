@@ -54,11 +54,9 @@ curl -X GET http://localhost:9200
 # Install Fluentd (td-agent v3)
 
 curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
-
 sudo /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch --no-document
 
 sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak
-
 echo "# get logs from syslog
 <source>
   @type syslog
@@ -83,7 +81,6 @@ echo "# get logs from syslog
 sudo systemctl start td-agent.service
 
 echo "*.* @127.0.0.1:42185" >> /etc/rsyslog.conf
-
 sudo systemctl restart rsyslog
 
 # To manually send logs to Elasticsearch, please use the logger command.
