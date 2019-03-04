@@ -1,3 +1,6 @@
+# You can run this script directly with the following command
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/scripts/linux-rsyslog-server-udp.sh | sudo bash
+
 # Backup /etc/rsyslog.conf
 cp /etc/rsyslog.conf /etc/rsyslog.conf.bak
 
