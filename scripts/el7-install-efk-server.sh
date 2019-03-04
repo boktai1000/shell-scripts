@@ -23,6 +23,9 @@ sudo /bin/systemctl enable elasticsearch.service
 
 sudo systemctl start elasticsearch.service
 
+firewall-cmd --add-port=9200/tcp
+firewall-cmd --add-port=9200/tcp --permanent
+
 # Install Kibana
 echo "[kibana-6.x]
 name=Kibana repository for 6.x packages
