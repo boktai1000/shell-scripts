@@ -10,7 +10,7 @@ input(type="imfile"
       Severity="info"
       Facility="local1")
 
-local1.* @@x.x.x.x:514" > /etc/rsyslog.d/tomcat.conf
+local1.* @x.x.x.x:514" > /etc/rsyslog.d/tomcat.conf
 
 # Backup /etc/rsyslog.conf
 cp /etc/rsyslog.conf /etc/rsyslog.conf.bak
