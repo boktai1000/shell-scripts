@@ -21,7 +21,7 @@ sed '22a\module(load="imfile" PollingInterval="10")' /etc/rsyslog.conf > /etc/rs
 # Configuring the rsyslog.conf - Configure the messages
 sed -i 's/cron.none/cron.none;local1.none/g' /etc/rsyslog.conf
 
-# Configure rsyslog to send rsyslog events to another server using UDP
+# Configure rsyslog to send rsyslog events to another server using TCP
 sed -i 's/# ### end of the forwarding rule ###/*.* @@$x.x.x.x:514/g' /etc/rsyslog.conf
 echo "# ### end of the forwarding rule ###" >> /etc/rsyslog.conf
 
