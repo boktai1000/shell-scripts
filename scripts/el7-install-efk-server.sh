@@ -18,13 +18,19 @@ type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 
 sudo yum install -y elasticsearch
 
+cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak
+# This tweak needs to be validated further - use sed or echo, not both
+# sed -i 's/#network.host: "localhost"/network.host: 0.0.0.0/g' /etc/elasticsearch/elasticsearch.yml
+# echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
+echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
+
+firewall-cmd --add-port=9200/tcp
+firewall-cmd --add-port=9200/tcp --permanent
+
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable elasticsearch.service
 
 sudo systemctl start elasticsearch.service
-
-firewall-cmd --add-port=9200/tcp
-firewall-cmd --add-port=9200/tcp --permanent
 
 # Install Kibana
 echo "[kibana-6.x]
@@ -38,6 +44,7 @@ type=rpm-md" > /etc/yum.repos.d/kibana.repo
 
 sudo yum install -y kibana
 
+cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak
 # This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
 # echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
