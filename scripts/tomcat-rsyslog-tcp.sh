@@ -4,7 +4,7 @@
 # Configuring the tomcat.conf file
 echo "# File 1
 input(type="imfile"
-      File="/opt/tomcat/logs/*"
+      File="/opt/tomcat*/logs/*"
       Tag="catalina"
       StateFile="/var/spool/catalina"
       Severity="info"
