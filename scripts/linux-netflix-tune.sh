@@ -12,6 +12,10 @@ root hard nofile 65536
 * soft nofile 65536
 * hard nofile 65536" >> /etc/security/limits.conf
 
+# Please reboot to have changes take effect
+# ulimit -n
+# 1024 = insufficient;65536 = safe
+
 cp /etc/sysctl.conf /etc/sysctl.conf.bak
 echo "net.core.somaxconn = 1024
 net.core.netdev_max_backlog = 5000
