@@ -13,7 +13,7 @@
 # Tested on CentOS 7
 # This script is intended to be run on a machine after it is created to get it updated and configured
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/sysprep/el7-initial-prep.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/sysprep/el7-oob-prep.sh | sudo bash
 
 # Update packages
 /usr/bin/yum update -y
