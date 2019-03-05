@@ -1,5 +1,5 @@
 # Pre-reqs - Java 8 or OpenJDK 11
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/install-openjdk11-alt.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/el7-install-openjdk11-alt.sh | sudo bash
 
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/el7-install-efk-server.sh | sudo bash
