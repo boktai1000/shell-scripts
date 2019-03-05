@@ -13,7 +13,7 @@
 # Tested on CentOS 7
 # This script is intended to be run on a machine created to be a template, such as a VMware Template for example
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/sysprep/el7-master-prep.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/sysprep/el7-template-prep.sh | sudo bash
 
 # Stop logging servers
 /sbin/service rsyslog stop > /dev/null
