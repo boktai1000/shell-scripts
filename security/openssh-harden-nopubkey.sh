@@ -1,5 +1,5 @@
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/security/openssh73-harden-nopubkey.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/security/openssh-harden-nopubkey.sh | sudo bash
 
 # Backup files before continuing
 cp /etc/issue /etc/issue.bak
