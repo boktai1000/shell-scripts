@@ -98,7 +98,6 @@ DenyGroups root
 PasswordAuthentication yes
 PermitEmptyPasswords no
 PubkeyAuthentication no
-AuthorizedKeysFile  .ssh/authorized_keys
 
 # Disable unused authentications mechanisms.
 ChallengeResponseAuthentication no
