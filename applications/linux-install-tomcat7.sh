@@ -24,29 +24,27 @@ firewall-cmd --zone=public --permanent --add-port=8080/tcp
 firewall-cmd --reload
 
 echo "[Unit]
-Description=Tomcat - instance %i
-After=syslog.target network.target
+Description=Apache Tomcat Web Application Container
+After=network.target
 
 [Service]
 Type=forking
 
-User=tomcat
-Group=tomcat
-
-WorkingDirectory=/usr/local/tomcat7/%i
-
-Environment="JAVA_HOME=/usr/local/jdk-11.0.2"
-Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom"
-Environment="CATALINA_PID=/usr/local/tomcat7/%i/run/tomcat.pid"
-Environment="CATALINA_BASE=/usr/local/tomcat7/%i/"
-Environment="CATALINA_HOME=/usr/local/tomcat7"
-Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+Environment=JAVA_HOME=/usr/local/jdk-11.0.2
+Environment=CATALINA_PID=/usr/local/tomcat7/temp/tomcat.pid
+Environment=CATALINA_HOME=/usr/local/tomcat7
+Environment=CATALINA_BASE=/usr/local/tomcat7
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
 
 ExecStart=/usr/local/tomcat7/bin/startup.sh
 ExecStop=/usr/local/tomcat7/bin/shutdown.sh
 
-#RestartSec=10
-#Restart=always
+User=tomcat
+Group=tomcat
+UMask=0007
+RestartSec=10
+Restart=always
 
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/tomcat7.service
