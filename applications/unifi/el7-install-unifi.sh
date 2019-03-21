@@ -34,24 +34,26 @@ wget "http://dl.ubnt.com/unifi/$unifiversion/UniFi.unix.zip" -O /usr/src/UniFi.u
 unzip UniFi.unix.zip -d /opt/
 
 #Create unifi service:
-touch /etc/systemd/system/unifi.service
-echo "[Unit]" > /etc/systemd/system/unifi.service
-echo "Description=UniFi" >> /etc/systemd/system/unifi.service
-echo "After=syslog.target" >> /etc/systemd/system/unifi.service
-echo "After=network.target" >> /etc/systemd/system/unifi.service
-echo -e "\n" >> /etc/systemd/system/unifi.service
-echo "[Service]" >> /etc/systemd/system/unifi.service
-echo "Type=simple" >> /etc/systemd/system/unifi.service
-echo "User=unifi" >> /etc/systemd/system/unifi.service
-echo "Group=unifi" >> /etc/systemd/system/unifi.service
-echo -e "\n" >> /etc/systemd/system/unifi.service
-echo "ExecStart=/usr/bin/java -jar /opt/UniFi/lib/ace.jar start" >> /etc/systemd/system/unifi.service
-echo "ExecStop=/usr/bin/java -jar /opt/UniFi/lib/ace.jar stop" >> /etc/systemd/system/unifi.service
-echo "# Give a reasonable amount of time for the server to start up/shut down" >> /etc/systemd/system/unifi.service
-echo "TimeoutSec=300" >> /etc/systemd/system/unifi.service
-echo -e "\n" >> /etc/systemd/system/unifi.service
-echo "[Install]" >> /etc/systemd/system/unifi.service
-echo "WantedBy=multi-user.target" >> /etc/systemd/system/unifi.service
+echo "[Unit]
+Description=UniFi
+After=syslog.target
+After=network.target
+
+
+[Service]
+Type=simple
+User=unifi
+Group=unifi
+
+
+ExecStart=/usr/bin/java -jar /opt/UniFi/lib/ace.jar start
+ExecStop=/usr/bin/java -jar /opt/UniFi/lib/ace.jar stop
+# Give a reasonable amount of time for the server to start up/shut down
+TimeoutSec=300
+
+
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/unifi.service
 
 ln -s /etc/systemd/system/unifi.service /var/opt/UniFi/unifi.service
 ln -s /etc/systemd/system/unifi.service /usr/lib/systemd/system/unifi.service
