@@ -10,12 +10,11 @@ mongodbversion="3.4"
 #Create mongodb Repo file
 rpm --import https://www.mongodb.org/static/pgp/server-$mongodbversion.asc
 
-touch /etc/yum.repos.d/mongodb-org-$mongodbversion.repo
-echo "[mongodb-org-$mongodbversion]" > /etc/yum.repos.d/mongodb-org-$mongodbversion.repo
-echo "name=MongoDB Repository" >> /etc/yum.repos.d/mongodb-org-$mongodbversion.repo
-echo "baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/$mongodbversion/x86_64/" >> /etc/yum.repos.d/mongodb-org-$mongodbversion.repo
-echo "gpgcheck=1" >> /etc/yum.repos.d/mongodb-org-$mongodbversion.repo
-echo "enabled=1" >> /etc/yum.repos.d/mongodb-org-$mongodbversion.repo
+echo "[mongodb-org-$mongodbversion]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/$mongodbversion/x86_64/
+gpgcheck=1
+enabled=1" > /etc/yum.repos.d/mongodb-org-$mongodbversion.repo
 
 #Install pre-requisites and update OS:
 yum install -y lsb wget unzip nano java mongodb-org
