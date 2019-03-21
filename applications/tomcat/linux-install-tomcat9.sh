@@ -1,8 +1,8 @@
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/linux-install-tomcat.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/linux-install-tomcat9.sh | sudo bash
 
 # Set Variable to always download latest version of Tomcat
-tomcatversion="$(curl -i https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
+tomcatversion="$(curl -i https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)')"
 
 cd /tmp
 curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz
