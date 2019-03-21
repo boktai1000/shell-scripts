@@ -6,7 +6,7 @@
 # https://gist.github.com/drmalex07/e6e99dad070a78d5dab24ff3ae032ed1
 # http://tomcat.apache.org/whichversion.html
 
-# Set Variable to always download latest version of Tomcat
+# Set Variable to always download latest version of Tomcat 7 - Scrape Web Page for Version Number
 tomcatversion="$(curl -i https://www-us.apache.org/dist/tomcat/tomcat-7/ | grep -Po '(?<=(<a href="v)).*(?=/">v)')"
 
 cd /tmp
