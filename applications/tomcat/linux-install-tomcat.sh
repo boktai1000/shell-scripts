@@ -5,7 +5,7 @@
 tomcatversion="$(curl -i https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
 
 cd /tmp
-curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-$tomcatversion.tar.gz
+curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz
 tar -xzvf apache-tomcat-$tomcatversion.tar.gz -C /opt
 
 cd /opt
