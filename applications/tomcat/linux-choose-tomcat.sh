@@ -7,7 +7,7 @@ tomcatmajorversion="`echo $1 | cut -c1-1`"
 tomcatminorversion="$1"
 
 cd /tmp
-curl -O https://www-us.apache.org/dist/tomcat/tomcat-$tomcatmajorversion/v$tomcatminorversion/bin/apache-tomcat-$tomcatminorversion.tar.gz
+curl -O https://archive.apache.org/dist/tomcat/tomcat-$tomcatmajorversion/v$tomcatminorversion/bin/apache-tomcat-$tomcatminorversion.tar.gz
 tar -xzvf apache-tomcat-$tomcatminorversion.tar.gz -C /opt
 
 cd /opt
