@@ -1,5 +1,6 @@
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/linux-choose-tomcat.sh | sudo bash
+# Append your version number after 'sudo bash -s' ex: 'sudo bash -s 9.0.17'
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/linux-choose-tomcat.sh | sudo bash -s 
 
 # Set Variable to always download latest version of Tomcat 9 - Scrape Web Page for Version Number
 tomcatmajorversion="`echo $1 | cut -c1-1`"
