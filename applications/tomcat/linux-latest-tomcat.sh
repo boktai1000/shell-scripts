@@ -2,7 +2,7 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/linux-latest-tomcat.sh | sudo bash
 
 # Set Variable to find highest / latest version from GitHub and grab that version
-tomcatminorversion="$(curl -i https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
+tomcatminorversion="$(curl --silent https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
 tomcatmajorversion="`echo $tomcatminorversion | cut -c1-1`"
 
 cd /tmp
