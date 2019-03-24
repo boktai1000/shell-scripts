@@ -7,7 +7,7 @@
 # http://tomcat.apache.org/whichversion.html
 
 # Set Variable to always download latest version of Tomcat 7 - Scrape Web Page for Version Number
-tomcatversion="$(curl --silent https://www-us.apache.org/dist/tomcat/tomcat-7/ | grep -Po '(?<=(<a href="v)).*(?=/">v)')"
+tomcatversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-7/ | grep -Po '(?<=(<a href="v)).*(?=/">v)')"
 
 cd /tmp
 curl -O https://www-us.apache.org/dist/tomcat/tomcat-7/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz
