@@ -1,6 +1,9 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/cockpit/centos7-install-cockpit.sh | sudo bash
 
+# Set Variable for your IP Address
+yourip=$(hostname -I | awk '{print $1}')
+
 # Install cockpit
 yum -y install cockpit sos
 
@@ -11,7 +14,5 @@ systemctl enable --now cockpit.socket
 firewall-cmd --permanent --zone=public --add-service=cockpit
 firewall-cmd --reload
 
-# Echo a reminder to CLI on how to login
-echo Login at your IP Address:
-hostname -I | awk '{print $1}'
-echo Default port: tcp/9090
+# Echo a reminder to CLI on how to login to Cockpit
+echo Login to Cockpit at https://$yourip:9090
