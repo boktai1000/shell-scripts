@@ -17,7 +17,7 @@ gpgcheck=1
 enabled=1" > /etc/yum.repos.d/mongodb-org-$mongodbversion.repo
 
 #Install pre-requisites and update OS:
-yum install -y lsb wget unzip nano java mongodb-org
+yum install -y lsb unzip nano java mongodb-org
 yum update -y
 
 #Create UniFi directories:
@@ -27,7 +27,7 @@ ln -s /var/opt/UniFi/data /opt/UniFi/5
 
 #Download UniFi software:
 cd /usr/src
-wget "http://dl.ubnt.com/unifi/$unifiversion/UniFi.unix.zip" -O /usr/src/UniFi.unix.zip
+curl -O http://dl.ubnt.com/unifi/$unifiversion/UniFi.unix.zip
 
 #Extract UniFi software:
 unzip UniFi.unix.zip -d /opt/
