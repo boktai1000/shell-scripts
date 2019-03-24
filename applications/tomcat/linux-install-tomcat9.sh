@@ -2,7 +2,7 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/linux-install-tomcat9.sh | sudo bash
 
 # Set Variable to always download latest version of Tomcat 9 - Scrape Web Page for Version Number
-tomcatversion="$(curl -i https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)')"
+tomcatversion="$(curl --silent https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)')"
 
 cd /tmp
 curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz
