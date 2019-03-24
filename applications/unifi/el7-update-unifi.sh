@@ -11,7 +11,7 @@ systemctl stop unifi
 
 #Download latest software:
 cd /usr/src
-wget "http://dl.ubnt.com/unifi/$unifiversion/UniFi.unix.zip" -O /usr/src/UniFi.unix.zip
+curl -O http://dl.ubnt.com/unifi/$unifiversion/UniFi.unix.zip
 
 #Extract UniFi Video software:
 unzip UniFi.unix.zip -d /opt/
