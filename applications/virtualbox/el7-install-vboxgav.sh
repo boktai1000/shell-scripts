@@ -10,7 +10,7 @@ ARCH=`uname -r |cut -f7 -d.`
 KVER=`uname -r |cut -f1-6 -d.`
 
 # Install prereqs - install matching kernel tools and headers
-yum install -y bzip2 kernel-devel-${KVER}.${ARCH} gcc
+yum install -y bzip2 gcc kernel-devel-${KVER}.${ARCH}
 
 # Change to temp directory and download VboxGuestAdditions
 cd /tmp
