@@ -6,6 +6,9 @@
 # Set VirtualBox Variable so argument from command line gets passed through
 VBOX_VERSION=$1
 
+# Update OS - Your Kernel version needs to match kernel-devel (Kernel headers) when installed
+yum update -y
+
 # Install prereqs
 yum install -y bzip2 kernel-devel gcc
 
