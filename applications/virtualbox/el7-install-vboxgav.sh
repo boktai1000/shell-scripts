@@ -4,13 +4,13 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/virtualbox/el7-install-vboxgav.sh | sudo bash -s 
 
 # Set VirtualBox Variable so argument from command line gets passed through
+# https://gist.github.com/jonasschultzmblox/f15fe3c10769d5f269635a54394c84d4#gistcomment-2023609
 VBOX_VERSION=$1
+ARCH=`uname -r |cut -f7 -d.`
+KVER=`uname -r |cut -f1-6 -d.`
 
-# Update OS - Your Kernel version needs to match kernel-devel (Kernel headers) when installed
-yum update -y
-
-# Install prereqs
-yum install -y bzip2 kernel-devel gcc
+# Install prereqs - install matching kernel tools and headers
+yum install -y bzip2 kernel-devel-${KVER}.${ARCH} gcc
 
 # Change to temp directory and download VboxGuestAdditions
 cd /tmp
