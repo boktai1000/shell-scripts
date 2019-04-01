@@ -21,5 +21,8 @@ mount -a
 # Display file system mounted partitions with filesystem type
 df -hT
 
+# Display mounted partitions
+mount | grep nfs
+
 # Test the mount point
 touch /mnt/nfs$NFS_SHARE/test_nfs
