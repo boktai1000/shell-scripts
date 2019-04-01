@@ -2,8 +2,8 @@
 # curl
 
 # Set variable for you to specify directory
-NFS_SHARE_DIR=$1
-NFS_CLIENT_IP=$2
+NFS_CLIENT_IP=$1
+NFS_SHARE_DIR=$2
 
 # Create directory
 mkdir $NFS_SHARE_DIR
