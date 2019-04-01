@@ -1,3 +1,6 @@
+# Run
+# curl
+
 # Set variables
 NFS_SERVER_IP=$1
 NFS_SHARE_DIR=$2
