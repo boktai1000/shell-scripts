@@ -15,6 +15,9 @@ mkdir -p /mnt/nfs$NFS_SHARE
 # Add to fstab so mounted directory persists on reboot
 echo "$NFS_SERVER:$NFS_SHARE    /mnt/nfs$NFS_SHARE   nfs defaults 0 0" | sudo tee -a /etc/fstab
 
+# Attempt to mount new directory from CLI - Alternative to fstab mount
+# mount $NFS_SERVER:$NFS_SHARE /mnt/nfs$NFS_SHARE
+
 # Attempt to mount new directory from fstab
 mount -a
 
