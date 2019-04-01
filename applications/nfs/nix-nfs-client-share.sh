@@ -18,5 +18,8 @@ echo "$NFS_SERVER:$NFS_SHARE    /mnt/nfs$NFS_SHARE   nfs defaults 0 0" | sudo te
 # Attempt to mount new directory from fstab
 mount -a
 
+# Display file system mounted partitions with filesystem type
+df -hT
+
 # Test the mount point
 touch /mnt/nfs$NFS_SHARE/test_nfs
