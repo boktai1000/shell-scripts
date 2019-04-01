@@ -1,5 +1,5 @@
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/linux-install-tomcat7.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-install-tomcat7.sh | sudo bash
 
 # https://tecadmin.net/steps-to-install-tomcat-server-on-centos-rhel/
 # https://www.howtoforge.com/tutorial/how-to-install-tomcat-on-centos-7.0/
