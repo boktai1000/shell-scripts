@@ -1,4 +1,4 @@
-# Append your directory name after the "sudo bash -s"
+# Append your NFS Server IP Address after "sudo bash -s"
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/nfs/nfs-mount-directory.sh | sudo bash -s 
 
 # Temporarily mount directory
