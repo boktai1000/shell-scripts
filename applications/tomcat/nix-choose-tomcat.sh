@@ -5,6 +5,7 @@
 # Set variables to pass parameter / argument to script to grab version number from website
 tomcatmajorversion="`echo $1 | cut -c1-1`"
 tomcatminorversion="$1"
+yourip=$(hostname -I | awk '{print $1}')
 
 cd /tmp
 curl -O https://archive.apache.org/dist/tomcat/tomcat-$tomcatmajorversion/v$tomcatminorversion/bin/apache-tomcat-$tomcatminorversion.tar.gz
@@ -53,3 +54,6 @@ WantedBy=multi-user.target" > /etc/systemd/system/tomcat.service
 systemctl daemon-reload
 systemctl enable tomcat
 systemctl start tomcat
+
+# Echo a reminder to CLI on how to connect to Tomcat
+echo Connect to Tomcat at https://$yourip:8080
