@@ -4,7 +4,7 @@ NFS_SERVER_IP=$1
 NFS_SHARE_DIR=$2
 
 # Install required packages for mounting NFS shares
-yum install nfs-utils
+yum install -y nfs-utils
 
 # Create directory on filesystem where you will mount to
 mkdir -p /mnt/nfs$NFS_SHARE_DIR
