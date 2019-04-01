@@ -1,4 +1,5 @@
-
+# Append your version number after 'sudo bash -s' ex: 'sudo bash -s 9.0.17'
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/nfs/nfs-mount-directory.sh | sudo bash -s 
 
 # Temporarily mount directory
 # mount -t nfs $1:/nfsshare /mnt/nfsshare
