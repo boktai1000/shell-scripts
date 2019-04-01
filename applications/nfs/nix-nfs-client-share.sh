@@ -6,6 +6,9 @@
 NFS_SERVER=$1
 NFS_SHARE=$2
 
+# Display all servers mount points to CLI
+showmount -e $NFS_SERVER
+
 # Create directory on filesystem where you will mount to
 mkdir -p /mnt/nfs$NFS_SHARE
 
