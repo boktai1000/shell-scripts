@@ -1,6 +1,6 @@
 # You can run this script directly with the following command
 # Append your Client allowed IP Range followed by the NFS directory you want to create for example "| sudo bash -s 192.168.1.1 /var/nfsshare"
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/nfs/nix-nfs-server.sh | sudo bash -s 
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/nfs/nix-nfs-server-share.sh | sudo bash -s 
 
 # Set variable for you to specify directory
 NFS_CLIENT_IP=$1
