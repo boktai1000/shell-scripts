@@ -3,6 +3,7 @@
 
 # Set Variable to always download latest version of Tomcat 9 - Scrape Web Page for Version Number
 tomcatversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)')"
+yourip=$(hostname -I | awk '{print $1}')
 
 cd /tmp
 curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz
@@ -51,3 +52,6 @@ WantedBy=multi-user.target" > /etc/systemd/system/tomcat.service
 systemctl daemon-reload
 systemctl enable tomcat
 systemctl start tomcat
+
+# Echo a reminder to CLI on how to connect to Tomcat
+echo Connect to Tomcat at https://$yourip:8080
