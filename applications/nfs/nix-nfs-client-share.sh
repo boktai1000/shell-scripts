@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # You can run this script directly with the following command
 # Append your Server IP followed by the NFS directory you want to mount for example "| sudo bash -s 192.168.1.1 /var/nfsshare"
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/nfs/nix-nfs-client-share.sh | sudo bash -s 
