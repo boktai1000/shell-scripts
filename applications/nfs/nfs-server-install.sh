@@ -1,4 +1,5 @@
 
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/nfs/nfs-server-install.sh | sudo bash
 
 # Install NFS package and create directory for mount point
 yum install -y nfs-utils
