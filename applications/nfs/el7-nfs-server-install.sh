@@ -1,3 +1,4 @@
+# You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/nfs/el7-nfs-server-install.sh | sudo bash
 
 # Install NFS Packages
