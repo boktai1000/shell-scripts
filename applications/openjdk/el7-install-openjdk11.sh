@@ -10,5 +10,5 @@ sudo mv jdk-11.0.2/ /usr/local/
 echo export JAVA_HOME=/usr/local/jdk-11.0.2 | sudo tee /etc/profile.d/jdk11.sh
 echo 'export PATH=$PATH:$JAVA_HOME/bin' | sudo tee -a /etc/profile.d/jdk11.sh
 
-source /etc/profile.d/jdk11.sh
+. /etc/profile.d/jdk11.sh
 java -version
