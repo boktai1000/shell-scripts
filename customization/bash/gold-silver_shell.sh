@@ -7,4 +7,4 @@ export PS1="[\[\]\[\033[38;5;220m\]\u\[\]\[\033[38;5;15m\]@\[\]\[\033[38;5;249m\
 EOF
 
 # Load new bash settings
-. /etc/profile.d/gold-silver_shell.sh'
+. /etc/profile.d/gold-silver_shell.sh
