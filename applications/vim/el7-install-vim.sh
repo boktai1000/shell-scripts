@@ -3,3 +3,6 @@
 
 # Install VIM - supersedes VI
 sudo yum install -y vim
+
+# Reload profile / environment variables
+source /etc/profile
