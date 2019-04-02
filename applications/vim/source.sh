@@ -2,4 +2,4 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/vim/source.sh | sudo bash
 
 # Reload profile / environment variables
-source /etc/profile
+. /etc/profile
