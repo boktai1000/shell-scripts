@@ -4,5 +4,5 @@
 # Install VIM - supersedes VI
 sudo yum install -y vim
 
-# Reload profile / environment variables
+# Reload profile without loading a new shell - so Alias updates properly/etc.
 source /etc/profile
