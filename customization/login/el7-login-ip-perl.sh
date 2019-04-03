@@ -1,5 +1,5 @@
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/customization/login/el7-login-perl.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/customization/login/el7-login-ip-perl.sh | sudo bash
 
 # Install Perl - required for script
 sudo yum install -y perl
