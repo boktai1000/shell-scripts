@@ -1,6 +1,9 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/customization/login/el7-login-ip | sudo bash
 
+# Install Perl - required for script
+sudo yum install -y perl
+
 # Create script and place in /sbin/
 sudo tee /sbin/ifup-local <<EOF
 #!/bin/sh
