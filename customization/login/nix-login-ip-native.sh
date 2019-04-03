@@ -1,3 +1,4 @@
+# https://stackoverflow.com/a/41592571/10149100
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/customization/login/nix-login-ip-native.sh | sudo bash
 
