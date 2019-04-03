@@ -4,6 +4,9 @@
 # Install Perl - required for script
 sudo yum install -y perl
 
+# Backup /etc/issue
+sudo cp /etc/issue /etc/issue.bak
+
 # Create script and place in /sbin/
 sudo tee /sbin/ifup-local <<EOF
 #!/bin/sh
