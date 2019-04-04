@@ -9,7 +9,7 @@ sudo yum install -y perl
 sudo cp /etc/issue /etc/issue.bak
 
 # Create script and place in /sbin/
-sudo tee /sbin/ifup-local <<EOF
+sudo tee /sbin/ifup-local <<\EOF
 #!/bin/sh
 PREFIX="Local IP addresses:"
 IPADDRS=$(hostname -I | tr " " "\n" | grep -v "^$" | sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n | tr "\n" " ")
