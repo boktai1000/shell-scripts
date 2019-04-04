@@ -24,5 +24,4 @@ sudo chmod +x /sbin/ifup-local
 sudo cp /sbin/ifup-local /sbin/ifdown-local
 
 # Perform initial run of the script
-cd /sbin/
-./ifup-local
+. /sbin/ifup-local
