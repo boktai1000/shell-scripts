@@ -22,3 +22,7 @@ sudo chmod +x /sbin/ifup-local
 
 # Copy script for ifdown-local
 sudo cp /sbin/ifup-local /sbin/ifdown-local
+
+# Perform initial run of the script
+cd /sbin/
+./ifup-local
