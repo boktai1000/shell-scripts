@@ -7,7 +7,7 @@ tomcatminorversion="$1"
 yourip=$(hostname -I | awk '{print $1}')
 tomcatport="${2:-8080}"
 
-echo "Validate your configuration file port: 8080" > 8080testfile
+echo "Validate your configuration file port: 8080" > /tmp/8080testfile
 
 sed -i "s/8080/$tomcatport/g" 8080testfile
 
@@ -15,6 +15,6 @@ echo "Your Major Version $tomcatmajorversion"
 echo "Your Minor Version $tomcatminorversion"
 echo "Your IP address $yourip"
 echo "Your Tomcat Port $tomcatport"
-cat 8080testfile
+cat /tmp/8080testfile
 
-rm 8080testfile
+rm /tmp/8080testfile
