@@ -16,3 +16,5 @@ echo "Your Minor Version $tomcatminorversion"
 echo "Your IP address $yourip"
 echo "Your Tomcat Port $tomcatport"
 cat 8080testfile
+
+rm 8080testfile
