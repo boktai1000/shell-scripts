@@ -1,5 +1,5 @@
 # You can run this script directly with the following command
-# Append your version number after 'sudo bash -s' ex: 'sudo bash -s 9.0.17'
+# Append your version number followed by desired port number after 'sudo bash -s' ex: 'sudo bash -s 9.0.17 9090'
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-choose-tomcat-port.sh | sudo bash -s 
 
 # Set variables to pass parameter / argument to script to grab version number from website
