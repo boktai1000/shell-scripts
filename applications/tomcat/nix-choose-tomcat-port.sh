@@ -18,7 +18,6 @@ mv apache-tomcat-$tomcatminorversion tomcat$tomcatmajorversion-$tomcatport
 cd /opt/tomcat$tomcatmajorversion-$tomcatport/webapps/
 sudo rm -rf docs examples manager host-manager
 sed -i "s/8080/$tomcatport/g" /opt/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
-cd
 
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
