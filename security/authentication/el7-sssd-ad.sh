@@ -1,4 +1,7 @@
 # https://access.redhat.com/articles/3023951
+# https://serverfault.com/questions/676284/home-dir-and-shell-for-active-directory-authenticated-users
+# https://unix.stackexchange.com/questions/464648/sssd-and-active-directory-user-does-not-exist-in-centos
+
 # Note: Hostname must be 15 characters or less
 
 # You can run this script directly with the following command, append domain name, workgroup, and then Admin password in that order
