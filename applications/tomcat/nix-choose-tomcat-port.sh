@@ -57,5 +57,8 @@ systemctl daemon-reload
 systemctl enable tomcat$tomcatmajorversion-$tomcatport
 systemctl start tomcat$tomcatmajorversion-$tomcatport
 
+# Cleanup files
+rm /tmp/apache-tomcat-$tomcatminorversion.tar.gz
+
 # Echo a reminder to CLI on how to connect to Tomcat
 echo Connect to Tomcat at http://$yourip:$tomcatport
