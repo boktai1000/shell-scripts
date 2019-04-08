@@ -1,5 +1,8 @@
-
 # https://access.redhat.com/articles/3023951
+
+# You can run this script directly with the following command, append domain name followed by domain administrator password
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/security/authentication/el7-sssd-ad.sh | sudo bash -s 
+
 
 # Install Required Packages for SSSD
 yum install -y krb5-workstation samba-common-tools sssd-ad oddjob-mkhomedir
