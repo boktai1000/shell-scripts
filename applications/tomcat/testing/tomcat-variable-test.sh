@@ -1,5 +1,5 @@
 # You can run this script directly with the following command
-# Append your version number followed by desired port number after 'sudo bash -s' ex: 'sudo bash -s 9.0.17 9090'
+# Append desired version followed by desired port number - otherwise latest version and default port will be selected
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/testing/tomcat-variable-test.sh | sudo bash -s 
 
 tomcatlatest="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
