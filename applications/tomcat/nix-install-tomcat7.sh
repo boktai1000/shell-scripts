@@ -10,6 +10,9 @@
 tomcatversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-7/ | grep -Po '(?<=(<a href="v)).*(?=/">v)')"
 yourip=$(hostname -I | awk '{print $1}')
 
+groupadd tomcat
+useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
+
 cd /tmp
 curl -O https://www-us.apache.org/dist/tomcat/tomcat-7/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz
 tar xzf apache-tomcat-$tomcatversion.tar.gz
@@ -18,9 +21,6 @@ mv apache-tomcat-$tomcatversion /usr/local/tomcat7
 
 cd /usr/local/tomcat7/webapps/
 sudo rm -rf docs examples manager host-manager
-
-groupadd tomcat
-useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
 chown -R tomcat:tomcat /usr/local/tomcat7
 
