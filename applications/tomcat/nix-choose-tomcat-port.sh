@@ -7,6 +7,8 @@ tomcatmajorversion="`echo $1 | cut -c1-1`"
 tomcatminorversion="$1"
 yourip=$(hostname -I | awk '{print $1}')
 tomcatport="${2-8080}"
+tomcatshutdownport="${3:-8005}"
+tomcatajpport="${4:-8009}"
 
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
@@ -21,6 +23,8 @@ mv apache-tomcat-$tomcatminorversion tomcat$tomcatmajorversion-$tomcatport
 cd /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/webapps/
 sudo rm -rf docs examples manager host-manager
 sed -i "s/8080/$tomcatport/g" /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
+sed -i "s/8005/$tomcatshutdownport/g" /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
+sed -i "s/8009/$tomcatajpport/g" /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
 
 chown -R tomcat:tomcat /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/
 
