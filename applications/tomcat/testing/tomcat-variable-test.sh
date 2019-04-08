@@ -9,7 +9,7 @@ tomcatport="${2:-8080}"
 
 echo "Validate your configuration file port: 8080" > /tmp/8080testfile
 
-sed -i "s/8080/$tomcatport/g" 8080testfile
+sed -i "s/8080/$tomcatport/g" /tmp/8080testfile
 
 echo "Your Major Version $tomcatmajorversion"
 echo "Your Minor Version $tomcatminorversion"
