@@ -58,4 +58,4 @@ systemctl enable tomcat7
 systemctl start tomcat7
 
 # Echo a reminder to CLI on how to connect to Tomcat
-echo Connect to Tomcat at https://$yourip:8080
+echo Connect to Tomcat at http://$yourip:8080
