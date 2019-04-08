@@ -6,6 +6,9 @@ tomcatminorversion="$(curl -s https://api.github.com/repos/apache/tomcat/tags | 
 tomcatmajorversion="`echo $tomcatminorversion | cut -c1-1`"
 yourip=$(hostname -I | awk '{print $1}')
 
+groupadd tomcat
+useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
+
 cd /tmp
 curl -O https://archive.apache.org/dist/tomcat/tomcat-$tomcatmajorversion/v$tomcatminorversion/bin/apache-tomcat-$tomcatminorversion.tar.gz
 tar -xzvf apache-tomcat-$tomcatminorversion.tar.gz -C /opt
@@ -15,9 +18,6 @@ mv apache-tomcat-$tomcatminorversion tomcat
 
 cd /opt/tomcat/webapps/
 sudo rm -rf docs examples manager host-manager
-
-groupadd tomcat
-useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
 chown -R tomcat:tomcat /opt/tomcat/
 
