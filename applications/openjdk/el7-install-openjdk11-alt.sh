@@ -7,7 +7,7 @@ curl -O https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_b
 tar zxvf openjdk-11.0.2_linux-x64_bin.tar.gz
 sudo mv jdk-11.0.2/ /usr/local/
 
-rm /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz
+rm -f /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz
 cd
 
 alternatives --install /usr/bin/java java /usr/local/jdk-11.0.2/bin/java 1000
