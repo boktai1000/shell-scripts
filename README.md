@@ -1,3 +1,3 @@
 # Shell Scripts
 
-Here lies a collection of useful shell scripts for tasks such as syspreping, cloning, and sanitizing Linux (Enterprise Linux-flavor) machines
+Collection of Shell Scripts for automating and semi-automating Linux installations for various applications, as well as configuration scripts for tuning, customization, and security.
