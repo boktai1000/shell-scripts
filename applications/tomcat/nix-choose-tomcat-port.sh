@@ -2,10 +2,11 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-choose-tomcat-port.sh | sudo bash -s 
 
 # Set variables to pass parameter / argument to script to grab version number from website
-# Append your version number, followed by http port, then shutdown port, then ajp port.
+# Append your version number, followed by http port, then shutdown port (and optionally third the ajp port)
 # It is recommended to increment by one for each deployment, if you do not specify any ports the default port will be used.
-tomcatmajorversion="`echo $1 | cut -c1-1`"
-tomcatminorversion="$1"
+tomcatlatest="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
+tomcatminorversion=${1:-$tomcatlatest}
+tomcatmajorversion="`echo $tomcatminorversion | cut -c1-1`"
 yourip=$(hostname -I | awk '{print $1}')
 tomcatport="${2-8080}"
 tomcatshutdownport="${3:-8005}"
