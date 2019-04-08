@@ -3,8 +3,9 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-choose-tomcat.sh | sudo bash -s 
 
 # Set variables to pass parameter / argument to script to grab version number from website
-tomcatmajorversion="`echo $1 | cut -c1-1`"
-tomcatminorversion="$1"
+tomcatlatest="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
+tomcatminorversion=${1:-$tomcatlatest}
+tomcatmajorversion="`echo $tomcatminorversion | cut -c1-1`"
 yourip=$(hostname -I | awk '{print $1}')
 
 cd /tmp
