@@ -6,6 +6,8 @@ curl -O https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_b
 
 tar zxvf openjdk-11.0.2_linux-x64_bin.tar.gz
 sudo mv jdk-11.0.2/ /usr/local/
+
+rm /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz
 cd
 
 echo export JAVA_HOME=/usr/local/jdk-11.0.2 | sudo tee /etc/profile.d/jdk11.sh
