@@ -1,3 +1,6 @@
+# You can run this script directly with the following command
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/jenkins/el7-install-jenkins-native.sh | sudo bash
+
 # https://www.hugeserver.com/kb/how-install-jenkins-centos7/
 # https://www.linuxtechi.com/install-configure-jenkins-on-centos-7-rhel-7/
 # https://computingforgeeks.com/how-to-install-jenkins-server-stable-on-centos-7/
