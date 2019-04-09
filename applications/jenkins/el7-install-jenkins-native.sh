@@ -29,7 +29,7 @@ firewall-cmd --zone=public --permanent --add-port=8080/tcp
 firewall-cmd --reload
 
 # Echo information on what the output beneath this is for
-echo Your Jenkins initial Admin Password
+echo Jenkins starting and generating initial Admin Password...
 
 # https://stackoverflow.com/questions/2379829/while-loop-to-test-if-a-file-exists-in-bash
 # Wait for file to be created, then Display initial Admin Password
@@ -40,5 +40,8 @@ do
 done
 cat /var/lib/jenkins/secrets/initialAdminPassword
 
+# Echo information on what the output beneath this is for
+echo initial Admin Password generated above.
+
 # Echo a reminder to CLI on how to connect to Tomcat
-echo Connect to Jenkins at http://$yourip:8080 and input your initial Admin Password to continue setup
+echo Continue Jenkins setup at http://$yourip:8080
