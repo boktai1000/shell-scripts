@@ -2,7 +2,7 @@
 
 # TEST SCRIPT Remix from https://gist.github.com/dirtmerchant/a32007dc2980bbccda3de0873e28340e
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/cockpit/nix-install-cockpit.sh | sudo
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/cockpit/nix-install-cockpit.sh | sudo bash
 
 if [ "$EUID" -ne "0" ]; then
   echo "This script must be run as root." >&2
