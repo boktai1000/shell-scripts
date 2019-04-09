@@ -1,5 +1,6 @@
 # https://linuxize.com/post/how-to-install-jenkins-on-centos-7/
 # https://www.vultr.com/docs/how-to-install-jenkins-on-centos-7
+# https://www.hugeserver.com/kb/how-install-jenkins-centos7/
 
 # Install Java (OpenJDK 11+ apparently doesn't work)
 sudo yum install java-1.8.0-openjdk.x86_64
@@ -29,3 +30,6 @@ sudo systemctl enable jenkins.service
 # Open Firewall
 sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
 sudo firewall-cmd --reload
+
+# Display initial Admin Password
+cat /var/lib/jenkins/secrets/initialAdminPassword
