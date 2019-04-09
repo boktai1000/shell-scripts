@@ -25,6 +25,11 @@ systemctl status jenkins
 firewall-cmd --zone=public --permanent --add-port=8080/tcp
 firewall-cmd --reload
 
-# Display initial Admin Password
+# https://stackoverflow.com/questions/2379829/while-loop-to-test-if-a-file-exists-in-bash
+# Wait for file to be created, then Display initial Admin Password
 # Alternatively run "grep -A 5 password /var/log/jenkins/jenkins.log"
+while [ ! -f /var/lib/jenkins/secrets/initialAdminPassword ]
+do
+  sleep 2
+done
 cat /var/lib/jenkins/secrets/initialAdminPassword
