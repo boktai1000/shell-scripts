@@ -18,7 +18,7 @@ echo $JAVA_HOME
 echo $JRE_HOME
 
 # Install Jenkins
-cd /etc/yum.repos.d/;curl -O https://pkg.jenkins.io/redhat-stable/jenkins.repo
+curl https://pkg.jenkins.io/redhat-stable/jenkins.repo > /etc/yum.repos.d/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 yum install jenkins
 
