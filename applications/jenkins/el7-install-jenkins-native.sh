@@ -11,7 +11,7 @@ curl https://pkg.jenkins.io/redhat-stable/jenkins.repo > /etc/yum.repos.d/jenkin
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 
 # Install Java and Jenkins
-yum install java-1.8.0-openjdk jenkins
+yum install -y java-1.8.0-openjdk jenkins
 
 # Check and Validate Java Version
 java -version
