@@ -1,35 +1,27 @@
-# https://linuxize.com/post/how-to-install-jenkins-on-centos-7/
-# https://www.vultr.com/docs/how-to-install-jenkins-on-centos-7
 # https://www.hugeserver.com/kb/how-install-jenkins-centos7/
+# https://www.linuxtechi.com/install-configure-jenkins-on-centos-7-rhel-7/
+# https://computingforgeeks.com/how-to-install-jenkins-server-stable-on-centos-7/
+# https://www.vultr.com/docs/how-to-install-jenkins-on-centos-7
 
-# Install Java (OpenJDK 11+ apparently doesn't work)
-sudo yum install java-1.8.0-openjdk.x86_64
+# Add Jenkins Repository
+curl https://pkg.jenkins.io/redhat-stable/jenkins.repo > /etc/yum.repos.d/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+# Install Java and Jenkins
+yum install java-1.8.0-openjdk jenkins
 
 # Check and Validate Java Version
 java -version
 
-# Set Java Variables
-sudo cp /etc/profile /etc/profile_backup
-echo 'export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk' | sudo tee -a /etc/profile
-echo 'export JRE_HOME=/usr/lib/jvm/jre' | sudo tee -a /etc/profile
-source /etc/profile
-
-# Check and validate variables
-echo $JAVA_HOME
-echo $JRE_HOME
-
-# Install Jenkins
-curl https://pkg.jenkins.io/redhat-stable/jenkins.repo > /etc/yum.repos.d/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-yum install jenkins
-
-# Start Jenkins
-sudo systemctl start jenkins.service
-sudo systemctl enable jenkins.service
+# Start and Enable Jenkins Service
+systemctl start jenkins
+systemctl enable jenkins
+systemctl status jenkins
 
 # Open Firewall
-sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
-sudo firewall-cmd --reload
+firewall-cmd --zone=public --permanent --add-port=8080/tcp
+firewall-cmd --reload
 
 # Display initial Admin Password
+# Alternatively run "grep -A 5 password /var/log/jenkins/jenkins.log"
 cat /var/lib/jenkins/secrets/initialAdminPassword
