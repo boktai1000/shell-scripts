@@ -7,7 +7,7 @@
 # You can run this script directly with the following command, append domain name, workgroup, and then Admin password in that order
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/security/authentication/el7-sssd-ad.sh | sudo bash -s 
 
-# Install Required Packages for SSSD
+# Install Required Packages for SSSD - manual domain join
 yum install -y krb5-workstation samba-common-tools sssd-ad oddjob-mkhomedir
 
 # Backup krb5.conf file before modifying
