@@ -17,6 +17,7 @@ echo "Your Minor Version $tomcatminorversion"
 echo "Your IP address $yourip"
 echo "Your Tomcat Port $tomcatport"
 echo "Tomcat Latest $tomcatlatest"
+echo "Proposed Tomcat download URL" https://archive.apache.org/dist/tomcat/tomcat-$tomcatmajorversion/v$tomcatminorversion/bin/apache-tomcat-$tomcatminorversion.tar.gz
 cat /tmp/8080testfile
 
 rm /tmp/8080testfile
