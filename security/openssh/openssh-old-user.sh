@@ -11,6 +11,6 @@ yourpass=$2
 
 # Example usernames could be "cucm_8" or "ciscobackup"
 sudo adduser $1
-echo $2 | sudo passwd $1
+echo '$1:$2' | sudo chpasswd
 sudo chown root:root /home/$1/
 sudo chmod 777 /home/$1/
