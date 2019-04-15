@@ -9,8 +9,8 @@
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 
 # Define ciphers for SSH configuration file
-echo "Ciphers +aes128-cbc" | sudo tee /etc/ssh/sshd_config
-echo "KexAlgorithms +diffie-hellman-group1-sha1" | sudo tee /etc/ssh/sshd_config
+echo "Ciphers +aes128-cbc" | sudo tee -a /etc/ssh/sshd_config
+echo "KexAlgorithms +diffie-hellman-group1-sha1" | sudo tee -a /etc/ssh/sshd_config
 
 # Restart SSH Services
 sudo systemctl restart sshd
