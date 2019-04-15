@@ -11,6 +11,7 @@ yourpass=$2
 
 # Example usernames could be "cucm_8" or "ciscobackup"
 sudo adduser $1
+# https://stackoverflow.com/questions/8236699/script-to-change-password-on-linux-servers-over-ssh
 sudo passwd $1 <<EOF
 $2
 $2
