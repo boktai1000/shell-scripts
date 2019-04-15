@@ -11,8 +11,9 @@ yourpass=$2
 
 # Example usernames could be "cucm_8" or "ciscobackup"
 sudo adduser $1
-# How to change password via a scripted one-liner
-# https://stackoverflow.com/questions/27837674/changing-an-aix-password-via-script
-echo '$1:$2' | sudo chpasswd
+sudo passwd $1 <<EOF
+$2
+$2
+EOF
 sudo chown root:root /home/$1/
 sudo chmod 777 /home/$1/
