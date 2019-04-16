@@ -13,11 +13,11 @@ echo "Please enter desired password:"
 read -r password
 
 # Add user
-sudo adduser $username
+sudo adduser "$username"
 
 # Change password
 printf "%s:%s\n" "$username" "$password" | sudo chpasswd
 
 # Set permissions and ownership over directory
-sudo chown root:root /home/$1/
-sudo chmod 777 /home/$1/
+sudo chown root:root /home/"$1"/
+sudo chmod 777 /home/"$1"/
