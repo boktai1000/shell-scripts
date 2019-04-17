@@ -5,7 +5,7 @@
 sudo yum install -y vim
 
 # Backup /etc/profile.d/vim.sh
-cp /etc/profile.d/vim.sh /etc/profile.d/vim.sh.bak
+cp /etc/profile.d/vim.sh /etc/profile.d/vim.sh.orig
 
 # Create new vim.sh that applies alias to all users if vim binary is present
 echo "if [ -n "$BASH_VERSION" -o -n "$KSH_VERSION" -o -n "$ZSH_VERSION" ];then
