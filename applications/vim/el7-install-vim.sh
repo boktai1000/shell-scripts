@@ -7,7 +7,7 @@ sudo yum install -y vim
 # Backup vim.sh file
 cp /etc/profile.d/vim.sh /etc/profile.d/vim.sh.bak
 
-# Create new vim.sh that applies alias to all users and just checks for vim binary
+# Create new vim.sh that applies alias to all users instead of exclusing root and just checks for vim binary
 echo "if [ -n "$BASH_VERSION" -o -n "$KSH_VERSION" -o -n "$ZSH_VERSION" ];then
   if [ -f /usr/bin/vim ]; then
          alias vi='vim'
