@@ -1,10 +1,13 @@
-# You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/jenkins/el7-install-jenkins-native.sh | sudo bash
+#!/bin/bash
 
 # https://www.hugeserver.com/kb/how-install-jenkins-centos7/
 # https://www.linuxtechi.com/install-configure-jenkins-on-centos-7-rhel-7/
 # https://computingforgeeks.com/how-to-install-jenkins-server-stable-on-centos-7/
 # https://www.vultr.com/docs/how-to-install-jenkins-on-centos-7
+
+# You can run this script directly with the following command
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/jenkins/el7-install-jenkins-native.sh | sudo bash
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/cockpit/el7-install-jenkins-native.sh | sudo bash
 
 # Set Variables
 yourip=$(hostname -I | awk '{print $1}')
@@ -44,4 +47,4 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 echo initial Admin Password generated above.
 
 # Echo a reminder to CLI on how to connect to Tomcat
-echo Continue Jenkins setup at http://$yourip:8080
+echo Continue Jenkins setup at http://"$yourip":8080
