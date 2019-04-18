@@ -14,7 +14,7 @@ KVER=`uname -r |cut -f1-6 -d.`
 yum install -y bzip2 gcc kernel-devel-"${KVER}"."${ARCH}"
 
 # Change to temp directory and download VboxGuestAdditions
-cd /tmp
+cd /tmp || exit
 curl -O http://download.virtualbox.org/virtualbox/"$VBOX_VERSION"/VBoxGuestAdditions_"$VBOX_VERSION".iso
 
 # Mount and run iso
