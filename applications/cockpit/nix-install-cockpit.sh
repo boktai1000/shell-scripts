@@ -25,7 +25,7 @@ if [ -f /etc/redhat-release ]; then
   firewall-cmd --reload
 
   # Echo a reminder to CLI on how to login to Cockpit
-  echo Login to Cockpit at https://$yourip:9090
+  echo Login to Cockpit at https://"$yourip":9090
 
 fi
 
@@ -35,6 +35,6 @@ if [ -f /etc/lsb-release ]; then
   sudo apt-get install -y cockpit
 
   # Echo a reminder to CLI on how to login to Cockpit
-  echo Login to Cockpit at https://$yourip:9090
+  echo Login to Cockpit at https://"$yourip":9090
 
 fi
