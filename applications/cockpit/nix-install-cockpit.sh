@@ -15,7 +15,7 @@ fi
 if [ -f /etc/redhat-release ]; then
 
   # Install cockpit
-  yum -y install cockpit sos
+  yum -y install cockpit setroubleshoot-server sos
 
   # Enable cockpit
   systemctl enable --now cockpit.socket
