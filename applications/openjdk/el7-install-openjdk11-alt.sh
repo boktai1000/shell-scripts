@@ -7,11 +7,10 @@
 # Download OpenJDK 11
 (cd /tmp && curl -O https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz)
 
-# Un-tar and move folder
-tar zxvf /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz
-sudo mv /tmp/jdk-11.0.2/ /usr/local/
+# Un-tar OpenJDK 11 to installation location
+tar zxvf /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz -C /usr/local/
 
-# Cleanup downloaded tar
+# Cleanup downloaded tar file
 rm -f /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz
 
 # Set alternates to use OpenJDK 11
