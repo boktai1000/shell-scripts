@@ -11,5 +11,5 @@
 # Install Jabba
 curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh
 
-# Install OpenJDK 12
-jabba install openjdk@1.12.0-1
+# Install OpenJDK 12 (Latest)
+jabba install openjdk@1.12.0
