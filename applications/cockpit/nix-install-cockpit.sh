@@ -2,7 +2,7 @@
 
 # https://gist.github.com/dirtmerchant/a32007dc2980bbccda3de0873e28340e
 
-# You can run this script directly with either of the following command
+# You can run this script directly with either of the following commands
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/cockpit/nix-install-cockpit.sh | sudo bash
 # curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/cockpit/nix-install-cockpit.sh | sudo bash
 
