@@ -18,7 +18,7 @@ if [ -f /etc/redhat-release ]; then
     
     # Install cockpit
     yum -y install cockpit setroubleshoot-server sos
-    
+
     # Enable cockpit
 
     systemctl enable --now cockpit.socket
@@ -30,6 +30,7 @@ if [ -f /etc/redhat-release ]; then
     # Echo a reminder to CLI on how to login to Cockpit
     echo Login to Cockpit at https://"$yourip":9090
 fi
+
 if [ -f /etc/lsb-release ]; then
     
     # Install Cockpit
