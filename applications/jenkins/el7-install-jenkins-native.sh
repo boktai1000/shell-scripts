@@ -39,7 +39,7 @@ echo Jenkins starting and generating initial Admin Password...
 # Alternatively run "grep -A 5 password /var/log/jenkins/jenkins.log"
 while [ ! -f /var/lib/jenkins/secrets/initialAdminPassword ]
 do
-  sleep 2
+    sleep 2
 done
 cat /var/lib/jenkins/secrets/initialAdminPassword
 
