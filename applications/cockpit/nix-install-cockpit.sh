@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# https://cockpit-project.org/running.html
 # https://gist.github.com/dirtmerchant/a32007dc2980bbccda3de0873e28340e
 # https://gist.github.com/christronyxyocum/f10bf4f942e99ae00e18a497aad595a8
 
