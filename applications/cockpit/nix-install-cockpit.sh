@@ -20,7 +20,6 @@ if [ -f /etc/redhat-release ]; then
     yum -y install cockpit setroubleshoot-server sos
 
     # Enable cockpit
-
     systemctl enable --now cockpit.socket
 
     # Configure firewall
