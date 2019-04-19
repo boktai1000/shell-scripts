@@ -16,51 +16,45 @@ if [ "$EUID" -ne "0" ]; then
 fi
 
 if [ -f /etc/redhat-release ]; then
-    
     rhelID=$(cat /etc/redhat-release |awk '{print $1}')
     
     if [ "${rhelID}" = "Red" ]; then
         
-        # Enable the Extras repository:
+        # Enable the Extras repository
         subscription-manager repos --enable rhel-7-server-extras-rpms
         
-        # Install cockpit:
-        yum install cockpit
+        # Install Cockpit
+        yum -y install cockpit
         
-        # Enable cockpit:
+        # Enable Cockpit
         systemctl enable --now cockpit.socket
         
-        # Open the firewall if necessary:
-        sudo firewall-cmd --add-service=cockpit
-        sudo firewall-cmd --add-service=cockpit --permanent
-        
+        # Configure firewall
+        firewall-cmd --add-service=cockpit
+        firewall-cmd --add-service=cockpit --permanent
     fi
     
     if [ "${rhelID}" = "CentOS" ]; then
         
-        # Install cockpit
+        # Install Cockpit
         yum -y install cockpit setroubleshoot-server sos
         
-        # Enable cockpit
+        # Enable Cockpit
         systemctl enable --now cockpit.socket
         
         # Configure firewall
         firewall-cmd --permanent --zone=public --add-service=cockpit
         firewall-cmd --reload
-        
     fi
-    
 fi
 
 if [ -f /etc/debian_version ]; then
-    
     debianID=$(cat /etc/os-release |egrep -vi 'pretty|code' |grep -i name |cut -c6-50 |tr -d '"' |awk '{print $1}')
     
     if [ "${debianID}" = "Ubuntu" ]; then
         
         # Install Cockpit
-        sudo apt-get install -y cockpit
-        
+        apt-get install -y cockpit
     fi
     
     if [ "${debianID}" = "Debian" ]; then
@@ -73,13 +67,10 @@ if [ -f /etc/debian_version ]; then
             /etc/apt/sources.list.d/backports.list
             apt-get update
             
+            # Install Cockpit
+            apt-get install -y cockpit
         fi
-        
-        #Install the package:
-        apt-get install cockpit
-        
     fi
-    
 fi
 
 # Echo a reminder to CLI on how to login to Cockpit
