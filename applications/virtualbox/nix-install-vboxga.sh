@@ -28,7 +28,7 @@ if [ -f /etc/lsb-release ]; then
     
     # Install prereqs - install matching kernel tools and headers
     sudo apt install build-essential dkms linux-headers-"${KVER}"
-
+    
 fi
 
 # Download VboxGuestAdditions
