@@ -1,6 +1,8 @@
-#Based on https://community.ubnt.com/t5/UniFi-Wireless/Installing-UniFi-on-CentOS7-as-a-service/m-p/1973439/highlight/true#M234790
+#!/bin/bash
 
-#You can run this script directly with the following command
+# https://community.ubnt.com/t5/UniFi-Wireless/Installing-UniFi-on-CentOS7-as-a-service/m-p/1973439/highlight/true#M234790
+
+# You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/unifi/el7-install-unifi.sh | sudo bash
 
 #Set Versions (LTS Stable + MongoDB Version 3.4 Recommended)
@@ -26,8 +28,7 @@ mkdir -p /var/opt/UniFi/data
 ln -s /var/opt/UniFi/data /opt/UniFi/5
 
 #Download UniFi software:
-cd /usr/src
-curl -O http://dl.ubnt.com/unifi/$unifiversion/UniFi.unix.zip
+(cd /usr/src && curl -O http://dl.ubnt.com/unifi/"$unifiversion"/UniFi.unix.zip)
 
 #Extract UniFi software:
 unzip UniFi.unix.zip -d /opt/
@@ -37,26 +38,19 @@ echo "[Unit]
 Description=UniFi
 After=syslog.target
 After=network.target
-
-
 [Service]
 Type=simple
 User=unifi
 Group=unifi
-
-
 ExecStart=/usr/bin/java -jar /opt/UniFi/lib/ace.jar start
 ExecStop=/usr/bin/java -jar /opt/UniFi/lib/ace.jar stop
 # Give a reasonable amount of time for the server to start up/shut down
 TimeoutSec=300
-
-
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/unifi.service
 
 ln -s /etc/systemd/system/unifi.service /var/opt/UniFi/unifi.service
 ln -s /etc/systemd/system/unifi.service /usr/lib/systemd/system/unifi.service
-
 
 #Create User and set permissions:
 useradd -M unifi
