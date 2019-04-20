@@ -31,7 +31,7 @@ ln -s /var/opt/UniFi/data /opt/UniFi/5
 (cd /tmp && curl -O http://dl.ubnt.com/unifi/"$unifiversion"/UniFi.unix.zip)
 
 #Extract UniFi software:
-unzip UniFi.unix.zip -d /opt/
+unzip /tmp/UniFi.unix.zip -d /opt/
 
 #Create unifi service:
 echo "[Unit]
