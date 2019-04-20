@@ -27,7 +27,7 @@ if [ -f /etc/lsb-release ]; then
     KVER=$(uname -r)
     
     # Install prereqs - install matching kernel tools and headers
-    sudo apt -y install build-essential dkms linux-headers-"${KVER}"
+    apt install -y build-essential dkms linux-headers-"${KVER}"
     
 fi
 
