@@ -15,7 +15,7 @@ systemctl stop unifi
 (cd /tmp && curl -O http://dl.ubnt.com/unifi/"$unifiversion"/UniFi.unix.zip)
 
 #Extract UniFi Video software:
-unzip UniFi.unix.zip -d /opt/
+unzip /tmp/UniFi.unix.zip -d /opt/
 
 #Set permissions:
 chown -R unifi:unifi /opt/UniFi
