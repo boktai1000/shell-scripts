@@ -12,6 +12,7 @@
 # Set VirtualBox Variable so argument from command line gets passed through
 VBOX_VERSION=$1
 
+# Red Hat like specific commands and variables - only tested on CentOS
 if [ -f /etc/redhat-release ]; then
     
     ARCH=$(uname -r |cut -f7 -d.)
@@ -22,6 +23,7 @@ if [ -f /etc/redhat-release ]; then
     
 fi
 
+# Debian like specific commands and variables - only tested on Ubuntu
 if [ -f /etc/lsb-release ]; then
     
     KVER=$(uname -r)
