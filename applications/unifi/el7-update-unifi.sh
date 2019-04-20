@@ -9,7 +9,7 @@
 yourip=$(hostname -I | awk '{print $1}')
 
 #Set Version (LTS Stable)
-unifiversion="$(curl -s https://help.ubnt.com/hc/en-us/articles/360008240754#1 | grep -a1 "LTS Stable</td>" | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
+unifiversion="$(curl -s https://help.ubnt.com/hc/en-us/articles/360008240754#1 | grep -A1 ">Stable<" | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
 
 #Stop Service:
 systemctl stop unifi
