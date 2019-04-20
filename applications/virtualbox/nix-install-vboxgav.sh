@@ -6,8 +6,8 @@
 # https://askubuntu.com/questions/22743/how-do-i-install-guest-additions-in-a-virtualbox-vm
 
 # Append your version number after "| sudo bash -s" ; Example- "| sudo bash -s 6.0.4"
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/virtualbox/nix-install-vboxga.sh | sudo bash -s
-# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/virtualbox/nix-install-vboxga.sh | sudo bash -s
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/virtualbox/nix-install-vboxgav.sh | sudo bash -s
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/virtualbox/nix-install-vboxgav.sh | sudo bash -s
 
 # Set VirtualBox Variable so argument from command line gets passed through
 VBOX_VERSION=$1
