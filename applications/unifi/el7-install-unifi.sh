@@ -5,6 +5,9 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/unifi/el7-install-unifi.sh | sudo bash
 
+# Set Variable for your IP Address
+yourip=$(hostname -I | awk '{print $1}')
+
 #Set Versions (LTS Stable + MongoDB Version 3.4 Recommended)
 unifiversion="$(curl -s https://help.ubnt.com/hc/en-us/articles/360008240754#1 | grep -a1 "LTS Stable</td>" | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
 mongodbversion="3.4"
@@ -74,3 +77,6 @@ systemctl restart firewalld
 systemctl enable unifi
 systemctl start unifi
 systemctl status unifi
+
+# Echo a reminder to CLI on how to login to UniFi
+echo Login to UniFi at https://"$yourip":8443
