@@ -3,7 +3,8 @@
 # https://www.logicmonitor.com/support/monitoring/os-virtualization/snmp-ntp-configuration-for-linux-devices/
 # https://www.certdepot.net/rhel7-install-snmp/
 
-# Set Variables by appending them to running script. Default SNMP Community of "public". If you'd like to limit it to an IP range append the following as an example in quotes "public 10.0.0.0/8"
+# Default SNMP Community of "public"
+# If you'd like to limit to an IP/Range put your first argument in quotes followed by the IP/Range (Ex: "public 10.0.0.0/8")
 SNMP_COMMUNITY=${1:-public}
 SNMP_SYSLOCATION=$2
 SNMP_SYSCONTACT=$3
