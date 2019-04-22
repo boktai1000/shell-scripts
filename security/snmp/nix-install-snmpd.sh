@@ -3,6 +3,10 @@
 # https://www.logicmonitor.com/support/monitoring/os-virtualization/snmp-ntp-configuration-for-linux-devices/
 # https://www.certdepot.net/rhel7-install-snmp/
 
+# You can run this script directly with either of the following commands
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/security/snmp/nix-install-snmpd.sh | sudo bash
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/security/snmp/nix-install-snmpd.sh | sudo bash
+
 # Default SNMP Community of "public"
 # If you'd like to limit to an IP/Range put your first argument in quotes followed by the IP/Range (Ex: "public 10.0.0.0/8")
 SNMP_COMMUNITY=${1:-public}
