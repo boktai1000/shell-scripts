@@ -13,10 +13,10 @@
 (cd /tmp && curl -O https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_linux-x64_bin.tar.gz)
 
 # Un-tar OpenJDK 11 to installation location
-tar zxvf /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz -C /opt/
+tar zxvf /tmp/openjdk-12.0.1_linux-x64_bin.tar.gz -C /opt/
 
 # Cleanup downloaded tar file
-rm -f /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz
+rm -f /tmp/openjdk-12.0.1_linux-x64_bin.tar.gz
 
 # Create jdk11.sh file that will set variables when users login to system
 echo export JAVA_HOME=/opt/jdk-11.0.2 | sudo tee /etc/profile.d/jdk12.sh
