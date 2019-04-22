@@ -36,8 +36,22 @@ cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.bak
 
 # Define new SNMP settings
 echo "rocommunity $SNMP_COMMUNITY" > /etc/snmp/snmpd.conf
-echo "syslocation $SNMP_SYSLOCATION" >> /etc/snmp/snmpd.conf
-echo "syscontact $SNMP_SYSCONTACT" >> /etc/snmp/snmpd.conf
+
+# Add syslocation only if argument given
+if [ -z "$2" ]
+then
+    echo "No SNMP syslocation value given - continuing without it"
+else
+    echo "syslocation $SNMP_SYSLOCATION" >> /etc/snmp/snmpd.conf
+fi
+
+# Add syscontact only if argument given
+if [ -z "$3" ]
+then
+    echo "No SNMP syscontact value given - continuing without it"
+else
+    echo "syscontact $SNMP_SYSCONTACT" >> /etc/snmp/snmpd.conf
+fi
 
 # Show file contents of /etc/snmp/snmpd.conf
 cat /etc/snmp/snmpd.conf
