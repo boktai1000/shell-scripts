@@ -2,6 +2,7 @@
 
 # https://www.logicmonitor.com/support/monitoring/os-virtualization/snmp-ntp-configuration-for-linux-devices/
 # https://www.certdepot.net/rhel7-install-snmp/
+# https://stackoverflow.com/questions/6482377/check-existence-of-input-argument-in-a-bash-shell-script
 
 # You can run this script directly with either of the following commands
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/security/snmp/nix-install-snmpd.sh | sudo bash
