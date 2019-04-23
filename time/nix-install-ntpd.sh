@@ -3,6 +3,10 @@
 # https://linuxadmin.io/install-ntpd-centos-7/
 # https://www.tecmint.com/install-ntp-server-in-centos/
 
+# You can run this script directly with either of the following commands
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/time/nix-install-ntpd.sh | sudo bash
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/time/nix-install-ntpd.sh | sudo bash
+
 # Set Variables
 NTP_SERVER1=$1
 NTP_SERVER2=$2
