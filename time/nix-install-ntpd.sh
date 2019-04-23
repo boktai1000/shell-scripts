@@ -59,7 +59,7 @@ else
 fi
 
 # Start and Enable ntpd
-systemctl start ntpd
+systemctl restart ntpd
 systemctl enable ntpd
 systemctl status ntpd
 
