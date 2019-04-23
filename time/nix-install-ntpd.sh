@@ -3,10 +3,6 @@
 # https://linuxadmin.io/install-ntpd-centos-7/
 # https://www.tecmint.com/install-ntp-server-in-centos/
 
-# You can run this script directly with either of the following commands
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/time/nix-install-ntpd.sh | sudo bash
-# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/time/nix-install-ntpd.sh | sudo bash
-
 # Set Variables
 NTP_SERVER1=$1
 NTP_SERVER2=$2
@@ -58,6 +54,16 @@ else
     echo "server $NTP_SERVER4 iburst" >> /etc/ntp.conf
 fi
 
+# Start and Enable ntpd
+systemctl start ntpd
+systemctl enable ntpd
+systemctl status ntpd
+
+
 # Show ntpd configuration file
 echo "==Displaying NTP configuration file=="
 cat /etc/ntp.conf
+
+# Show current system reported time servers
+echo "==Verify Server Time Sync=="
+ntpq -p
