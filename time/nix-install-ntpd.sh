@@ -59,7 +59,6 @@ systemctl start ntpd
 systemctl enable ntpd
 systemctl status ntpd
 
-
 # Show ntpd configuration file
 echo "==Displaying NTP configuration file=="
 cat /etc/ntp.conf
