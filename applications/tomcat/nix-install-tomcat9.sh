@@ -13,8 +13,7 @@ yourip=$(hostname -I | awk '{print $1}')
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
-cd /tmp
-curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz
+(cd /tmp && curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz)
 tar -xzvf apache-tomcat-$tomcatversion.tar.gz -C /opt
 
 cd /opt
