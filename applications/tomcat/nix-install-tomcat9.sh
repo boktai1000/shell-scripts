@@ -1,14 +1,14 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-install-tomcat9.sh | sudo bash
 
-# Set Variable to always download latest version of Tomcat 9 - Scrape Web Page for Version Number
-tomcatversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | head -1)"
-yourip=$(hostname -I | awk '{print $1}')
-
 if [ -z "$JAVA_HOME" ]; then
     echo "Need to install JDK"
     exit 1
 fi  
+
+# Set Variable to always download latest version of Tomcat 9 - Scrape Web Page for Version Number
+tomcatversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | head -1)"
+yourip=$(hostname -I | awk '{print $1}')
 
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
