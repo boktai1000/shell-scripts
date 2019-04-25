@@ -2,6 +2,11 @@
 # Append your version number after 'sudo bash -s' ex: 'sudo bash -s 9.0.17'
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-choose-tomcat.sh | sudo bash -s 
 
+if [ -z "$JAVA_HOME" ]; then
+    echo "Need to install JDK"
+    exit 1
+fi  
+
 # Set variables to pass parameter / argument to script to grab version number from website
 tomcatlatest="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
 tomcatminorversion=${1:-$tomcatlatest}
