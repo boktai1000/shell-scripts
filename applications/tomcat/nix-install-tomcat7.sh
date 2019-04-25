@@ -6,6 +6,11 @@
 # https://gist.github.com/drmalex07/e6e99dad070a78d5dab24ff3ae032ed1
 # http://tomcat.apache.org/whichversion.html
 
+if [ -z "$JAVA_HOME" ]; then
+    echo "Need to install JDK"
+    exit 1
+fi  
+
 # Set Variable to always download latest version of Tomcat 7 - Scrape Web Page for Version Number
 tomcatversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-7/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | head -1)"
 yourip=$(hostname -I | awk '{print $1}')
