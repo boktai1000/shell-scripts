@@ -18,6 +18,7 @@ yourip=$(hostname -I | awk '{print $1}')
 tomcatport="${2-8080}"
 tomcatshutdownport="${3:-8005}"
 tomcatajpport="${4:-8009}"
+jdkenv="$(cat /etc/profile.d/jdk*.sh | sed -nr '/JAVA_HOME=/ s/.*JAVA_HOME=([^"]+).*/\1/p' | head -1)"
 
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
@@ -45,7 +46,7 @@ After=network.target
 [Service]
 Type=forking
 
-Environment=JAVA_HOME=$JAVA_HOME
+Environment=JAVA_HOME=$jdkenv
 Environment=CATALINA_PID=/opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/temp/tomcat.pid
 Environment=CATALINA_HOME=/opt/tomcat/tomcat$tomcatmajorversion-$tomcatport
 Environment=CATALINA_BASE=/opt/tomcat/tomcat$tomcatmajorversion-$tomcatport
