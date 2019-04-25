@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-latest-tomcat.sh | sudo bash
 
@@ -8,16 +10,16 @@ fi
 
 # Set Variable to find highest / latest version from GitHub and grab that version
 tomcatminorversion="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
-tomcatmajorversion="`echo $tomcatminorversion | cut -c1-1`"
+tomcatmajorversion="$(echo "$tomcatminorversion" | cut -c1-1)"
 yourip=$(hostname -I | awk '{print $1}')
 
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
-(cd /tmp && curl -O https://archive.apache.org/dist/tomcat/tomcat-$tomcatmajorversion/v$tomcatminorversion/bin/apache-tomcat-$tomcatminorversion.tar.gz)
-tar -xzvf apache-tomcat-$tomcatminorversion.tar.gz -C /opt
+(cd /tmp && curl -O https://archive.apache.org/dist/tomcat/tomcat-"$tomcatmajorversion"/v"$tomcatminorversion"/bin/apache-tomcat-"$tomcatminorversion".tar.gz)
+tar -xzvf apache-tomcat-"$tomcatminorversion".tar.gz -C /opt
 
-mv /opt/apache-tomcat-$tomcatminorversion /opt/tomcat
+mv /opt/apache-tomcat-"$tomcatminorversion" /opt/tomcat
 
 (cd /opt/tomcat/webapps/ && sudo rm -rf docs examples manager host-manager)
 
@@ -57,4 +59,4 @@ systemctl enable tomcat
 systemctl start tomcat
 
 # Echo a reminder to CLI on how to connect to Tomcat
-echo Connect to Tomcat at http://$yourip:8080
+echo Connect to Tomcat at http://"$yourip":8080
