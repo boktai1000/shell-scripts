@@ -23,8 +23,7 @@ tar xzf apache-tomcat-$tomcatversion.tar.gz
 
 mv apache-tomcat-$tomcatversion /usr/local/tomcat7
 
-cd /usr/local/tomcat7/webapps/
-sudo rm -rf docs examples manager host-manager
+(cd /usr/local/tomcat7/webapps/ && sudo rm -rf docs examples manager host-manager)
 
 chown -R tomcat:tomcat /usr/local/tomcat7
 
