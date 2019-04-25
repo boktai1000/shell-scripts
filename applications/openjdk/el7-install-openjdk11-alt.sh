@@ -17,6 +17,13 @@ tar zxvf /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz -C /usr/local/
 # Cleanup downloaded tar file
 rm -f /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz
 
+# Create jdk.sh file that will set variables when users login to system
+echo export JAVA_HOME=/usr/local/jdk-11.0.2 | sudo tee /etc/profile.d/jdk11.sh
+echo 'export PATH=$PATH:$JAVA_HOME/bin' | sudo tee -a /etc/profile.d/jdk11.sh
+
+# Load the script now so variables are set
+. /etc/profile.d/jdk11.sh
+
 # Configure alternatives to use OpenJDK
 alternatives --install /usr/bin/java java /usr/local/jdk-11.0.2/bin/java 1000
 alternatives --set java /usr/local/jdk-11.0.2/bin/java
