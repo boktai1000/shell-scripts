@@ -5,6 +5,11 @@
 tomcatversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | head -1)"
 yourip=$(hostname -I | awk '{print $1}')
 
+if [ -z "$JAVA_HOME" ]; then
+    echo "Need to install JDK"
+    exit 1
+fi  
+
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
