@@ -8,14 +8,10 @@
 # https://gist.github.com/drmalex07/e6e99dad070a78d5dab24ff3ae032ed1
 # http://tomcat.apache.org/whichversion.html
 
-if [ -z "$JAVA_HOME" ]; then
-    echo "Need to install JDK"
-    exit 1
-fi  
-
 # Set Variable to always download latest version of Tomcat 7 - Scrape Web Page for Version Number
 tomcatversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-7/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | head -1)"
 yourip=$(hostname -I | awk '{print $1}')
+jdkenv="$(cat /etc/profile.d/jdk*.sh | sed -nr '/JAVA_HOME=/ s/.*JAVA_HOME=([^"]+).*/\1/p' | head -1)"
 
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
@@ -39,7 +35,7 @@ After=network.target
 [Service]
 Type=forking
 
-Environment=JAVA_HOME=$JAVA_HOME
+Environment=JAVA_HOME=$jdkenv
 Environment=CATALINA_PID=/usr/local/tomcat7/temp/tomcat.pid
 Environment=CATALINA_HOME=/usr/local/tomcat7
 Environment=CATALINA_BASE=/usr/local/tomcat7
