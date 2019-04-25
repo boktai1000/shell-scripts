@@ -3,15 +3,11 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-latest-tomcat.sh | sudo bash
 
-if [ -z "$JAVA_HOME" ]; then
-    echo "Need to install JDK"
-    exit 1
-fi  
-
 # Set Variable to find highest / latest version from GitHub and grab that version
 tomcatminorversion="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
 tomcatmajorversion="$(echo "$tomcatminorversion" | cut -c1-1)"
 yourip=$(hostname -I | awk '{print $1}')
+jdkenv="$(cat /etc/profile.d/jdk*.sh | sed -nr '/JAVA_HOME=/ s/.*JAVA_HOME=([^"]+).*/\1/p' | head -1)"
 
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
@@ -35,7 +31,7 @@ After=network.target
 [Service]
 Type=forking
 
-Environment=JAVA_HOME=$JAVA_HOME
+Environment=JAVA_HOME=$jdkenv
 Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
 Environment=CATALINA_HOME=/opt/tomcat
 Environment=CATALINA_BASE=/opt/tomcat
