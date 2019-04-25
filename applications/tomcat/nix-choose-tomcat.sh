@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # You can run this script directly with the following command
 # Append your version number after 'sudo bash -s' ex: 'sudo bash -s 9.0.17'
