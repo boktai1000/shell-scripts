@@ -20,8 +20,7 @@ tomcatajpport="${4:-8009}"
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
-cd /tmp
-curl -O https://archive.apache.org/dist/tomcat/tomcat-$tomcatmajorversion/v$tomcatminorversion/bin/apache-tomcat-$tomcatminorversion.tar.gz
+(cd /tmp && curl -O https://archive.apache.org/dist/tomcat/tomcat-$tomcatmajorversion/v$tomcatminorversion/bin/apache-tomcat-$tomcatminorversion.tar.gz)
 tar -xzvf apache-tomcat-$tomcatminorversion.tar.gz -C /opt/tomcat
 
 cd /opt/tomcat
