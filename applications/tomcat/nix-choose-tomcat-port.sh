@@ -1,6 +1,11 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-choose-tomcat-port.sh | sudo bash -s 
 
+if [ -z "$JAVA_HOME" ]; then
+    echo "Need to install JDK"
+    exit 1
+fi  
+
 # Set variables to pass parameter / argument to script to grab version number from website
 # Append your version number, followed by http port, then shutdown port (and optionally third the ajp port)
 # It is recommended to increment by one for each deployment, if you do not specify any ports the default port will be used.
