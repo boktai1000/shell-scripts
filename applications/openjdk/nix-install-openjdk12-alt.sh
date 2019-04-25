@@ -6,8 +6,8 @@
 # https://computingforgeeks.com/how-to-install-java-12-on-centos-fedora/
 
 # You can run this script directly with either of the following commands
-# source <(curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/openjdk/nix-install-openjdk12.sh)
-# source <(curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/openjdk/nix-install-openjdk12.sh)
+# source <(curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/openjdk/nix-install-openjdk12-alt.sh)
+# source <(curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/openjdk/nix-install-openjdk12-alt.sh)
 
 # Set variables - Optionally specify install directory or default to /opt
 JAVA_DIR="${1-/opt}"
