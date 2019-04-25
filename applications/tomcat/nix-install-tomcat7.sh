@@ -34,7 +34,7 @@ After=network.target
 [Service]
 Type=forking
 
-Environment=JAVA_HOME=/usr/local/jdk-11.0.2
+Environment=JAVA_HOME=$JAVA_HOME
 Environment=CATALINA_PID=/usr/local/tomcat7/temp/tomcat.pid
 Environment=CATALINA_HOME=/usr/local/tomcat7
 Environment=CATALINA_BASE=/usr/local/tomcat7
