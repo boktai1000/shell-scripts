@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-install-tomcat9.sh | sudo bash
 
@@ -13,10 +15,10 @@ yourip=$(hostname -I | awk '{print $1}')
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
-(cd /tmp && curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz)
-tar -xzvf apache-tomcat-$tomcatversion.tar.gz -C /opt
+(cd /tmp && curl -O https://www-us.apache.org/dist/tomcat/tomcat-9/v"$tomcatversion"/bin/apache-tomcat-"$tomcatversion".tar.gz)
+tar -xzvf apache-tomcat-"$tomcatversion".tar.gz -C /opt
 
-mv /opt/apache-tomcat-$tomcatversion /opt/tomcat
+mv /opt/apache-tomcat-"$tomcatversion" /opt/tomcat
 
 (cd /opt/tomcat/webapps/ && sudo rm -rf docs examples manager host-manager)
 
@@ -56,4 +58,4 @@ systemctl enable tomcat
 systemctl start tomcat
 
 # Echo a reminder to CLI on how to connect to Tomcat
-echo Connect to Tomcat at http://$yourip:8080
+echo Connect to Tomcat at http://"$yourip":8080
