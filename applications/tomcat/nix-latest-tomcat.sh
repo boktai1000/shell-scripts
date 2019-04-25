@@ -1,6 +1,11 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-latest-tomcat.sh | sudo bash
 
+if [ -z "$JAVA_HOME" ]; then
+    echo "Need to install JDK"
+    exit 1
+fi  
+
 # Set Variable to find highest / latest version from GitHub and grab that version
 tomcatminorversion="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
 tomcatmajorversion="`echo $tomcatminorversion | cut -c1-1`"
