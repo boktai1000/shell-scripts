@@ -19,9 +19,8 @@ groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
 (cd /tmp && curl -O https://archive.apache.org/dist/tomcat/tomcat-"$tomcatmajorversion"/v"$tomcatminorversion"/bin/apache-tomcat-"$tomcatminorversion".tar.gz)
-tar -xzvf /tmp/apache-tomcat-"$tomcatminorversion".tar.gz -C /opt/tomcat
 
-mv /opt/tomcat/apache-tomcat-"$tomcatminorversion" /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport"
+tar -xzvf /tmp/apache-tomcat-"$tomcatminorversion".tar.gz -C /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport" --strip-components=1
 
 (cd /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport"/webapps/ && sudo rm -rf docs examples manager host-manager)
 
