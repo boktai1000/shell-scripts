@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-install-tomcat7.sh | sudo bash
 
@@ -18,10 +20,10 @@ yourip=$(hostname -I | awk '{print $1}')
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
-(cd /tmp && curl -O https://www-us.apache.org/dist/tomcat/tomcat-7/v$tomcatversion/bin/apache-tomcat-$tomcatversion.tar.gz)
-tar xzf apache-tomcat-$tomcatversion.tar.gz
+(cd /tmp && curl -O https://www-us.apache.org/dist/tomcat/tomcat-7/v"$tomcatversion"/bin/apache-tomcat-"$tomcatversion".tar.gz)
+tar xzf apache-tomcat-"$tomcatversion".tar.gz
 
-mv apache-tomcat-$tomcatversion /usr/local/tomcat7
+mv apache-tomcat-"$tomcatversion" /usr/local/tomcat7
 
 (cd /usr/local/tomcat7/webapps/ && sudo rm -rf docs examples manager host-manager)
 
@@ -61,4 +63,4 @@ systemctl enable tomcat7
 systemctl start tomcat7
 
 # Echo a reminder to CLI on how to connect to Tomcat
-echo Connect to Tomcat at http://$yourip:8080
+echo Connect to Tomcat at http://"$yourip":8080
