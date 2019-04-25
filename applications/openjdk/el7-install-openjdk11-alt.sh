@@ -17,6 +17,6 @@ tar zxvf /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz -C /usr/local/
 # Cleanup downloaded tar file
 rm -f /tmp/openjdk-11.0.2_linux-x64_bin.tar.gz
 
-# Configure alternatives to use OpenJDK 11
+# Configure alternatives to use OpenJDK
 alternatives --install /usr/bin/java java /usr/local/jdk-11.0.2/bin/java 1000
 alternatives --set java /usr/local/jdk-11.0.2/bin/java
