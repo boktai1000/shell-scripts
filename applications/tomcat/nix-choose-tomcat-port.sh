@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-choose-tomcat-port.sh | sudo bash -s 
 
@@ -11,7 +13,7 @@ fi
 # It is recommended to increment by one for each deployment, if you do not specify any ports the default port will be used.
 tomcatlatest="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
 tomcatminorversion=${1:-$tomcatlatest}
-tomcatmajorversion="`echo $tomcatminorversion | cut -c1-1`"
+tomcatmajorversion="$(echo "$tomcatminorversion" | cut -c1-1)"
 yourip=$(hostname -I | awk '{print $1}')
 tomcatport="${2-8080}"
 tomcatshutdownport="${3:-8005}"
@@ -20,20 +22,20 @@ tomcatajpport="${4:-8009}"
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
-(cd /tmp && curl -O https://archive.apache.org/dist/tomcat/tomcat-$tomcatmajorversion/v$tomcatminorversion/bin/apache-tomcat-$tomcatminorversion.tar.gz)
-tar -xzvf /tmp/apache-tomcat-$tomcatminorversion.tar.gz -C /opt/tomcat
+(cd /tmp && curl -O https://archive.apache.org/dist/tomcat/tomcat-"$tomcatmajorversion"/v"$tomcatminorversion"/bin/apache-tomcat-"$tomcatminorversion".tar.gz)
+tar -xzvf /tmp/apache-tomcat-"$tomcatminorversion".tar.gz -C /opt/tomcat
 
-mv /opt/tomcat/apache-tomcat-$tomcatminorversion /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport
+mv /opt/tomcat/apache-tomcat-"$tomcatminorversion" /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport"
 
-(cd /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/webapps/ && sudo rm -rf docs examples manager host-manager)
+(cd /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport"/webapps/ && sudo rm -rf docs examples manager host-manager)
 
-sed -i "s/8080/$tomcatport/g" /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
-sed -i "s/8005/$tomcatshutdownport/g" /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
-sed -i "s/8009/$tomcatajpport/g" /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
+sed -i "s/8080/$tomcatport/g" /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport"/conf/server.xml
+sed -i "s/8005/$tomcatshutdownport/g" /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport"/conf/server.xml
+sed -i "s/8009/$tomcatajpport/g" /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport"/conf/server.xml
 
-chown -R tomcat:tomcat /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/
+chown -R tomcat:tomcat /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport"/
 
-firewall-cmd --zone=public --permanent --add-port=$tomcatport/tcp
+firewall-cmd --zone=public --permanent --add-port="$tomcatport"/tcp
 firewall-cmd --reload
 
 echo "[Unit]
@@ -60,14 +62,14 @@ RestartSec=10
 Restart=always
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/tomcat$tomcatmajorversion-$tomcatport.service
+WantedBy=multi-user.target" > /etc/systemd/system/tomcat"$tomcatmajorversion"-"$tomcatport".service
 
 systemctl daemon-reload
-systemctl enable tomcat$tomcatmajorversion-$tomcatport
-systemctl start tomcat$tomcatmajorversion-$tomcatport
+systemctl enable tomcat"$tomcatmajorversion"-"$tomcatport"
+systemctl start tomcat"$tomcatmajorversion"-"$tomcatport"
 
 # Cleanup files
-rm /tmp/apache-tomcat-$tomcatminorversion.tar.gz
+rm /tmp/apache-tomcat-"$tomcatminorversion".tar.gz
 
 # Echo a reminder to CLI on how to connect to Tomcat
-echo Connect to Tomcat at http://$yourip:$tomcatport
+echo Connect to Tomcat at http://"$yourip":"$tomcatport"
