@@ -21,8 +21,7 @@ tar -xzvf apache-tomcat-$tomcatminorversion.tar.gz -C /opt
 
 mv /opt/apache-tomcat-$tomcatminorversion /opt/tomcat
 
-cd /opt/tomcat/webapps/
-sudo rm -rf docs examples manager host-manager
+(cd /opt/tomcat/webapps/ && sudo rm -rf docs examples manager host-manager)
 
 chown -R tomcat:tomcat /opt/tomcat/
 
