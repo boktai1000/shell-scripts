@@ -25,8 +25,8 @@ tar -xzvf /tmp/apache-tomcat-$tomcatminorversion.tar.gz -C /opt/tomcat
 
 mv /opt/tomcat/apache-tomcat-$tomcatminorversion /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport
 
-cd /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/webapps/
-sudo rm -rf docs examples manager host-manager
+(cd /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/webapps/ && sudo rm -rf docs examples manager host-manager)
+
 sed -i "s/8080/$tomcatport/g" /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
 sed -i "s/8005/$tomcatshutdownport/g" /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
 sed -i "s/8009/$tomcatajpport/g" /opt/tomcat/tomcat$tomcatmajorversion-$tomcatport/conf/server.xml
