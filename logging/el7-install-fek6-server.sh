@@ -1,8 +1,12 @@
+#!/bin/bash
+
 # Pre-reqs - Java 8 or OpenJDK 11
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/el7-install-openjdk11-alt.sh | sudo bash
+# Sources - Fluentd + Elasticsearch + Kibana
+# https://docs.fluentd.org/v1.0/articles/free-alternative-to-splunk-by-fluentd
+# https://docs.fluentd.org/v0.12/articles/free-alternative-to-splunk-by-fluentd
 
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/el7-install-efk-server.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/el7-install-fek6.sh | sudo bash
 
 # Install Elasticsearch
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
