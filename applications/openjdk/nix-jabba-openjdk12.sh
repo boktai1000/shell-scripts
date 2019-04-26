@@ -13,3 +13,10 @@ curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.ja
 
 # Install OpenJDK 12 (Latest)
 jabba install openjdk@1.12.0
+
+# https://github.com/shyiko/jabba#faq
+# select jdk
+jabba use openjdk@1.12.0
+
+sudo update-alternatives --install /usr/bin/java java ${JAVA_HOME%*/}/bin/java 20000
+sudo update-alternatives --install /usr/bin/javac javac ${JAVA_HOME%*/}/bin/javac 20000
