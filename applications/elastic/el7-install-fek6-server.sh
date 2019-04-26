@@ -5,6 +5,11 @@
 # https://docs.fluentd.org/v1.0/articles/free-alternative-to-splunk-by-fluentd
 # https://docs.fluentd.org/v0.12/articles/free-alternative-to-splunk-by-fluentd
 
+# Sources - Installing Elasticsearch + Kibana from rpm
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
+# https://www.elastic.co/guide/en/kibana/current/rpm.html
+# https://www.tecmint.com/install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-rhel-7/
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/elastic/el7-install-fek6-server.sh | sudo bash
 
