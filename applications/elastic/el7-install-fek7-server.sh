@@ -13,6 +13,9 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/elastic/el7-install-fek7-server.sh | sudo bash
 
+# Set Variable for your IP Address
+yourip=$(hostname -I | awk '{print $1}')
+
 # Import the Elastic PGP key
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
@@ -138,3 +141,6 @@ logger -t test foobar
 # tail -n 20 /var/log/td-agent/td-agent.log
 # less /var/log/td-agent/td-agent.log
 tail -n 20 /var/log/td-agent/td-agent.log
+
+# Echo a reminder to CLI on how to connect to Kibana
+echo Connect to Kibana at http://"$yourip":5601
