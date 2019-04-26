@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Pre-reqs - Java 8 or OpenJDK 11
 # Sources - Fluentd + Elasticsearch + Kibana
 # https://docs.fluentd.org/v1.0/articles/free-alternative-to-splunk-by-fluentd
 # https://docs.fluentd.org/v0.12/articles/free-alternative-to-splunk-by-fluentd
@@ -33,7 +32,7 @@ type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 sudo yum install -y elasticsearch
 
 # Backup elasticsearch.yml file and allow all hosts to communicate to it
-cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml-$(date --utc +%FT%T.%3NZ)
+cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml-"$(date --utc +%FT%T.%3NZ)"
 # This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#network.host: "localhost"/network.host: 0.0.0.0/g' /etc/elasticsearch/elasticsearch.yml
 # echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
@@ -62,7 +61,7 @@ type=rpm-md" > /etc/yum.repos.d/kibana.repo
 sudo yum install -y kibana
 
 # Backup kibana.yml file and allow all hosts to communicate to it
-cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak-$(date --utc +%FT%T.%3NZ)
+cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak-"$(date --utc +%FT%T.%3NZ)"
 # This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
 # echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
@@ -82,7 +81,7 @@ curl -X GET http://localhost:9200
 
 
 # Pre-Fluentd Configuration
-cp /etc/security/limits.conf /etc/security/limits.conf.bak-$(date --utc +%FT%T.%3NZ)
+cp /etc/security/limits.conf /etc/security/limits.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "root soft nofile 65536
 root hard nofile 65536
 * soft nofile 65536
@@ -106,7 +105,7 @@ sysctl -p
 curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
 sudo /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch --no-document
 
-sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak-$(date --utc +%FT%T.%3NZ)
+sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "# get logs from syslog
 <source>
   @type syslog
