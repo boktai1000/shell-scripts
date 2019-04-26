@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/tomcat/nix-tomcat-rsyslog-udp.sh | sudo bash
 
