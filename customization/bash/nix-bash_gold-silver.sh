@@ -11,9 +11,9 @@ sudo bash -c 'cat > /etc/profile.d/fancy-bash-prompt.sh' <<\EOF
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     if [[ "${EUID}" -eq 0 ]]; then
-        export PS1="[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;244m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \T \W]\\$ \[$(tput sgr0)\]"
+        export PS1="[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;244m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \t \W]\\$ \[$(tput sgr0)\]"
     else
-        export PS1="[\[$(tput sgr0)\]\[\033[38;5;220m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;244m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \T \W]\\$ \[$(tput sgr0)\]"
+        export PS1="[\[$(tput sgr0)\]\[\033[38;5;220m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;244m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \t \W]\\$ \[$(tput sgr0)\]"
     fi
 else
     if [[ "${EUID}" -eq 0 ]]; then
