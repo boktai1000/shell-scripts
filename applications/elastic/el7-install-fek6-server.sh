@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Pre-reqs - Java 8 or OpenJDK 11
 # Sources - Fluentd + Elasticsearch + Kibana
 # https://docs.fluentd.org/v1.0/articles/free-alternative-to-splunk-by-fluentd
 # https://docs.fluentd.org/v0.12/articles/free-alternative-to-splunk-by-fluentd
@@ -16,9 +15,10 @@
 # Set Variable for your IP Address
 yourip=$(hostname -I | awk '{print $1}')
 
-# Install Elasticsearch
+# Import the Elastic PGP key
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
+# Create Elasticsearch 6 repo
 echo "[elasticsearch-6.x]
 name=Elasticsearch repository for 6.x packages
 baseurl=https://artifacts.elastic.co/packages/6.x/yum
@@ -28,14 +28,17 @@ enabled=1
 autorefresh=1
 type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 
+# Install Elasticsearch 6
 sudo yum install -y elasticsearch
 
+# Backup elasticsearch.yml file and allow all hosts to communicate to it
 cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak
 # This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#network.host: "localhost"/network.host: 0.0.0.0/g' /etc/elasticsearch/elasticsearch.yml
-# echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
-echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
+# echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 
+# Open Firewall 9200/tcp and Start Service
 firewall-cmd --add-port=9200/tcp
 firewall-cmd --add-port=9200/tcp --permanent
 
@@ -44,7 +47,7 @@ sudo /bin/systemctl enable elasticsearch.service
 
 sudo systemctl start elasticsearch.service
 
-# Install Kibana
+# Create Kibana 6 repo
 echo "[kibana-6.x]
 name=Kibana repository for 6.x packages
 baseurl=https://artifacts.elastic.co/packages/6.x/yum
@@ -54,14 +57,17 @@ enabled=1
 autorefresh=1
 type=rpm-md" > /etc/yum.repos.d/kibana.repo
 
+# Install Kibana 6
 sudo yum install -y kibana
 
+# Backup kibana.yml file and allow all hosts to communicate to it
 cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak
 # This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
-# echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
-echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
+# echo "server.host: 0.0.0.0" | sudo tee -a /etc/kibana/kibana.yml
+echo "server.host: 0.0.0.0" | sudo tee -a /etc/kibana/kibana.yml
 
+# Open Firewall 5601/tcp and Start Service
 firewall-cmd --add-port=5601/tcp
 firewall-cmd --add-port=5601/tcp --permanent
 
@@ -72,7 +78,6 @@ sudo systemctl start kibana.service
 
 # Test Elasticsearch
 curl -X GET http://localhost:9200
-
 
 # Pre-Fluentd Configuration
 cp /etc/security/limits.conf /etc/security/limits.conf.bak
