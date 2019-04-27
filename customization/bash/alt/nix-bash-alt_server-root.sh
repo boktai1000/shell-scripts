@@ -4,7 +4,7 @@
 
 # https://askubuntu.com/a/549150 
 # https://www.reddit.com/r/linux/comments/2uf5uu/this_is_my_bash_prompt_which_is_your_favorite/?depth=2
-sudo tee /etc/profile.d/fancy-bash-prompt.sh <<\EOF
+sudo tee /etc/profile.d/fancy-bash-prompt.sh <</EOF
 #!/bin/bash
 
 if [[ "${EUID}" -eq 0 ]]; then
