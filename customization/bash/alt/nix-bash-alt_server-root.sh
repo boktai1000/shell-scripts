@@ -2,7 +2,9 @@
 # You can run this script directly with the following command
 # source <(curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/customization/bash/alt/nix-bash-alt_server-root.sh)
 
+# http://bashrcgenerator.com/
 # https://askubuntu.com/a/549150
+# https://serverfault.com/a/506267/480927
 # https://www.reddit.com/r/linux/comments/2uf5uu/this_is_my_bash_prompt_which_is_your_favorite/?depth=2
 sudo tee /etc/profile.d/fancy-bash-prompt.sh <<\EOF
 #!/bin/bash
