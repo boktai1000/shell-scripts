@@ -85,7 +85,7 @@ cp /etc/security/limits.conf /etc/security/limits.conf.bak-"$(date --utc +%FT%T.
 echo "root soft nofile 65536
 root hard nofile 65536
 * soft nofile 65536
-* hard nofile 65536" >> /etc/security/limits.conf
+* hard nofile 65536" | sudo tee -a /etc/security/limits.conf
 
 cp /etc/sysctl.conf /etc/sysctl.conf.bak
 echo "net.core.somaxconn = 1024
@@ -97,7 +97,7 @@ net.ipv4.tcp_rmem = 4096 12582912 16777216
 net.ipv4.tcp_max_syn_backlog = 8096
 net.ipv4.tcp_slow_start_after_idle = 0
 net.ipv4.tcp_tw_reuse = 1
-net.ipv4.ip_local_port_range = 10240 65535" >> /etc/sysctl.conf
+net.ipv4.ip_local_port_range = 10240 65535" | sudo tee -a /etc/sysctl.conf
 
 sysctl -p
 
@@ -129,7 +129,7 @@ echo "# get logs from syslog
 # sudo systemctl restart td-agent.service
 sudo systemctl start td-agent.service
 
-echo "*.* @127.0.0.1:42185" >> /etc/rsyslog.conf
+echo "*.* @127.0.0.1:42185" | sudo tee -a /etc/rsyslog.conf
 sudo systemctl restart rsyslog
 
 # To manually send logs to Elasticsearch, please use the logger command.
