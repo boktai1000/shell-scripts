@@ -1,6 +1,6 @@
 #!/bin/bash
 # You can run this script directly with the following command
-# source <(curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/customization/bash/nix-bash-alt_geometric.sh)
+# source <(curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/customization/bash/alt/nix-bash-alt_geometric.sh)
 
 # https://askubuntu.com/a/549150
 # https://www.reddit.com/r/linux/comments/2uf5uu/this_is_my_bash_prompt_which_is_your_favorite/?depth=2
