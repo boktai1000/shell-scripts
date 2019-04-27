@@ -11,4 +11,5 @@
 TERM=linux setterm -blank 0 -powerdown 0  -powersave off >/dev/tty0 </dev/tty0
 
 # Validate settings - should return 0
+echo Validate settings - should return 0 below
 cat /sys/module/kernel/parameters/consoleblank
