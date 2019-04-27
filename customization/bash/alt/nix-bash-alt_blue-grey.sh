@@ -7,8 +7,6 @@
 # https://serverfault.com/a/506267/480927
 # https://www.reddit.com/r/linux/comments/2uf5uu/this_is_my_bash_prompt_which_is_your_favorite/?depth=2
 sudo tee /etc/profile.d/fancy-bash-prompt.sh <<\EOF
-#!/bin/bash
-
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     if [[ "${EUID}" -eq 0 ]]; then
         export PS1="[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;244m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \t \W]\\$ \[$(tput sgr0)\]"
