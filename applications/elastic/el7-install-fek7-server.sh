@@ -35,8 +35,8 @@ sudo yum install -y elasticsearch
 cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml-"$(date --utc +%FT%T.%3NZ)"
 # This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#network.host: "localhost"/network.host: 0.0.0.0/g' /etc/elasticsearch/elasticsearch.yml
-# echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
-echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
+# echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 
 # Open Firewall 9200/tcp and Start Service
 firewall-cmd --add-port=9200/tcp
@@ -64,8 +64,8 @@ sudo yum install -y kibana
 cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak-"$(date --utc +%FT%T.%3NZ)"
 # This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
-# echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
-echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
+# echo "server.host: 0.0.0.0" | sudo tee -a /etc/kibana/kibana.yml
+echo "server.host: 0.0.0.0" | sudo tee -a /etc/kibana/kibana.yml
 
 # Open Firewall 5601/tcp and Start Service
 firewall-cmd --add-port=5601/tcp
