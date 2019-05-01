@@ -35,7 +35,7 @@ yum install -y elasticsearch
 # Backup elasticsearch.yml file and allow all hosts to communicate to it
 cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak-"$(date --utc +%FT%T.%3NZ)"
 
-echo "network.host: 0.0.0.0 | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 echo "discovery.seed_hosts: [\"$yourip\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 echo "cluster.initial_master_nodes: [\"$yourip\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 
