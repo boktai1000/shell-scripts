@@ -63,5 +63,8 @@ sudo systemctl daemon-reload
 sudo systemctl enable kibana.service
 sudo systemctl start kibana.service
 
+# Test Elasticsearch
+curl -X GET http://"$yourip":9200
+
 # Echo a reminder to CLI on how to connect to Kibana
 echo Connect to Kibana at http://"$yourip":5601
