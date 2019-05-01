@@ -27,18 +27,18 @@ autorefresh=1
 type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 
 # Install Elasticsearch 7
-sudo yum install -y elasticsearch
+yum install -y elasticsearch
 
 # Backup elasticsearch.yml file and allow all hosts to communicate to it
 cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak-"$(date --utc +%FT%T.%3NZ)"
 
-sudo echo "network.host: $yourip" | sudo tee --append /etc/elasticsearch/elasticsearch.yml
-sudo echo "discovery.seed_hosts: [\"$yourip\"]" | sudo tee --append /etc/elasticsearch/elasticsearch.yml
-sudo echo "cluster.initial_master_nodes: [\"$yourip\"]" | sudo tee --append /etc/elasticsearch/elasticsearch.yml
+echo "network.host: $yourip" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+echo "discovery.seed_hosts: [\"$yourip\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+echo "cluster.initial_master_nodes: [\"$yourip\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 
-sudo systemctl daemon-reload
-sudo systemctl enable elasticsearch.service
-sudo systemctl start elasticsearch.service
+systemctl daemon-reload
+systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
 
 # Create Kibana 7 repo
 echo "[kibana-7.x]
@@ -51,17 +51,17 @@ autorefresh=1
 type=rpm-md" > /etc/yum.repos.d/kibana.repo
 
 # Install Kibana 7
-sudo yum install -y kibana
+yum install -y kibana
 
 # Backup kibana.yml file and allow all hosts to communicate to it
 cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak-"$(date --utc +%FT%T.%3NZ)"
 
-sudo echo "server.host: $yourip" | sudo tee --append /etc/kibana/kibana.yml
-sudo echo "elasticsearch.hosts: [\"http://$yourip:9200\"]" | sudo tee --append /etc/kibana/kibana.yml
+echo "server.host: $yourip" | sudo tee --append /etc/kibana/kibana.yml
+echo "elasticsearch.hosts: [\"http://$yourip:9200\"]" | sudo tee --append /etc/kibana/kibana.yml
 
-sudo systemctl daemon-reload
-sudo systemctl enable kibana.service
-sudo systemctl start kibana.service
+systemctl daemon-reload
+systemctl enable kibana.service
+systemctl start kibana.service
 
 # Test Elasticsearch
 curl -X GET http://"$yourip":9200
