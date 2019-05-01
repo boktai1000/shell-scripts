@@ -30,7 +30,7 @@ type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 sudo yum install -y elasticsearch
 
 # Backup elasticsearch.yml file and allow all hosts to communicate to it
-cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml-"$(date --utc +%FT%T.%3NZ)"
+cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak-"$(date --utc +%FT%T.%3NZ)"
 
 sudo echo "network.host: $yourip" | sudo tee --append /etc/elasticsearch/elasticsearch.yml
 sudo echo "discovery.seed_hosts: [\"$yourip\"]" | sudo tee --append /etc/elasticsearch/elasticsearch.yml
