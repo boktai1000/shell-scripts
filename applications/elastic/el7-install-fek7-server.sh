@@ -87,7 +87,7 @@ root hard nofile 65536
 * soft nofile 65536
 * hard nofile 65536" | sudo tee -a /etc/security/limits.conf
 
-cp /etc/sysctl.conf /etc/sysctl.conf.bak
+cp /etc/sysctl.conf /etc/sysctl.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "net.core.somaxconn = 1024
 net.core.netdev_max_backlog = 5000
 net.core.rmem_max = 16777216
