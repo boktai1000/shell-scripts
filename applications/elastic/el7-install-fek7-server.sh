@@ -126,9 +126,11 @@ echo "# get logs from syslog
   </buffer>
 </match>" > /etc/td-agent/td-agent.conf
 
-# sudo systemctl restart td-agent.service
-sudo systemctl start td-agent.service
+# Set td-agent to run on boot, and start service
+systemctl enable td-agent
+systemctl start td-agent
 
+# Send to syslog
 echo "*.* @127.0.0.1:42185" | sudo tee -a /etc/rsyslog.conf
 sudo systemctl restart rsyslog
 
