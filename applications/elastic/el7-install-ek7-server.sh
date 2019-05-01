@@ -3,6 +3,9 @@
 # https://gist.github.com/hideojoho/89e24e932f2b69d43ef31d707a57ed24
 # https://gist.githubusercontent.com/hideojoho/89e24e932f2b69d43ef31d707a57ed24/raw/dcf95670c3082a29065165195eae9ec695de5fa6/Vagrant_provision.sh
 
+# You can run this script directly with the following command
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/elastic/el7-install-ek7-server.sh | sudo bash
+
 # Set Variable for your IP Address
 yourip=$(hostname -I | awk '{print $1}')
 
