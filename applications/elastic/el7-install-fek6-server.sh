@@ -32,20 +32,19 @@ type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 sudo yum install -y elasticsearch
 
 # Backup elasticsearch.yml file and allow all hosts to communicate to it
-cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak
-# This tweak needs to be validated further - use sed or echo, not both
-# sed -i 's/#network.host: "localhost"/network.host: 0.0.0.0/g' /etc/elasticsearch/elasticsearch.yml
-# echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+# https://www.elastic.co/guide/en/elasticsearch/reference/7.0/breaking-changes-7.0.html#_discovery_configuration_is_required_in_production
+cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak-"$(date --utc +%FT%T.%3NZ)"
+
 echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+echo "discovery.zen.ping.unicast.hosts: [\"$yourip:9200\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 
 # Open Firewall 9200/tcp and Start Service
 firewall-cmd --add-port=9200/tcp
 firewall-cmd --add-port=9200/tcp --permanent
 
-sudo /bin/systemctl daemon-reload
-sudo /bin/systemctl enable elasticsearch.service
-
-sudo systemctl start elasticsearch.service
+systemctl daemon-reload
+systemctl enable elasticsearch
+systemctl start elasticsearch
 
 # Create Kibana 6 repo
 echo "[kibana-6.x]
@@ -61,32 +60,27 @@ type=rpm-md" > /etc/yum.repos.d/kibana.repo
 sudo yum install -y kibana
 
 # Backup kibana.yml file and allow all hosts to communicate to it
-cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak
-# This tweak needs to be validated further - use sed or echo, not both
-# sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
-# echo "server.host: 0.0.0.0" | sudo tee -a /etc/kibana/kibana.yml
-echo "server.host: 0.0.0.0" | sudo tee -a /etc/kibana/kibana.yml
+cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak-"$(date --utc +%FT%T.%3NZ)"
+
+echo "server.host: $yourip" | sudo tee -a /etc/kibana/kibana.yml
+echo "elasticsearch.hosts: [\"http://$yourip:9200\"]" | sudo tee -a /etc/kibana/kibana.yml
 
 # Open Firewall 5601/tcp and Start Service
 firewall-cmd --add-port=5601/tcp
 firewall-cmd --add-port=5601/tcp --permanent
 
-sudo /bin/systemctl daemon-reload
-sudo /bin/systemctl enable kibana.service
-
-sudo systemctl start kibana.service
-
-# Test Elasticsearch
-curl -X GET http://localhost:9200
+systemctl daemon-reload
+systemctl enable kibana
+systemctl start kibana
 
 # Pre-Fluentd Configuration
-cp /etc/security/limits.conf /etc/security/limits.conf.bak
+cp /etc/security/limits.conf /etc/security/limits.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "root soft nofile 65536
 root hard nofile 65536
 * soft nofile 65536
 * hard nofile 65536" >> /etc/security/limits.conf
 
-cp /etc/sysctl.conf /etc/sysctl.conf.bak
+cp /etc/sysctl.conf /etc/sysctl.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "net.core.somaxconn = 1024
 net.core.netdev_max_backlog = 5000
 net.core.rmem_max = 16777216
@@ -104,7 +98,7 @@ sysctl -p
 curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
 sudo /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch --no-document
 
-sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak
+sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "# get logs from syslog
 <source>
   @type syslog
@@ -125,9 +119,14 @@ echo "# get logs from syslog
   </buffer>
 </match>" > /etc/td-agent/td-agent.conf
 
-# sudo systemctl restart td-agent.service
-sudo systemctl start td-agent.service
+# Set td-agent to run on boot, and start service
+systemctl enable td-agent
+systemctl start td-agent
 
+# Backup rsyslog.conf
+cp /etc/rsyslog.conf /etc/rsyslog.conf.bak-"$(date --utc +%FT%T.%3NZ)"
+
+# Send to syslog
 echo "*.* @127.0.0.1:42185" >> /etc/rsyslog.conf
 sudo systemctl restart rsyslog
 
@@ -139,6 +138,14 @@ logger -t test foobar
 # tail -n 20 /var/log/td-agent/td-agent.log
 # less /var/log/td-agent/td-agent.log
 tail -n 20 /var/log/td-agent/td-agent.log
+
+# Test Elasticsearch - localhost
+echo Test connecting to Elasticsearch via localhost
+curl -X GET http://localhost:9200
+
+# Test Elasticsearch - local IP
+echo Test connecting to Elasticsearch via IPv4 Address
+curl -X GET http://"$yourip":9200
 
 # Echo a reminder to CLI on how to connect to Kibana
 echo Connect to Kibana at http://"$yourip":5601
