@@ -32,7 +32,7 @@ type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 sudo yum install -y elasticsearch
 
 # Backup elasticsearch.yml file and allow all hosts to communicate to it
-cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml-"$(date --utc +%FT%T.%3NZ)"
+cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak-"$(date --utc +%FT%T.%3NZ)"
 # This tweak needs to be validated further - use sed or echo, not both
 # sed -i 's/#network.host: "localhost"/network.host: 0.0.0.0/g' /etc/elasticsearch/elasticsearch.yml
 # echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
