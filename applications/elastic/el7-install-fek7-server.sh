@@ -79,7 +79,6 @@ sudo systemctl start kibana.service
 # Test Elasticsearch
 curl -X GET http://localhost:9200
 
-
 # Pre-Fluentd Configuration
 cp /etc/security/limits.conf /etc/security/limits.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "root soft nofile 65536
@@ -129,6 +128,9 @@ echo "# get logs from syslog
 # Set td-agent to run on boot, and start service
 systemctl enable td-agent
 systemctl start td-agent
+
+# Backup rsyslog.conf
+cp /etc/rsyslog.conf /etc/rsyslog.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Send to syslog
 echo "*.* @127.0.0.1:42185" | sudo tee -a /etc/rsyslog.conf
