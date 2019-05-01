@@ -56,8 +56,8 @@ yum install -y kibana
 # Backup kibana.yml file and allow all hosts to communicate to it
 cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak-"$(date --utc +%FT%T.%3NZ)"
 
-echo "server.host: $yourip" | sudo tee --append /etc/kibana/kibana.yml
-echo "elasticsearch.hosts: [\"http://$yourip:9200\"]" | sudo tee --append /etc/kibana/kibana.yml
+echo "server.host: $yourip" | sudo tee -a /etc/kibana/kibana.yml
+echo "elasticsearch.hosts: [\"http://$yourip:9200\"]" | sudo tee -a /etc/kibana/kibana.yml
 
 systemctl daemon-reload
 systemctl enable kibana.service
