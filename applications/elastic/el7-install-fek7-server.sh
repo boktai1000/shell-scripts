@@ -108,10 +108,12 @@ echo "# get logs from syslog
   port 42185
   tag syslog
 </source>
+
 # get logs from fluent-logger, fluent-cat or other fluentd instances
 <source>
   @type forward
 </source>
+
 <match syslog.**>
   @type elasticsearch
   logstash_format true
