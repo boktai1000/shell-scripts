@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/tomcat/nix-tomcat-rsyslog-tcp.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/tomcat/nix-tomcat-rsyslog-tcp.sh | sudo bash -s
 
 syslog=${1:-x.x.x.x}
 
