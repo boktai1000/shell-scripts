@@ -4,7 +4,7 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/rsyslog/nix-rsyslog-server-udp.sh | sudo bash
 
 # Backup /etc/rsyslog.conf
-cp /etc/rsyslog.conf /etc/rsyslog.conf.bak
+cp /etc/rsyslog.conf /etc/rsyslog.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Configure Rsyslog to accept remote log messages using UDP port 514
 sed -i 's/#$ModLoad imudp/$ModLoad imudp/g' /etc/rsyslog.conf
