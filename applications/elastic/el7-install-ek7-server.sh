@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Sources - Installing Elasticsearch + Kibana from rpm
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
+# https://www.elastic.co/guide/en/kibana/current/rpm.html
+# https://www.tecmint.com/install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-rhel-7/
+
+# Sources - Scripted Elasticsearch + Kibana install
 # https://gist.github.com/hideojoho/89e24e932f2b69d43ef31d707a57ed24
 # https://gist.githubusercontent.com/hideojoho/89e24e932f2b69d43ef31d707a57ed24/raw/dcf95670c3082a29065165195eae9ec695de5fa6/Vagrant_provision.sh
 
