@@ -32,10 +32,14 @@ type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 sudo yum install -y elasticsearch
 
 # Backup elasticsearch.yml file and allow all hosts to communicate to it
-# https://www.elastic.co/guide/en/elasticsearch/reference/7.0/breaking-changes-7.0.html#_discovery_configuration_is_required_in_production
 cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak-"$(date --utc +%FT%T.%3NZ)"
-
 echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+
+# Required for upgrade compatibility
+# https://www.elastic.co/guide/en/elasticsearch/reference/7.0/breaking-changes-7.0.html#_discovery_configuration_is_required_in_production
+# https://gist.github.com/elhu/5805776
+# https://gist.github.com/aashish004/5942929d76b67d369b6a
+# https://gist.github.com/namkyu/e989d86cafb5c38725ab878831488ba5
 echo "discovery.zen.ping.unicast.hosts: [\"$yourip:9200\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 
 # Open Firewall 9200/tcp and Start Service
