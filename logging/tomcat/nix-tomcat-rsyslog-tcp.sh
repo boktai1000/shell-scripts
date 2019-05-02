@@ -13,7 +13,6 @@ sudo tee /etc/rsyslog.d/tomcat.conf <<EOF
 input(type="imfile"
       File="/opt/tomcat*/logs/*"
       Tag="catalina"
-      StateFile="/var/spool/catalina"
       Severity="info"
       Facility="local1")
 local1.* @@$syslog:514"
