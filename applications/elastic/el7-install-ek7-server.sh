@@ -74,7 +74,7 @@ systemctl enable kibana
 systemctl start kibana
 
 # Test Elasticsearch - localhost
-echo Test connecting to Elasticsearch below via localhost
+echo Test connecting to Elasticsearch via localhost
 curl -X GET http://localhost:9200
 
 # Test Elasticsearch - local IP
