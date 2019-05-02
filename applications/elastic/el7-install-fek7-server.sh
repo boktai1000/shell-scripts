@@ -143,7 +143,7 @@ logger -t test foobar
 tail -n 20 /var/log/td-agent/td-agent.log
 
 # Test Elasticsearch - localhost
-echo Test connecting to Elasticsearch below via localhost
+echo Test connecting to Elasticsearch via localhost
 curl -X GET http://localhost:9200
 
 # Test Elasticsearch - local IP
