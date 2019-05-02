@@ -19,13 +19,13 @@
 # Set Variable for your IP Address
 yourip=$(hostname -I | awk '{print $1}')
 
-# Open Firewall for Elasticsearch and Kibana
-echo 'Open Firewall for Elasticsearch and Kibana'
+# Opening Firewall for Elasticsearch and Kibana
+echo 'Opening Firewall for Elasticsearch and Kibana'
 firewall-cmd --add-port=5601/tcp > /dev/null
 firewall-cmd --add-port=5601/tcp --permanent > /dev/null
 firewall-cmd --add-port=9200/tcp > /dev/null
 firewall-cmd --add-port=9200/tcp --permanent > /dev/null
-firewall-cmd --reload
+firewall-cmd --reload > /dev/null
 
 # Import the Elastic PGP key
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
