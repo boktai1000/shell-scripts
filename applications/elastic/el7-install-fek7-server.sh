@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Sources - Fluentd + Elasticsearch + Kibana
-# https://docs.fluentd.org/v1.0/articles/free-alternative-to-splunk-by-fluentd
-# https://docs.fluentd.org/v0.12/articles/free-alternative-to-splunk-by-fluentd
-
 # Sources - Installing Elasticsearch + Kibana from rpm
 # https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
 # https://www.elastic.co/guide/en/kibana/current/rpm.html
 # https://www.tecmint.com/install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-rhel-7/
+
+# Sources - Fluentd + Elasticsearch + Kibana
+# https://docs.fluentd.org/v1.0/articles/free-alternative-to-splunk-by-fluentd
+# https://docs.fluentd.org/v0.12/articles/free-alternative-to-splunk-by-fluentd
 
 # Sources - Scripted Elasticsearch + Kibana install
 # https://gist.github.com/hideojoho/89e24e932f2b69d43ef31d707a57ed24
