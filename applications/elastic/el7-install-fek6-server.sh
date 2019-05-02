@@ -29,7 +29,7 @@ autorefresh=1
 type=rpm-md" > /etc/yum.repos.d/elasticsearch.repo
 
 # Install Elasticsearch 6
-sudo yum install -y elasticsearch
+yum install -y elasticsearch
 
 # Backup elasticsearch.yml file and allow all hosts to communicate to it
 cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak-"$(date --utc +%FT%T.%3NZ)"
@@ -61,7 +61,7 @@ autorefresh=1
 type=rpm-md" > /etc/yum.repos.d/kibana.repo
 
 # Install Kibana 6
-sudo yum install -y kibana
+yum install -y kibana
 
 # Backup kibana.yml file and allow all hosts to communicate to it
 cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak-"$(date --utc +%FT%T.%3NZ)"
@@ -102,7 +102,7 @@ sysctl -p
 curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
 sudo /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch --no-document
 
-sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak-"$(date --utc +%FT%T.%3NZ)"
+cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "# get logs from syslog
 <source>
   @type syslog
@@ -132,7 +132,7 @@ cp /etc/rsyslog.conf /etc/rsyslog.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Send to syslog
 echo "*.* @127.0.0.1:42185" >> /etc/rsyslog.conf
-sudo systemctl restart rsyslog
+systemctl restart rsyslog
 
 # To manually send logs to Elasticsearch, please use the logger command.
 logger -t test foobar
