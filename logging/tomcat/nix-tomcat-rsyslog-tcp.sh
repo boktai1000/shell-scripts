@@ -15,7 +15,7 @@ input(type="imfile"
 local1.* @@x.x.x.x:514" > /etc/rsyslog.d/tomcat.conf
 
 # Backup /etc/rsyslog.conf
-cp /etc/rsyslog.conf /etc/rsyslog.conf.bak
+cp /etc/rsyslog.conf /etc/rsyslog.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Configuring the rsyslog.conf - load the imfile module
 sed '22a\module(load="imfile" PollingInterval="10")' /etc/rsyslog.conf > /etc/rsyslog.conf
