@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# http://idmoim.blogspot.com/2016/09/sending-tomcat-logs-to-syslog-servers.html
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/tomcat/nix-tomcat-rsyslog-tcp.sh | sudo bash -s
 
