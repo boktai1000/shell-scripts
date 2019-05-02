@@ -5,6 +5,7 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/tomcat/nix-tomcat-rsyslog-tcp.sh | sudo bash -s
 
+# Set Variable for Syslog server to send to, if no Syslog specified then fallback to x.x.x.x to replace later.
 syslog=${1:-x.x.x.x}
 
 # Configuring the tomcat.conf file
