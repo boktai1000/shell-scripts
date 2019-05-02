@@ -40,8 +40,8 @@ echo "discovery.seed_hosts: [\"$yourip\"]" | sudo tee -a /etc/elasticsearch/elas
 echo "cluster.initial_master_nodes: [\"$yourip\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 
 systemctl daemon-reload
-systemctl enable elasticsearch.service
-systemctl start elasticsearch.service
+systemctl enable elasticsearch
+systemctl start elasticsearch
 
 # Create Kibana 7 repo
 echo "[kibana-7.x]
@@ -63,10 +63,15 @@ echo "server.host: $yourip" | sudo tee -a /etc/kibana/kibana.yml
 echo "elasticsearch.hosts: [\"http://$yourip:9200\"]" | sudo tee -a /etc/kibana/kibana.yml
 
 systemctl daemon-reload
-systemctl enable kibana.service
-systemctl start kibana.service
+systemctl enable kibana
+systemctl start kibana
 
-# Test Elasticsearch
+# Test Elasticsearch - localhost
+echo Test connecting to Elasticsearch below via localhost
+curl -X GET http://localhost:9200
+
+# Test Elasticsearch - local IP
+echo Test connecting to Elasticsearch via IPv4 Address
 curl -X GET http://"$yourip":9200
 
 # Echo a reminder to CLI on how to connect to Kibana
