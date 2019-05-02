@@ -15,6 +15,14 @@
 # Set Variable for your IP Address
 yourip=$(hostname -I | awk '{print $1}')
 
+# Opening Firewall for Elasticsearch and Kibana
+echo 'Opening Firewall for Elasticsearch and Kibana'
+firewall-cmd --add-port=5601/tcp > /dev/null
+firewall-cmd --add-port=5601/tcp --permanent > /dev/null
+firewall-cmd --add-port=9200/tcp > /dev/null
+firewall-cmd --add-port=9200/tcp --permanent > /dev/null
+firewall-cmd --reload > /dev/null
+
 # Import the Elastic PGP key
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
@@ -42,10 +50,6 @@ echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 # https://gist.github.com/namkyu/e989d86cafb5c38725ab878831488ba5
 echo "discovery.zen.ping.unicast.hosts: [\"$yourip:9200\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
 
-# Open Firewall 9200/tcp and Start Service
-firewall-cmd --add-port=9200/tcp
-firewall-cmd --add-port=9200/tcp --permanent
-
 systemctl daemon-reload
 systemctl enable elasticsearch
 systemctl start elasticsearch
@@ -68,10 +72,6 @@ cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak-"$(date --utc +%FT%T.%3NZ)"
 
 echo "server.host: $yourip" | sudo tee -a /etc/kibana/kibana.yml
 echo "elasticsearch.hosts: [\"http://$yourip:9200\"]" | sudo tee -a /etc/kibana/kibana.yml
-
-# Open Firewall 5601/tcp and Start Service
-firewall-cmd --add-port=5601/tcp
-firewall-cmd --add-port=5601/tcp --permanent
 
 systemctl daemon-reload
 systemctl enable kibana
