@@ -170,12 +170,14 @@ sed -i -e 's,<socket-binding name="osgi-http" interface="management" port="8090"
 
 echo "Done."
 
-# Opening Firewall for Elasticsearch and Kibana
+# Opening Firewall for Wildfly - HTTP, HTTPS, and Management
 echo 'Opening Firewall for Wildfly'
 firewall-cmd --zone=public --add-port=28080/tcp > /dev/null
 firewall-cmd --zone=public --add-port=28443/tcp > /dev/null
+firewall-cmd --zone=public --add-port=9990/tcp > /dev/null
 firewall-cmd --zone=public --permanent --add-port=28080/tcp > /dev/null
 firewall-cmd --zone=public --permanent --add-port=28443/tcp > /dev/null
+firewall-cmd --zone=public --permanent --add-port=9990/tcp > /dev/null
 
 # Echo a reminder to CLI on how to connect to Tomcat
 echo Connect to Wildfly HTTP at http://"$yourip":28080
