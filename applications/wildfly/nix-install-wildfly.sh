@@ -6,6 +6,8 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/wildfly/nix-install-wildfly.sh | sudo bash
 # curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/wildfly/nix-install-wildfly.sh | sudo bash
 
+yourip=$(hostname -I | awk '{print $1}')
+
 WILDFLY_VERSION=${1:-16.0.0.Final}
 WILDFLY_FILENAME=wildfly-$WILDFLY_VERSION
 WILDFLY_ARCHIVE_NAME=$WILDFLY_FILENAME.tar.gz
@@ -167,3 +169,7 @@ sed -i -e 's,<socket-binding name="osgi-http" interface="management" port="8090"
 [ -x /bin/systemctl ] && systemctl start $WILDFLY_SERVICE || service $WILDFLY_SERVICE start
 
 echo "Done."
+
+# Echo a reminder to CLI on how to connect to Tomcat
+echo Connect to Wildfly HTTP at http://"$yourip":28080
+echo Connect to Wildfly HTTPS at https://"$yourip":28443
