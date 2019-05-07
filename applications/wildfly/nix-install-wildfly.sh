@@ -182,3 +182,6 @@ firewall-cmd --zone=public --permanent --add-port=9990/tcp > /dev/null
 # Echo a reminder to CLI on how to connect to Tomcat
 echo Connect to Wildfly HTTP at http://"$yourip":28080
 echo Connect to Wildfly HTTPS at https://"$yourip":28443
+
+# Echo a reminder for creating a Wildfly user
+echo "Create a Wildfly management user by running .""$WILDFLY_FULL_DIR""/bin/add-user.sh"
