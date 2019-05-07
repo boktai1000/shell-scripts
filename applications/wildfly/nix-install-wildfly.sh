@@ -85,7 +85,7 @@ EOF
     sed -i -e 's,PIDFile=.*,PIDFile=/var/run/wildfly/'$WILDFLY_SERVICE'.pid,g' /etc/systemd/system/$WILDFLY_SERVICE.service
     sed -i -e 's,ExecStart=.*,ExecStart='$WILDFLY_DIR'/bin/launch.sh $WILDFLY_MODE $WILDFLY_CONFIG $WILDFLY_BIND,g' /etc/systemd/system/$WILDFLY_SERVICE.service
     systemctl daemon-reload
-    #systemctl enable $WILDFLY_SERVICE.service
+    systemctl enable $WILDFLY_SERVICE.service
 fi
 
 # if non-systemd Debian-like distribution
