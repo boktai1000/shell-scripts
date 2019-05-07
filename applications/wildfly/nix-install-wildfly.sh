@@ -170,7 +170,6 @@ sed -i -e 's,<socket-binding name="osgi-http" interface="management" port="8090"
 
 echo "Done."
 
-
 # Opening Firewall for Elasticsearch and Kibana
 echo 'Opening Firewall for Wildfly'
 firewall-cmd --zone=public --add-port=28080/tcp > /dev/null
