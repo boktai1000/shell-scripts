@@ -22,8 +22,6 @@ WILDFLY_MODE="standalone"
 WILDFLY_STARTUP_TIMEOUT=240
 WILDFLY_SHUTDOWN_TIMEOUT=30
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root."
     exit 1
@@ -33,10 +31,6 @@ echo "Downloading: $WILDFLY_DOWNLOAD_ADDRESS..."
 [ -e "$WILDFLY_ARCHIVE_NAME" ] && echo 'Wildfly archive already exists.'
 if [ ! -e "$WILDFLY_ARCHIVE_NAME" ]; then
     curl -O "$WILDFLY_DOWNLOAD_ADDRESS"
-    if [ $? -ne 0 ]; then
-        echo "Not possible to download Wildfly."
-        exit 1
-    fi
 fi
 
 echo "Cleaning up..."
