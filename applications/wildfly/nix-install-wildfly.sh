@@ -184,4 +184,4 @@ echo Connect to Wildfly HTTP at http://"$yourip":28080
 echo Connect to Wildfly HTTPS at https://"$yourip":28443
 
 # Echo a reminder for creating a Wildfly user
-echo "Create a Wildfly management user by running .""$WILDFLY_FULL_DIR""/bin/add-user.sh"
+echo "Create a Wildfly management user by running "cd ""$WILDFLY_DIR""/bin/ && ./add-user.sh""
