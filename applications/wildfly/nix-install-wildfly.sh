@@ -6,7 +6,7 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/wildfly/nix-install-wildfly.sh | sudo bash
 # curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/wildfly/nix-install-wildfly.sh | sudo bash
 
-WILDFLY_VERSION=16.0.0.Final
+WILDFLY_VERSION=${1:-16.0.0.Final}
 WILDFLY_FILENAME=wildfly-$WILDFLY_VERSION
 WILDFLY_ARCHIVE_NAME=$WILDFLY_FILENAME.tar.gz
 WILDFLY_DOWNLOAD_ADDRESS=http://download.jboss.org/wildfly/$WILDFLY_VERSION/$WILDFLY_ARCHIVE_NAME
@@ -25,18 +25,18 @@ WILDFLY_SHUTDOWN_TIMEOUT=30
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root."
-   exit 1
+    echo "This script must be run as root."
+    exit 1
 fi
 
 echo "Downloading: $WILDFLY_DOWNLOAD_ADDRESS..."
 [ -e "$WILDFLY_ARCHIVE_NAME" ] && echo 'Wildfly archive already exists.'
 if [ ! -e "$WILDFLY_ARCHIVE_NAME" ]; then
-  wget -q $WILDFLY_DOWNLOAD_ADDRESS
-  if [ $? -ne 0 ]; then
-    echo "Not possible to download Wildfly."
-    exit 1
-  fi
+    wget -q "$WILDFLY_DOWNLOAD_ADDRESS"
+    if [ $? -ne 0 ]; then
+        echo "Not possible to download Wildfly."
+        exit 1
+    fi
 fi
 
 echo "Cleaning up..."
@@ -46,9 +46,9 @@ rm -rf "/var/run/$WILDFLY_SERVICE/"
 rm -f "/etc/init.d/$WILDFLY_SERVICE"
 
 echo "Installation..."
-mkdir $WILDFLY_FULL_DIR
-tar -xzf $WILDFLY_ARCHIVE_NAME -C $INSTALL_DIR
-ln -s $WILDFLY_FULL_DIR/ $WILDFLY_DIR
+mkdir "$WILDFLY_FULL_DIR"
+tar -xzf "$WILDFLY_ARCHIVE_NAME" -C $INSTALL_DIR
+ln -s "$WILDFLY_FULL_DIR"/ $WILDFLY_DIR
 useradd -s /sbin/nologin $WILDFLY_USER
 chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR
 chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/
@@ -145,8 +145,8 @@ exit 1
 esac
 exit 0
 EOF
-sed -i -e 's,${WILDFLY_USER},'$WILDFLY_USER',g; s,${WILDFLY_FILENAME},'$WILDFLY_FILENAME',g; s,${WILDFLY_SERVICE},'$WILDFLY_SERVICE',g; s,${WILDFLY_DIR},'$WILDFLY_DIR',g' /etc/init.d/$WILDFLY_SERVICE
-chmod 755 /etc/init.d/$WILDFLY_SERVICE
+    sed -i -e 's,${WILDFLY_USER},'$WILDFLY_USER',g; s,${WILDFLY_FILENAME},'"$WILDFLY_FILENAME"',g; s,${WILDFLY_SERVICE},'$WILDFLY_SERVICE',g; s,${WILDFLY_DIR},'$WILDFLY_DIR',g' /etc/init.d/$WILDFLY_SERVICE
+    chmod 755 /etc/init.d/$WILDFLY_SERVICE
 fi
 
 if [ ! -z "$WILDFLY_SERVICE_CONF" ]; then
@@ -156,7 +156,7 @@ if [ ! -z "$WILDFLY_SERVICE_CONF" ]; then
     echo WILDFLY_HOME=\"$WILDFLY_DIR\" > $WILDFLY_SERVICE_CONF
     echo WILDFLY_USER=\"$WILDFLY_USER\" > $WILDFLY_SERVICE_CONF
     echo STARTUP_WAIT=$WILDFLY_STARTUP_TIMEOUT >> $WILDFLY_SERVICE_CONF
-    echo SHUTDOWN_WAIT=$WILDFLY_SHUTDOWN_TIMEOUT >> $WILDFLY_SERVICE_CONF   
+    echo SHUTDOWN_WAIT=$WILDFLY_SHUTDOWN_TIMEOUT >> $WILDFLY_SERVICE_CONF
     echo WILDFLY_CONFIG=$WILDFLY_MODE.xml >> $WILDFLY_SERVICE_CONF
     echo WILDFLY_MODE=$WILDFLY_MODE >> $WILDFLY_SERVICE_CONF
     echo WILDFLY_BIND=0.0.0.0 >> $WILDFLY_SERVICE_CONF
