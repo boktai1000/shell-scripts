@@ -12,6 +12,6 @@ sed -i 's/#$InputTCPServerRun 514/$InputTCPServerRun 514/g' /etc/rsyslog.conf
 
 systemctl restart rsyslog
 
-# Open firewall to receive remote log messages using TCP port 514
-firewall-cmd --permanent --add-port=514/tcp
-firewall-cmd –reload
+echo 'Opening Firewall port 514 TCP for Rsyslog'
+firewall-cmd --add-port=514/tcp > /dev/null
+firewall-cmd --permanent --add-port=514/tcp > /dev/null
