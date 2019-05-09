@@ -4,7 +4,7 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-latest-tomcat.sh | sudo bash
 
 # Set Variable to find highest / latest version from GitHub and grab that version
-tomcatminorversion="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
+tomcatminorversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | sort -rV | head -1)"
 tomcatmajorversion="$(echo "$tomcatminorversion" | cut -c1-1)"
 yourip=$(hostname -I | awk '{print $1}')
 jdkenv="$(cat /etc/profile.d/jdk*.sh | sed -nr '/JAVA_HOME=/ s/.*JAVA_HOME=([^"]+).*/\1/p' | head -1)"
