@@ -6,7 +6,7 @@
 # Set variables to pass parameter / argument to script to grab version number from website
 # Append your version number, followed by http port, then shutdown port (and optionally third the ajp port)
 # It is recommended to increment by one for each deployment, if you do not specify any ports the default port will be used.
-tomcatlatest="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
+tomcatlatest="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | sort -rV | head -1)"
 tomcatminorversion=${1:-$tomcatlatest}
 tomcatmajorversion="$(echo "$tomcatminorversion" | cut -c1-1)"
 yourip=$(hostname -I | awk '{print $1}')
