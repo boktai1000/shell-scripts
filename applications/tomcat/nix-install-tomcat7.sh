@@ -9,14 +9,14 @@
 # http://tomcat.apache.org/whichversion.html
 
 # Set Variable to always download latest version of Tomcat 7 - Scrape Web Page for Version Number
-tomcatversion="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-7/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | sort -rV | head -1)"
+tomcatversion="$(curl -s https://archive.apache.org/dist/tomcat/tomcat-7/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | sort -rV | head -1)"
 yourip=$(hostname -I | awk '{print $1}')
 jdkenv="$(cat /etc/profile.d/jdk*.sh | sed -nr '/JAVA_HOME=/ s/.*JAVA_HOME=([^"]+).*/\1/p' | head -1)"
 
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
-(cd /tmp && curl -O https://www-us.apache.org/dist/tomcat/tomcat-7/v"$tomcatversion"/bin/apache-tomcat-"$tomcatversion".tar.gz)
+(cd /tmp && curl -O https://archive.apache.org/dist/tomcat/tomcat-7/v"$tomcatversion"/bin/apache-tomcat-"$tomcatversion".tar.gz)
 tar xzf /tmp/apache-tomcat-"$tomcatversion".tar.gz -C /usr/local/tomcat7 --strip-components=1
 (cd /usr/local/tomcat7/webapps/ && sudo rm -rf docs examples manager host-manager)
 
