@@ -19,7 +19,7 @@ sed -i 's/#$InputTCPServerRun 514/$InputTCPServerRun 514/g' /etc/rsyslog.conf
 
 systemctl restart rsyslog
 
-echo 'Opening Firewall port 514 TCP and UDP for Rsyslog'
+echo 'Opening Firewall ports 514 TCP and UDP for Rsyslog'
 firewall-cmd --add-port=514/udp > /dev/null
 firewall-cmd --add-port=514/tcp > /dev/null
 firewall-cmd --permanent --add-port=514/udp > /dev/null
