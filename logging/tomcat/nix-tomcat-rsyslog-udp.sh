@@ -7,6 +7,7 @@
 
 # Set Variable for Syslog server to send to, if no Syslog specified then fallback to x.x.x.x to replace later.
 syslogserver=${1:-x.x.x.x}
+yourip=$(hostname -I | awk '{print $1}')
 
 # Configuring the tomcat.conf file
 sudo tee /etc/rsyslog.d/tomcat.conf <<EOF
@@ -36,7 +37,7 @@ echo "# ### end of the forwarding rule ###" >> /etc/rsyslog.conf
 systemctl restart rsyslog
 
 # Test the configuration
-logger Test from system
+logger Test from $yourip
 tail /var/log/messages
 
 # Replace y.y.y.y with your server IP and run these commands against your system otherwise it will not work
