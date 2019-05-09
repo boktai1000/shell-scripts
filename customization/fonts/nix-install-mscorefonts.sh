@@ -13,11 +13,21 @@ if [ "$EUID" -ne "0" ]; then
 fi
 
 if [ -f /etc/redhat-release ]; then
+    
+    # EPEL Repo Required for cabextract, needs to be installed beforehand
     yum install -y epel-release
+    
+    # Install tools required for font management
     yum install -y curl cabextract xorg-x11-font-utils fontconfig
+    
+    # Install MS Core Fonts - requires cabextract
     rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+    
 fi
 
 if [ -f /etc/debian_version ]; then
+    
+    # Install MS Core Fonts
     apt install ttf-mscorefonts-installer
+    
 fi
