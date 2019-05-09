@@ -28,8 +28,25 @@ sed -i "s/8009/$tomcatajpport/g" /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomca
 
 chown -R tomcat:tomcat /opt/tomcat/tomcat"$tomcatmajorversion"-"$tomcatport"/
 
-firewall-cmd --zone=public --permanent --add-port="$tomcatport"/tcp
-firewall-cmd --reload
+# Red Hat like specific commands and variables - only tested on CentOS
+if [ -f /etc/redhat-release ]; then
+    
+    # Open Firewall ports for Tomcat
+    echo 'Opening Firewall port "$tomcatport" TCP for Tomcat'
+    firewall-cmd --zone=public --add-port="$tomcatport"/tcp > /dev/null
+    firewall-cmd --zone=public --permanent --add-port="$tomcatport"/tcp > /dev/null
+    
+fi
+
+# Debian like specific commands and variables - only tested on Ubuntu
+if [ -f /etc/lsb-release ]; then
+    
+    # Open Firewall ports for Tomcat
+    echo 'Opening Firewall port "$tomcatport" TCP for Tomcat'
+    ufw allow "$tomcatport"/tcp > /dev/null
+    ufw reload
+    
+fi
 
 echo "[Unit]
 Description=Apache Tomcat Web Application Container
