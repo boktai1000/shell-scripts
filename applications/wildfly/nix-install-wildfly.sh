@@ -170,14 +170,31 @@ sed -i -e 's,<socket-binding name="osgi-http" interface="management" port="8090"
 
 echo "Done."
 
-# Opening Firewall for Wildfly - HTTP, HTTPS, and Management
-echo 'Opening Firewall for Wildfly'
-firewall-cmd --zone=public --add-port=28080/tcp > /dev/null
-firewall-cmd --zone=public --add-port=28443/tcp > /dev/null
-firewall-cmd --zone=public --add-port=9990/tcp > /dev/null
-firewall-cmd --zone=public --permanent --add-port=28080/tcp > /dev/null
-firewall-cmd --zone=public --permanent --add-port=28443/tcp > /dev/null
-firewall-cmd --zone=public --permanent --add-port=9990/tcp > /dev/null
+# Red Hat like specific commands and variables - only tested on CentOS
+if [ -f /etc/redhat-release ]; then
+    
+    # Opening Firewall for Wildfly - HTTP, HTTPS, and Management
+    echo 'Opening Firewall for Wildfly'
+    firewall-cmd --zone=public --add-port=28080/tcp > /dev/null
+    firewall-cmd --zone=public --add-port=28443/tcp > /dev/null
+    firewall-cmd --zone=public --add-port=9990/tcp > /dev/null
+    firewall-cmd --zone=public --permanent --add-port=28080/tcp > /dev/null
+    firewall-cmd --zone=public --permanent --add-port=28443/tcp > /dev/null
+    firewall-cmd --zone=public --permanent --add-port=9990/tcp > /dev/null
+    
+fi
+
+# Debian like specific commands and variables - only tested on Ubuntu
+if [ -f /etc/lsb-release ]; then
+    
+    # Opening Firewall for Wildfly - HTTP, HTTPS, and Management
+    echo 'Opening Firewall for Wildfly'
+    ufw allow 28080/tcp > /dev/null
+    ufw allow 28443/tcp > /dev/null
+    ufw allow 9990/tcp > /dev/null
+    ufw reload
+    
+fi
 
 # Echo a reminder to CLI on how to connect to Tomcat
 echo Connect to Wildfly HTTP at http://"$yourip":28080
