@@ -5,7 +5,7 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/tomcat/nix-choose-tomcat.sh | sudo bash -s 
 
 # Set variables to pass parameter / argument to script to grab version number from website
-tomcatlatest="$(curl -s https://www-us.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | sort -rV | head -1)"
+tomcatlatest="$(curl -s https://archive.apache.org/dist/tomcat/tomcat-9/ | grep -Po '(?<=(<a href="v)).*(?=/">v)' | sort -rV | head -1)"
 tomcatminorversion=${1:-$tomcatlatest}
 tomcatmajorversion="$(echo "$tomcatminorversion" | cut -c1-1)"
 yourip=$(hostname -I | awk '{print $1}')
