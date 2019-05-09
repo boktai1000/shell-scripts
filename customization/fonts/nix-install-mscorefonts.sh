@@ -19,5 +19,5 @@ if [ -f /etc/redhat-release ]; then
 fi
 
 if [ -f /etc/debian_version ]; then
-    sudo apt install ttf-mscorefonts-installer
+    apt install ttf-mscorefonts-installer
 fi
