@@ -12,10 +12,12 @@
 # Set variables - Optionally specify install directory or default to /opt
 JAVA_DIR="${1-/opt}"
 
-if [ "$EUID" -ne "0" ]; then
-    echo "This script must be run as root." >&2
-    exit 1
-fi
+
+# Script must be run as root, but this block currently kills your terminal - need to find a better solution later
+#if [ "$EUID" -ne "0" ]; then
+#    echo "This script must be run as root." >&2
+#    exit 1
+#fi
 
 # Download OpenJDK
 (cd /tmp && curl -O https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_linux-x64_bin.tar.gz)
