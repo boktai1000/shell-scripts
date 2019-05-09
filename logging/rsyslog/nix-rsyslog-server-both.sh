@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# https://www.tecmint.com/create-centralized-log-server-with-rsyslog-in-centos-7/
 # https://www.tecmint.com/install-rsyslog-centralized-logging-in-centos-ubuntu/
 # https://www.ostechnix.com/setup-centralized-rsyslog-server-centos-7/
 
