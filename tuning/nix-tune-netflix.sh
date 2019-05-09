@@ -1,5 +1,5 @@
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/tuning/linux-tune-netflix.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/tuning/nix-tune-netflix.sh | sudo bash
 
 # Sources
 # https://www.slideshare.net/brendangregg/how-netflix-tunes-ec2-instances-for-performance
