@@ -18,8 +18,25 @@ tar -xzvf /tmp/apache-tomcat-"$tomcatminorversion".tar.gz -C /opt/tomcat --strip
 
 chown -R tomcat:tomcat /opt/tomcat/
 
-firewall-cmd --zone=public --permanent --add-port=8080/tcp
-firewall-cmd --reload
+# Red Hat like specific commands and variables - only tested on CentOS
+if [ -f /etc/redhat-release ]; then
+    
+    # Open Firewall ports for Tomcat
+    echo 'Opening Firewall port 8080 TCP for Tomcat'
+    firewall-cmd --zone=public --add-port=8080/tcp > /dev/null
+    firewall-cmd --zone=public --permanent --add-port=8080/tcp > /dev/null
+    
+fi
+
+# Debian like specific commands and variables - only tested on Ubuntu
+if [ -f /etc/lsb-release ]; then
+    
+    # Open Firewall ports for Tomcat
+    echo 'Opening Firewall port 8080 TCP for Tomcat'
+    ufw allow 8080/tcp > /dev/null
+    ufw reload
+    
+fi
 
 echo "[Unit]
 Description=Apache Tomcat Web Application Container
