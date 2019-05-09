@@ -12,6 +12,6 @@ sed -i 's/#$UDPServerRun 514/$UDPServerRun 514/g' /etc/rsyslog.conf
 
 systemctl restart rsyslog
 
-# Open firewall to receive remote log messages using UDP port 514
-firewall-cmd --permanent --add-port=514/udp
-firewall-cmd –reload
+echo 'Opening Firewall port 514 UDP for Rsyslog'
+firewall-cmd --add-port=514/udp > /dev/null
+firewall-cmd --permanent --add-port=514/udp > /dev/null
