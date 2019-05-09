@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# https://www.tecmint.com/install-rsyslog-centralized-logging-in-centos-ubuntu/
+# https://www.ostechnix.com/setup-centralized-rsyslog-server-centos-7/
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/rsyslog/nix-rsyslog-server-udp.sh | sudo bash
 
