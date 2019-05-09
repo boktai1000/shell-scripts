@@ -21,8 +21,9 @@ if [ -f /etc/redhat-release ]; then
     yum install -y net-snmp net-snmp-utils
     
     # Open Firewall for SNMP monitoring
-    firewall-cmd --permanent --add-port=161/udp
-    firewall-cmd --reload
+    echo 'Opening Firewall port 161 UDP for SNMP'
+    firewall-cmd --add-port=161/udp > /dev/null
+    firewall-cmd --permanent --add-port=161/udp > /dev/null
 fi
 
 # Debian like specific commands and variables - only tested on Ubuntu
@@ -30,6 +31,11 @@ if [ -f /etc/lsb-release ]; then
     
     # Install SNMP and optional snmpwalk tools
     apt-get install -y snmpd
+    
+    # Open Firewall for SNMP monitoring
+    echo 'Opening Firewall port 161 UDP for SNMP'
+    ufw allow 161/udp > /dev/null
+    ufw reload
 fi
 
 # Create a backup copy of the distros SNMP config file
