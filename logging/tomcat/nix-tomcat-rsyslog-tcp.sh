@@ -6,7 +6,7 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/tomcat/nix-tomcat-rsyslog-tcp.sh | sudo bash -s
 
 # Set Variable for Syslog server to send to, if no Syslog specified then fallback to x.x.x.x to replace later.
-syslog=${1:-x.x.x.x}
+syslogserver=${1:-x.x.x.x}
 
 # Configuring the tomcat.conf file
 sudo tee /etc/rsyslog.d/tomcat.conf <<EOF
@@ -16,7 +16,7 @@ input(type="imfile"
       Tag="catalina"
       Severity="info"
       Facility="local1")
-local1.* @@$syslog:514"
+local1.* @@$syslogserver:514"
 EOF
 
 # Backup /etc/rsyslog.conf
@@ -29,7 +29,7 @@ sed -i '22a\module(load="imfile" PollingInterval="10")' /etc/rsyslog.conf
 sed -i 's/cron.none/cron.none;local1.none/g' /etc/rsyslog.conf
 
 # Configure rsyslog to send rsyslog events to another server using TCP
-sed -i "s/# ### end of the forwarding rule ###/*.* @@$syslog:514/g" /etc/rsyslog.conf
+sed -i "s/# ### end of the forwarding rule ###/*.* @@$syslogserver:514/g" /etc/rsyslog.conf
 echo "# ### end of the forwarding rule ###" >> /etc/rsyslog.conf
 
 # Configuring the rsyslog.conf - Restart the rsyslog daemon
