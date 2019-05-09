@@ -37,7 +37,7 @@ echo "# ### end of the forwarding rule ###" >> /etc/rsyslog.conf
 systemctl restart rsyslog
 
 # Test the configuration
-logger Test from $yourip
+logger Test from "$yourip"
 tail /var/log/messages
 
 # Replace y.y.y.y with your server IP and run these commands against your system otherwise it will not work
