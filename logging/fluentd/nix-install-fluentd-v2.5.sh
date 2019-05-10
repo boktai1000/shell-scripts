@@ -54,3 +54,6 @@ sysctl -p
 echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.5.sh'
 curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.5.sh | sh
 
+# Start and set td-agent to run on boot
+systemctl start td-agent
+systemctl enable td-agent
