@@ -34,6 +34,7 @@ if [ -f /etc/lsb-release ]; then
 fi
 
 # Download VboxGuestAdditions
+echo Downloading http://download.virtualbox.org/virtualbox/"$VBOX_VERSION"/VBoxGuestAdditions_"$VBOX_VERSION".iso
 (cd /tmp && curl -O http://download.virtualbox.org/virtualbox/"$VBOX_VERSION"/VBoxGuestAdditions_"$VBOX_VERSION".iso)
 
 # Mount and run iso
