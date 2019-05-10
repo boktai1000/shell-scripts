@@ -32,7 +32,6 @@ fi
 echo "Downloading: $WILDFLY_DOWNLOAD_ADDRESS..."
 [ -e "$WILDFLY_ARCHIVE_NAME" ] && echo 'Wildfly archive already exists.'
 if [ ! -e "$WILDFLY_ARCHIVE_NAME" ]; then
-    echo Downloading "$WILDFLY_DOWNLOAD_ADDRESS"
     curl -O "$WILDFLY_DOWNLOAD_ADDRESS"
 fi
 
