@@ -50,6 +50,8 @@ sysctl -p
 # ==================Installing Fluentd==================
 # https://docs.fluentd.org/v0.12/articles/install-by-rpm
 # https://docs.fluentd.org/v0.12/articles/install-by-deb
+# https://gist.github.com/christronyxyocum/f10bf4f942e99ae00e18a497aad595a8
+# https://stackoverflow.com/questions/12545066/shell-script-to-check-ubuntu-version-and-then-copy-files
 
 # Installing Fluentd Using rpm Package
 if [ -f /etc/redhat-release ]; then
@@ -62,28 +64,28 @@ if [ -f /etc/debian_version ]; then
     debianID=$(cat /etc/os-release |egrep -vi 'pretty|code' |grep -i name |cut -c6-50 |tr -d '"' |awk '{print $1}')
     
     if [ "${debianID}" = "Ubuntu" ]; then
-        DIST="$(cat /etc/os-release |grep -i name |grep -i pretty |cut -c14-50 |tr -d '"')"
+        DIST="$(lsb_release -rs)"
         
         # Ubuntu Xenial - 16.04
-        if [ "${DIST}" = "Ubuntu 16.04" ]; then
+        if [ "${DIST}" = "16.04" ]; then
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.sh | sh
         fi
         
         # Ubuntu Trusty - 14.04
-        if [ "${DIST}" = "Ubuntu 14.04" ]; then
+        if [ "${DIST}" = "14.04" ]; then
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.sh | sh
         fi
         
         # Ubuntu Precise - 12.04
-        if [ "${DIST}" = "Ubuntu 14.04" ]; then
+        if [ "${DIST}" = "12.04" ]; then
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-precise-td-agent2.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-precise-td-agent2.sh | sh
         fi
         
         # Ubuntu Lucid - 10.04
-        if [ "${DIST}" = "Ubuntu 14.04" ]; then
+        if [ "${DIST}" = "10.04" ]; then
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh | sh
         fi
