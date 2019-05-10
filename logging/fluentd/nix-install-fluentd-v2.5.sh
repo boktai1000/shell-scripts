@@ -65,19 +65,19 @@ if [ -f /etc/debian_version ]; then
         DIST="$(cat /etc/os-release |grep -i name |grep -i pretty |cut -c14-50 |tr -d '"')"
         
         # Ubuntu Bionic - 18.04
-        if [ "${DIST}" = "Ubuntu 18.04" ]; then
+        if [ "${DIST}" = Ubuntu 18.04 ]; then
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-bionic-td-agent2.5.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-bionic-td-agent2.5.sh | sh
         fi
         
         # Ubuntu Xenial - 16.04
-        if [ "${DIST}" = "Ubuntu 16.04" ]; then
+        if [ "${DIST}" = Ubuntu 16.04 ]; then
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.5.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.5.sh | sh
         fi
         
         # Ubuntu Trusty - 14.04
-        if [ "${DIST}" = "Ubuntu 14.04" ]; then
+        if [ "${DIST}" = Ubuntu 14.04 ]; then
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.5.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.5.sh | sh
         fi
