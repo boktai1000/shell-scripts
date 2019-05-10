@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# https://www.jethrocarr.com/2007/04/26/vi-vs-vim-on-centosrhel/
+
 # You can run this script directly with the following command
 # source <(curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/vim/el7-install-vim.sh)
 
