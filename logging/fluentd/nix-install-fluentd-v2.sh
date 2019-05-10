@@ -105,13 +105,13 @@ if [ -f /etc/debian_version ]; then
         fi
         
         # Debian 7 (Wheezy)
-        if [ "${DIST}" = "Debian GNU/Linux 9 (wheezy)" ]; then
+        if [ "${DIST}" = "Debian GNU/Linux 7 (wheezy)" ]; then
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-wheezy-td-agent2.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-debian-wheezy-td-agent2.sh | sh
         fi
         
         # Debian 6 (Squeeze)
-        if [ "${DIST}" = "Debian GNU/Linux 9 (stretch)" ]; then
+        if [ "${DIST}" = "Debian GNU/Linux 6 (squeeze)" ]; then
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh | sh
         fi
