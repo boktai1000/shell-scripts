@@ -49,6 +49,7 @@ sysctl -p
 
 # ==================Installing Fluentd==================
 # https://docs.fluentd.org/v0.12/articles/install-by-rpm
+# https://docs.fluentd.org/v0.12/articles/install-by-deb
 
 # Installing Fluentd Using rpm Package
 if [ -f /etc/redhat-release ]; then
@@ -81,7 +82,7 @@ if [ -f /etc/debian_version ]; then
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.5.sh | sh
         fi
     fi
-    
+
     if [ "${debianID}" = "Debian" ]; then
         DIST="$(cat /etc/os-release |grep -i name |grep -i pretty |cut -c14-50 |tr -d '"')"
         
