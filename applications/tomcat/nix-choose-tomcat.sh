@@ -14,7 +14,7 @@ jdkenv="$(cat /etc/profile.d/jdk*.sh | sed -nr '/JAVA_HOME=/ s/.*JAVA_HOME=([^"]
 groupadd tomcat
 useradd -g tomcat -d /opt/tomcat -s /bin/nologin tomcat
 
-echo Downloading https://archive.apache.org/dist/tomcat/tomcat-"$tomcatmajorversion"/v"$tomcatminorversion"/bin/apache-tomcat-"$tomcatminorversion".tar.gz
+echo Downloading: https://archive.apache.org/dist/tomcat/tomcat-"$tomcatmajorversion"/v"$tomcatminorversion"/bin/apache-tomcat-"$tomcatminorversion".tar.gz
 (cd /tmp && curl -O https://archive.apache.org/dist/tomcat/tomcat-"$tomcatmajorversion"/v"$tomcatminorversion"/bin/apache-tomcat-"$tomcatminorversion".tar.gz)
 mkdir -p /opt/tomcat && tar -xzvf /tmp/apache-tomcat-"$tomcatminorversion".tar.gz -C /opt/tomcat --strip-components=1
 (cd /opt/tomcat/webapps/ && sudo rm -rf docs examples manager host-manager)
