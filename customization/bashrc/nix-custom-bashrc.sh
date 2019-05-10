@@ -9,6 +9,10 @@
 # https://askubuntu.com/questions/438150/scripts-in-etc-profile-d-being-ignored
 # https://askubuntu.com/questions/503216/how-can-i-set-a-single-bashrc-file-for-several-users/503222
 # http://www.tldp.org/LDP/abs/html/sample-bashrc.html 
+# Need to output file to /etc/skel/
+# Need to source file
+# Need to backup files
+# Need to be able to regenerate files
 # ========================WIP========================
 
 if [ -f /usr/bin/vim ]; then
