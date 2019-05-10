@@ -44,6 +44,9 @@ net.ipv4.tcp_tw_reuse = 1
 net.ipv4.ip_local_port_range = 10240 65535
 EOF
 
+# Apply Network Kernel Parameters without reboot
+sysctl -p
+
 # ==============Installing Fluentd Using rpm Package==============
 # https://docs.fluentd.org/v0.12/articles/install-by-rpm
 
