@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Note - this currently has problems with the following
+# * td-agent not being able to read or have permissions on Tomcat log directory
+# https://github.com/fluent/fluentd-docker-image/issues/90
+# https://github.com/fluent/fluentd/issues/1785
+# https://github.com/fluent/fluentd-kubernetes-daemonset/issues/172
+# https://github.com/openshift/origin/issues/8358 
+# https://groups.google.com/forum/#!topic/fluentd/R6LTWR8fG6o
+# https://groups.google.com/forum/#!topic/fluentd/n0hXZUqM-KQ
+
+# Changing location of Tomcat files
+# https://stackoverflow.com/questions/36101935/tomcat-7-change-location-of-log-files
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/fluentd/nix-install-fluentd-tomcat.sh | sudo bash -s
 
