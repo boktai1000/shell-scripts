@@ -15,6 +15,7 @@ unifiversion="$(curl -s https://help.ubnt.com/hc/en-us/articles/360008240754#1 |
 systemctl stop unifi
 
 #Download latest software:
+echo Downloading http://dl.ubnt.com/unifi/"$unifiversion"/UniFi.unix.zip
 (cd /tmp && curl -O http://dl.ubnt.com/unifi/"$unifiversion"/UniFi.unix.zip)
 
 #Extract UniFi Video software:
