@@ -5,7 +5,7 @@
 # curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/logging/fluentd/nix-install-fluentd-v2.sh | sudo bash
 
 # Set Variable for your IP Address
-yourip=$(hostname -I | awk '{print $1}')
+# yourip=$(hostname -I | awk '{print $1}')
 
 if [ "$EUID" -ne "0" ]; then
     echo "This script must be run as root." >&2
