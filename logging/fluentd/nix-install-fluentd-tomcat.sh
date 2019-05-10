@@ -43,7 +43,7 @@ sudo systemctl start td-agent.service
 tail -n 20 /var/log/td-agent/td-agent.log
 
 # Fluentd configuration via http://www.tothenew.com/blog/collecting-tomcat-logs-using-fluentd-and-elasticsearch/
-sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak
+sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "<source>
 type tail
 format multiline
