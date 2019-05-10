@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # You can run this script directly with either of the following commands
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/ | sudo bash
-# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/ | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/fluentd/nix-install-fluentd-v2.5.sh | sudo bash
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/logging/fluentd/nix-install-fluentd-v2.5.sh | sudo bash
 
 # Set Variable for your IP Address
 yourip=$(hostname -I | awk '{print $1}')
