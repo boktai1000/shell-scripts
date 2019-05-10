@@ -31,6 +31,7 @@ mkdir -p /var/opt/UniFi/data
 ln -s /var/opt/UniFi/data /opt/UniFi/5
 
 #Download UniFi software:
+echo Downloading http://dl.ubnt.com/unifi/"$unifiversion"/UniFi.unix.zip
 (cd /tmp && curl -O http://dl.ubnt.com/unifi/"$unifiversion"/UniFi.unix.zip)
 
 #Extract UniFi software:
