@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# SCRIPT WIP - DOES NOT COMPLETELY WORK - PLEASE EDIT `host` line to your IP Address
-
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/fluentd/nix-install-fluentd-tomcat.sh | sudo bash
+
+syslogserver="${1:-x.x.x.x}"
 
 # Pre-Fluentd Configuration
 cp /etc/security/limits.conf /etc/security/limits.conf.bak-"$(date --utc +%FT%T.%3NZ)"
@@ -62,7 +62,7 @@ hostname ${hostname}
 
 <match tomcat.logs>
 type elasticsearch
-host 0.0.0.0
+host $syslogserver
 port 9200
 logstash_format true
 logstash_prefix tomcat.logs
