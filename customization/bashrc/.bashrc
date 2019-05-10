@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# You can run this script directly with either of the following commands
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/ | sudo bash
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/ | sudo bash
+
 # ========================WIP========================
 # https://www.jethrocarr.com/2007/04/26/vi-vs-vim-on-centosrhel/
 # https://askubuntu.com/questions/438150/scripts-in-etc-profile-d-being-ignored
