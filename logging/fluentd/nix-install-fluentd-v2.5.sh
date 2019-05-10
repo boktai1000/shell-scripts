@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # You can run this script directly with either of the following commands
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/fluentd/nix-install-fluentd-v2.5.sh | sudo bash
-# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/logging/fluentd/nix-install-fluentd-v2.5.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/fluentd/el7-install-fluentd-v2.5.sh | sudo bash
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/logging/fluentd/el7-install-fluentd-v2.5.sh | sudo bash
 
 # Set Variable for your IP Address
 # yourip=$(hostname -I | awk '{print $1}')
@@ -52,10 +52,8 @@ sysctl -p
 
 # Installing Fluentd Using rpm Package
 if [ -f /etc/redhat-release ]; then
-    
     echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.5.sh'
     curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.5.sh | sh
-    
 fi
 
 # Installing Fluentd Using deb Package
@@ -67,28 +65,21 @@ if [ -f /etc/debian_version ]; then
         
         # Ubuntu Bionic - 18.04
         if [ "${DIST}" = "Ubuntu 18.04" ]; then
-            
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-bionic-td-agent2.5.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-bionic-td-agent2.5.sh | sh
-            
         fi
         
         # Ubuntu Xenial - 16.04
         if [ "${DIST}" = "Ubuntu 16.04" ]; then
-            
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.5.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.5.sh | sh
-            
         fi
         
         # Ubuntu Trusty - 14.04
         if [ "${DIST}" = "Ubuntu 14.04" ]; then
-            
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.5.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.5.sh | sh
-            
         fi
-        
     fi
     
     if [ "${debianID}" = "Debian" ]; then
@@ -96,14 +87,10 @@ if [ -f /etc/debian_version ]; then
         
         # Debian 9 (Stretch)
         if [ "${DIST}" = "Debian GNU/Linux 9 (stretch)" ]; then
-            
             echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent2.5.sh'
             curl -L https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent2.5.sh | sh
-            
         fi
-        
     fi
-    
 fi
 
 # Start and set td-agent to run on boot
