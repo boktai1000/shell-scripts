@@ -50,6 +50,8 @@ sysctl -p
 # ==================Installing Fluentd==================
 # https://docs.fluentd.org/v0.12/articles/install-by-rpm
 # https://docs.fluentd.org/v0.12/articles/install-by-deb
+# https://gist.github.com/christronyxyocum/f10bf4f942e99ae00e18a497aad595a8
+# https://stackoverflow.com/questions/12545066/shell-script-to-check-ubuntu-version-and-then-copy-files
 
 # Installing Fluentd Using rpm Package
 if [ -f /etc/redhat-release ]; then
