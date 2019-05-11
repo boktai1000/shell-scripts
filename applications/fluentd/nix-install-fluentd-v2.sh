@@ -84,10 +84,10 @@ if [ -f /etc/debian_version ]; then
         curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-precise-td-agent2.sh | sh
     fi
     
-    # Ubuntu Lucid - 10.04
+    # Ubuntu Lucid - 10.04 - No SSL Supported or Curl OOB
     if [ "${DIST}" = "lucid" ]; then
         echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh'
-        curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh | sh
+        wget -qO- https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh | sh
     fi
     
     # Debian 9 (Stretch)
