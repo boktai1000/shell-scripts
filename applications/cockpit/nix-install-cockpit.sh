@@ -17,8 +17,9 @@ if [ "$EUID" -ne "0" ]; then
 fi
 
 if [ -f /etc/redhat-release ]; then
-    rhelID=$(cat /etc/redhat-release |awk '{print $1}')
+    rhelID=$(awk '{print $1}' < /etc/redhat-release)
     
+    # Cockpit is included in the RHEL Extras repository in versions 7.1 and later
     if [ "${rhelID}" = "Red" ]; then
         
         # Enable the Extras repository
@@ -33,8 +34,10 @@ if [ -f /etc/redhat-release ]; then
         # Configure firewall
         firewall-cmd --add-service=cockpit
         firewall-cmd --add-service=cockpit --permanent
+        
     fi
     
+    # Cockpit is included in CentOS 7.x
     if [ "${rhelID}" = "CentOS" ]; then
         
         # Install Cockpit
@@ -46,30 +49,48 @@ if [ -f /etc/redhat-release ]; then
         # Configure firewall
         firewall-cmd --permanent --zone=public --add-service=cockpit
         firewall-cmd --reload
+        
     fi
 fi
 
 if [ -f /etc/debian_version ]; then
-    debianID=$(cat /etc/os-release |egrep -vi 'pretty|code' |grep -i name |cut -c6-50 |tr -d '"' |awk '{print $1}')
+    debianID=$(lsb_release -is)
     
+    # Ubuntu 17.04 and later
     if [ "${debianID}" = "Ubuntu" ]; then
         
         # Install Cockpit
         apt-get install -y cockpit
+        
     fi
     
     if [ "${debianID}" = "Debian" ]; then
-        DIST="$(cat /etc/os-release |grep -i name |grep -i pretty |cut -c14-50 |tr -d '"')"
+        DIST="$(lsb_release -cs)"
         
-        if [ "${DIST}" = "Debian GNU/Linux 9 (stretch)" ]; then
+        # Debian 9 (Stretch)
+        if [ "${DIST}" = "stretch" ]; then
             
-            # For Debian 9 you have to enable the backports repository:
+            # Enable the backports repository:
             echo 'deb http://deb.debian.org/debian stretch-backports main' > \
             /etc/apt/sources.list.d/backports.list
             apt-get update
             
             # Install Cockpit
             apt-get install -y cockpit
+            
+        fi
+        
+        # Debian 8 (Jessie)
+        if [ "${DIST}" = "jessie" ]; then
+            
+            # Enable the backports-sloppy repository:
+            echo 'deb http://deb.debian.org/debian jessie-backports-sloppy main' > \
+            /etc/apt/sources.list.d/backports.list
+            apt-get update
+            
+            # Install Cockpit
+            apt-get install -y cockpit
+            
         fi
     fi
 fi
