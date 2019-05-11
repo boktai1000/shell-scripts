@@ -53,12 +53,30 @@ sysctl -p
 # https://gist.github.com/christronyxyocum/f10bf4f942e99ae00e18a497aad595a8
 # https://stackoverflow.com/questions/12545066/shell-script-to-check-ubuntu-version-and-then-copy-files
 
-# Installing Fluentd Using rpm Package
+# Installing Fluentd Using rpm Package - Redhat / CentOS
 if [ -f /etc/redhat-release ]; then
     
     # CentOS and RHEL 6, 7 64bit
     echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh'
     curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
+    
+fi
+
+# Installing Fluentd Using rpm Package - Amazon Linux
+if [ -f /etc/system-release ]; then
+    DIST="$(sed 's/^\(.\+\) release.\+/\1/' /etc/system-release | tr '[A-Z]' '[a-z]')"
+    
+    # Amazon Linux 2
+    if [ "${DIST}" = "amazon linux" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh | sh
+    fi
+    
+    # Amazon Linux 1
+    if [ "${DIST}" = "amazon linux ami" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-amazon1-td-agent3.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-amazon1-td-agent3.sh | sh
+    fi
     
 fi
 
