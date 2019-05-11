@@ -5,7 +5,7 @@
 # https://github.com/fluent/fluentd-docker-image/issues/90
 # https://github.com/fluent/fluentd/issues/1785
 # https://github.com/fluent/fluentd-kubernetes-daemonset/issues/172
-# https://github.com/openshift/origin/issues/8358 
+# https://github.com/openshift/origin/issues/8358
 # https://groups.google.com/forum/#!topic/fluentd/R6LTWR8fG6o
 # https://groups.google.com/forum/#!topic/fluentd/n0hXZUqM-KQ
 
@@ -15,48 +15,28 @@
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/fluentd/nix-fluentd-tomcat.sh | sudo bash -s
 
+# Set Variable for syslogserver - otherwise append non-working default
 syslogserver="${1:-x.x.x.x}"
 
-# Pre-Fluentd Configuration
-cp /etc/security/limits.conf /etc/security/limits.conf.bak-"$(date --utc +%FT%T.%3NZ)"
-echo "root soft nofile 65536
-root hard nofile 65536
-* soft nofile 65536
-* hard nofile 65536" >> /etc/security/limits.conf
-
-# Please reboot to have changes take effect
-# ulimit -n
-# 1024 = insufficient;65536 = safe
-
-cp /etc/sysctl.conf /etc/sysctl.conf.bak-"$(date --utc +%FT%T.%3NZ)"
-echo "net.core.somaxconn = 1024
-net.core.netdev_max_backlog = 5000
-net.core.rmem_max = 16777216
-net.core.wmem_max = 16777216
-net.ipv4.tcp_wmem = 4096 12582912 16777216
-net.ipv4.tcp_rmem = 4096 12582912 16777216
-net.ipv4.tcp_max_syn_backlog = 8096
-net.ipv4.tcp_slow_start_after_idle = 0
-net.ipv4.tcp_tw_reuse = 1
-net.ipv4.ip_local_port_range = 10240 65535" >> /etc/sysctl.conf
-
-sysctl -p
-
-# Install Fluentd (td-agent v3)
-curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
+# Install Elasticsearch plugin in td-agent
 sudo /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch --no-document
 
-sudo systemctl start td-agent.service
-
 # Check for errors
+tail -n 20 /var/log/td-agent/td-agent.log
+
+# Alternative error checking commands
 # tail -f /var/log/td-agent/td-agent.log
 # tail -n 20 /var/log/td-agent/td-agent.log
 # less /var/log/td-agent/td-agent.log
-tail -n 20 /var/log/td-agent/td-agent.log
 
 # Fluentd configuration via http://www.tothenew.com/blog/collecting-tomcat-logs-using-fluentd-and-elasticsearch/
+
+# Backup /etc/td-agent/td-agent.conf
 sudo cp /etc/td-agent/td-agent.conf /etc/td-agent/td-agent.conf.bak-"$(date --utc +%FT%T.%3NZ)"
-echo "<source>
+
+# Create new td-agent.conf for Collecting Tomcat logs using Fluentd and Elasticsearch
+sudo tee /etc/td-agent/td-agent.conf <<EOF
+<source>
 type tail
 format multiline
 format_firstline /[0-9]{2}-[A-Za-z]{3}-[0-9]{4}/
@@ -79,7 +59,8 @@ port 9200
 logstash_format true
 logstash_prefix tomcat.logs
 flush_interval 1s
-</match>" > /etc/td-agent/td-agent.conf
+</match>
+EOF
 
+# Restart td-agent to apply changes
 sudo systemctl restart td-agent.service
-systemctl enable td-agent
