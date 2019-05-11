@@ -108,10 +108,10 @@ if [ -f /etc/debian_version ]; then
         curl -L https://toolbelt.treasuredata.com/sh/install-debian-wheezy-td-agent2.sh | sh
     fi
     
-    # Debian 6 (Squeeze)
+    # Debian 6 (Squeeze) - No SSL Supported
     if [ "${DIST}" = "squeeze" ]; then
-        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh'
-        curl -L https://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh | sh
+        echo 'Installing Fluentd td-agent from http://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh'
+        curl -L http://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh | sh
     fi
     
 fi
