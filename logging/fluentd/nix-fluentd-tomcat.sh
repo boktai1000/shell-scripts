@@ -13,7 +13,7 @@
 # https://stackoverflow.com/questions/36101935/tomcat-7-change-location-of-log-files
 
 # You can run this script directly with the following command
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/fluentd/nix-install-fluentd-tomcat.sh | sudo bash -s
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/fluentd/nix-fluentd-tomcat.sh | sudo bash -s
 
 syslogserver="${1:-x.x.x.x}"
 
