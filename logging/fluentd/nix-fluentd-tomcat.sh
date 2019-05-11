@@ -12,6 +12,10 @@
 # Changing location of Tomcat files
 # https://stackoverflow.com/questions/36101935/tomcat-7-change-location-of-log-files
 
+# Errors when installing Fluentd elasticsearch gem plugin
+# https://github.com/treasure-data/omnibus-td-agent/issues/16
+# https://www.digitalocean.com/community/tutorials/elasticsearch-fluentd-and-kibana-open-source-log-search-and-visualization
+
 # You can run this script directly with the following command
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/logging/fluentd/nix-fluentd-tomcat.sh | sudo bash -s
 
