@@ -4,6 +4,9 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/fluentd/nix-install-fluentd-v2.sh | sudo bash
 # curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/fluentd/nix-install-fluentd-v2.sh | sudo bash
 
+# Ubuntu Lucid Compatible one-liner
+# wget --no-check-certificate http://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/fluentd/nix-install-fluentd-v2.sh | sudo bash
+
 # Set Variable for your IP Address
 # yourip=$(hostname -I | awk '{print $1}')
 
@@ -87,7 +90,7 @@ if [ -f /etc/debian_version ]; then
     # Ubuntu Lucid - 10.04 - No SSL Supported or Curl OOB
     if [ "${DIST}" = "lucid" ]; then
         echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh'
-        wget -qO- https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh | sh
+        wget -qO- http://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh | sh
     fi
     
     # Debian 9 (Stretch)
