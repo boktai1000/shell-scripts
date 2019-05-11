@@ -18,7 +18,7 @@ if [ -f /etc/redhat-release ]; then
     
     systemctl restart rsyslog
     
-    # Open Firewall for Rsyslog
+    # Opening Firewall port 514 TCP for Rsyslog
     echo 'Opening Firewall port 514 TCP for Rsyslog'
     firewall-cmd --add-port=514/tcp > /dev/null
     firewall-cmd --permanent --add-port=514/tcp > /dev/null
@@ -26,17 +26,54 @@ if [ -f /etc/redhat-release ]; then
 fi
 
 # Debian like specific commands and variables - only tested on Ubuntu
-if [ -f /etc/lsb-release ]; then
+if [ -f /etc/debian_version ]; then
+    debianID=$(lsb_release -is)
+    DIST="$(lsb_release -cs)"
     
-    # Configure Rsyslog to accept remote log messages using TCP port 514
-    sed -i 's/#module(load="imtcp")/module(load="imtcp")/g' /etc/rsyslog.conf
-    sed -i 's/#input(type="imtcp" port="514")/input(type="imtcp" port="514")/g' /etc/rsyslog.conf
+    # Ubuntu
+    if [ "${debianID}" = "Ubuntu" ]; then
+        
+        # Configure Rsyslog to accept remote log messages using TCP port 514
+        sed -i 's/#module(load="imtcp")/module(load="imtcp")/g' /etc/rsyslog.conf
+        sed -i 's/#input(type="imtcp" port="514")/input(type="imtcp" port="514")/g' /etc/rsyslog.conf
+        
+        systemctl restart rsyslog
+        
+        # Opening Firewall port 514 TCP for Rsyslog
+        echo 'Opening Firewall port 514 TCP for Rsyslog'
+        ufw allow 514/tcp > /dev/null
+        
+        ufw reload
+        
+    fi
     
-    systemctl restart rsyslog
+    # Debian 9 (stretch)
+    if [ "${DIST}" = "stretch" ]; then
+        
+        # Configure Rsyslog to accept remote log messages using TCP port 514
+        sed -i 's/#module(load="imtcp")/module(load="imtcp")/g' /etc/rsyslog.conf
+        sed -i 's/#input(type="imtcp" port="514")/input(type="imtcp" port="514")/g' /etc/rsyslog.conf
+        
+        systemctl restart rsyslog
+        
+        # Opening Firewall port 514 TCP for Rsyslog
+        echo 'Opening Firewall port 514 TCP for Rsyslog'
+        iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 514 -j ACCEPT
+        
+    fi
     
-    # Open Firewall for Rsyslog
-    echo 'Opening Firewall port 514 TCP for Rsyslog'
-    ufw allow 514/tcp > /dev/null
-    ufw reload
-    
+    # Debian 8 (Jessie)
+    if [ "${DIST}" = "jessie" ]; then
+        
+        # Configure Rsyslog to accept remote log messages using TCP port 514
+        sed -i 's/#$ModLoad imtcp/$ModLoad imtcp/g' /etc/rsyslog.conf
+        sed -i 's/#$InputTCPServerRun 514/$InputTCPServerRun 514/g' /etc/rsyslog.conf
+        
+        systemctl restart rsyslog
+        
+        # Opening Firewall port 514 TCP for Rsyslog
+        echo 'Opening Firewall port 514 TCP for Rsyslog'
+        iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 514 -j ACCEPT
+        
+    fi
 fi
