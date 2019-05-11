@@ -55,69 +55,65 @@ sysctl -p
 
 # Installing Fluentd Using rpm Package
 if [ -f /etc/redhat-release ]; then
+    
+    # CentOS and RHEL 5, 6, 7
     echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh'
     curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh | sh
+    
 fi
 
 # Installing Fluentd Using deb Package
 if [ -f /etc/debian_version ]; then
-    debianID=$(cat /etc/os-release |egrep -vi 'pretty|code' |grep -i name |cut -c6-50 |tr -d '"' |awk '{print $1}')
+    DIST="$(lsb_release -cs)"
     
-    if [ "${debianID}" = "Ubuntu" ]; then
-        DIST="$(lsb_release -rs)"
-        
-        # Ubuntu Xenial - 16.04
-        if [ "${DIST}" = "16.04" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.sh | sh
-        fi
-        
-        # Ubuntu Trusty - 14.04
-        if [ "${DIST}" = "14.04" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.sh | sh
-        fi
-        
-        # Ubuntu Precise - 12.04
-        if [ "${DIST}" = "12.04" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-precise-td-agent2.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-precise-td-agent2.sh | sh
-        fi
-        
-        # Ubuntu Lucid - 10.04
-        if [ "${DIST}" = "10.04" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh | sh
-        fi
+    # Ubuntu Xenial - 16.04
+    if [ "${DIST}" = "xenial" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.sh | sh
     fi
     
-    if [ "${debianID}" = "Debian" ]; then
-        DIST="$(cat /etc/os-release |grep -i name |grep -i pretty |cut -c14-50 |tr -d '"')"
-        
-        # Debian 9 (Stretch)
-        if [ "${DIST}" = "Debian GNU/Linux 9 (stretch)" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent2.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent2.sh | sh
-        fi
-        
-        # Debian 8 (Jessie)
-        if [ "${DIST}" = "Debian GNU/Linux 8 (jessie)" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-jessie-td-agent2.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-debian-jessie-td-agent2.sh | sh
-        fi
-        
-        # Debian 7 (Wheezy)
-        if [ "${DIST}" = "Debian GNU/Linux 7 (wheezy)" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-wheezy-td-agent2.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-debian-wheezy-td-agent2.sh | sh
-        fi
-        
-        # Debian 6 (Squeeze)
-        if [ "${DIST}" = "Debian GNU/Linux 6 (squeeze)" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh | sh
-        fi
+    # Ubuntu Trusty - 14.04
+    if [ "${DIST}" = "trusty" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.sh | sh
     fi
+    
+    # Ubuntu Precise - 12.04
+    if [ "${DIST}" = "precise" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-precise-td-agent2.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-precise-td-agent2.sh | sh
+    fi
+    
+    # Ubuntu Lucid - 10.04
+    if [ "${DIST}" = "lucid" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-lucid-td-agent2.sh | sh
+    fi
+    
+    # Debian 9 (Stretch)
+    if [ "${DIST}" = "stretch" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent2.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent2.sh | sh
+    fi
+    
+    # Debian 8 (Jessie)
+    if [ "${DIST}" = "jessie" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-jessie-td-agent2.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-debian-jessie-td-agent2.sh | sh
+    fi
+    
+    # Debian 7 (Wheezy)
+    if [ "${DIST}" = "wheezy" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-wheezy-td-agent2.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-debian-wheezy-td-agent2.sh | sh
+    fi
+    
+    # Debian 6 (Squeeze)
+    if [ "${DIST}" = "squeeze" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-debian-squeeze-td-agent2.sh | sh
+    fi
+    
 fi
 
 # Start and set td-agent to run on boot
