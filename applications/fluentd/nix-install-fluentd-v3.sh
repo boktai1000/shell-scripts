@@ -55,51 +55,47 @@ sysctl -p
 
 # Installing Fluentd Using rpm Package
 if [ -f /etc/redhat-release ]; then
+    
+    # CentOS and RHEL 6, 7 64bit
     echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh'
     curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
+    
 fi
 
 # Installing Fluentd Using deb Package
 if [ -f /etc/debian_version ]; then
-    debianID=$(cat /etc/os-release |egrep -vi 'pretty|code' |grep -i name |cut -c6-50 |tr -d '"' |awk '{print $1}')
+    DIST="$(lsb_release -cs)"
     
-    if [ "${debianID}" = "Ubuntu" ]; then
-        DIST="$(lsb_release -rs)"
-        
-        # Ubuntu Bionic - 18.04
-        if [ "${DIST}" = "18.04" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-bionic-td-agent3.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-bionic-td-agent3.sh | sh
-        fi
-        
-        # Ubuntu Xenial - 16.04
-        if [ "${DIST}" = "16.04" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.sh | sh
-        fi
-        
-        # Ubuntu Trusty - 14.04
-        if [ "${DIST}" = "14.04" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent3.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent3.sh | sh
-        fi
+    # Ubuntu Bionic - 18.04
+    if [ "${DIST}" = "bionic" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-bionic-td-agent3.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-bionic-td-agent3.sh | sh
     fi
     
-    if [ "${debianID}" = "Debian" ]; then
-        DIST="$(cat /etc/os-release |grep -i name |grep -i pretty |cut -c14-50 |tr -d '"')"
-        
-        # Debian 9 (Stretch)
-        if [ "${DIST}" = "Debian GNU/Linux 9 (stretch)" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent3.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent3.sh | sh
-        fi
-        
-        # Debian 8 (Jessie)
-        if [ "${DIST}" = "Debian GNU/Linux 8 (jessie)" ]; then
-            echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-jessie-td-agent3.sh'
-            curl -L https://toolbelt.treasuredata.com/sh/install-debian-jessie-td-agent3.sh | sh
-        fi
+    # Ubuntu Xenial - 16.04
+    if [ "${DIST}" = "xenial" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.sh | sh
     fi
+    
+    # Ubuntu Trusty - 14.04
+    if [ "${DIST}" = "trusty" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent3.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent3.sh | sh
+    fi
+    
+    # Debian 9 (Stretch)
+    if [ "${DIST}" = "stretch" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent3.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-debian-stretch-td-agent3.sh | sh
+    fi
+    
+    # Debian 8 (Jessie)
+    if [ "${DIST}" = "jessie" ]; then
+        echo 'Installing Fluentd td-agent from https://toolbelt.treasuredata.com/sh/install-debian-jessie-td-agent3.sh'
+        curl -L https://toolbelt.treasuredata.com/sh/install-debian-jessie-td-agent3.sh | sh
+    fi
+    
 fi
 
 # Start and set td-agent to run on boot
