@@ -52,7 +52,7 @@ tag tomcat.logs
 <filter tomcat.logs>
 type record_transformer
 <record>
-hostname ${hostname}
+hostname \${hostname}
 </record>
 </filter>
 
