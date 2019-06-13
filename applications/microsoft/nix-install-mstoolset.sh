@@ -7,21 +7,14 @@
 # Check for Red Hat-based distro
 if [ -f /etc/redhat-release ]; then
     
-    # Install Azure CLI
+    # Setup Azure CLI Repo
     sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
     sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
-    sudo yum install azure-cli
     
-    # Install PowerShell Core
-    sudo yum install -y powershell
-    
-    # Install .NET Core - CentOS
+    # Install Packages
     sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
     sudo yum update
-    sudo yum install dotnet-sdk-2.2
-    
-    # Install NuGet
-    yum install nuget
+    sudo yum -y install azure-cli dotnet-sdk-2.2 nuget powershell
     
 fi
 
