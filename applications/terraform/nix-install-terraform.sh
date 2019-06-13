@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# https://askubuntu.com/questions/983351/how-to-install-terraform-in-ubuntu
+# https://releases.hashicorp.com/terraform/
+
 # You can run this script directly with either of the following commands
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/terraform/nix-install-terraform.sh | sudo bash
 # curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/terraform/nix-install-terraform.sh | sudo bash
