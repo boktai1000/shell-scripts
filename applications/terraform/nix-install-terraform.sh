@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # https://askubuntu.com/questions/983351/how-to-install-terraform-in-ubuntu
+# https://askubuntu.com/questions/520546/how-to-extract-a-zip-file-to-a-specific-folder
+# http://www.codebind.com/linux-tutorials/unzip-zip-file-using-terminal-linux-ubuntu-linux-mint-debian/
 # https://releases.hashicorp.com/terraform/
 
 # You can run this script directly with either of the following commands
@@ -20,10 +22,7 @@ echo "Downloading: $TERRAFORM_DOWNLOAD_ADDRESS..."
 (cd /tmp && curl -O "$TERRAFORM_DOWNLOAD_ADDRESS")
 
 # Extract the downloaded file archive
-unzip /tmp/"$TERRAFORM_FILENAME"
-
-# Move the executable into a directory searched for executables
-sudo mv /tmp/terraform /usr/local/bin/
+unzip /tmp/"$TERRAFORM_FILENAME" -d /usr/local/bin/
 
 # Run it
 terraform --version
