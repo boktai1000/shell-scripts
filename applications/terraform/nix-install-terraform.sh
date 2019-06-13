@@ -16,6 +16,7 @@ TERRAFORM_DOWNLOAD_ADDRESS=https://releases.hashicorp.com/terraform/$TERRAFORM_V
 sudo apt-get install unzip -y
 
 # Download latest version of the terraform
+echo "Downloading: $TERRAFORM_DOWNLOAD_ADDRESS..."
 (cd /tmp && curl -O "$TERRAFORM_DOWNLOAD_ADDRESS")
 
 # Extract the downloaded file archive
