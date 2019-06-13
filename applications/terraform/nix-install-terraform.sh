@@ -4,7 +4,7 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/terraform/nix-install-terraform.sh | sudo bash
 # curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/terraform/nix-install-terraform.sh | sudo bash
 
-# Set variables
+# Set variables (Note: default version of 0.11.11)
 TERRAFORM_VERSION=${1:-0.11.11}
 TERRAFORM_FILENAME=terraform_$TERRAFORM_VERSION_linux_amd64.zip
 TERRAFORM_DOWNLOAD_ADDRESS=https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/$TERRAFORM_FILENAME
