@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 # You can run this script directly with either of the following commands
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/microsoft/nix-install-mstoolset.sh | sudo bash
-# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/microsoft/nix-install-mstoolset.sh | sudo bash
-
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/terraform/nix-install-terraform.sh | sudo bash
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/terraform/nix-install-terraform.sh | sudo bash
 
 # Check for Red Hat-based distro
 if [ -f /etc/redhat-release ]; then
@@ -32,17 +31,12 @@ if [ -f /etc/debian_version ]; then
     # Install Azure CLI
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
     
-    # Install PowerShell Core
-    sudo apt-get install -y powershell
-    
     # Install .NET Core - Ubuntu 18.04
     wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
-    sudo add-apt-repository universe
-    sudo apt-get install apt-transport-https
     sudo apt-get update
-    sudo apt-get install dotnet-sdk-2.2
-    
+    sudo apt-get install dotnet-sdk-2.2 apt-transport-https powershell
+
     # Install NuGet
     sudo apt-get install nuget -y
     
