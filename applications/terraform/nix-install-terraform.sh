@@ -15,8 +15,21 @@ TERRAFORM_VERSION=${1:-0.11.11}
 TERRAFORM_FILENAME=terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
 TERRAFORM_DOWNLOAD_ADDRESS=https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/$TERRAFORM_FILENAME
 
-# Install Unzip
-sudo apt-get install unzip -y
+# Check for Red Hat-based distro
+if [ -f /etc/redhat-release ]; then
+    
+    # Install Unzip
+    yum install unzip -y
+    
+fi
+
+# Check for Debian-based distro
+if [ -f /etc/debian_version ]; then
+    
+    # Install Unzip
+    apt-get install unzip -y
+    
+fi
 
 # Download latest version of the terraform
 echo "Downloading: $TERRAFORM_DOWNLOAD_ADDRESS..."
