@@ -30,9 +30,9 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 echo "Downloading: $WILDFLY_DOWNLOAD_ADDRESS..."
-[ -e "$WILDFLY_ARCHIVE_NAME" ] && echo 'Wildfly archive already exists.'
+[ -e "$WILDFLY_ARCHIVE_NAME" ] && echo 'Wildfly archive already exists, overwriting.'
 if [ ! -e "$WILDFLY_ARCHIVE_NAME" ]; then
-    curl -O "$WILDFLY_DOWNLOAD_ADDRESS"
+    (cd /tmp && curl -O "$WILDFLY_DOWNLOAD_ADDRESS")
 fi
 
 echo "Cleaning up..."
