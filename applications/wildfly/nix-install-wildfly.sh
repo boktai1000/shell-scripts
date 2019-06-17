@@ -43,7 +43,7 @@ rm -f "/etc/init.d/$WILDFLY_SERVICE"
 
 echo "Installation..."
 mkdir "$WILDFLY_FULL_DIR"
-tar -xzf "$WILDFLY_ARCHIVE_NAME" -C $INSTALL_DIR
+tar -xzf /tmp/"$WILDFLY_ARCHIVE_NAME" -C $INSTALL_DIR
 ln -s "$WILDFLY_FULL_DIR"/ $WILDFLY_DIR
 useradd -s /sbin/nologin $WILDFLY_USER
 chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR
