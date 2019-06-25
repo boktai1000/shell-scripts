@@ -6,6 +6,10 @@
 # https://answers.launchpad.net/ubuntu/+question/293540
 # https://lists.fedorahosted.org/archives/list/sssd-users@lists.fedorahosted.org/thread/Y62YBXJQ2PCWFTMDLBVYUPQ63CNTJMHI/
 # https://community.spiceworks.com/topic/2018717-joining-debian-machine-to-ad-domain-packages-not-found
+# https://serverfault.com/questions/598476/how-to-use-realmd-in-ubuntu-14-04-lts-to-join-an-active-directory-domain
+# http://blog.admindiary.com/integrate-ubuntu-active-directory-using-kerberos-realmd-sssd/
+# https://rohanc.me/sssd-active-directory-ubuntu/
+# https://www.server-world.info/en/note?os=Ubuntu_18.04&p=realmd
 
 # Note: Hostname must be 15 characters or less
 
