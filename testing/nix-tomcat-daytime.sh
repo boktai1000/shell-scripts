@@ -1,8 +1,17 @@
-# test
+#!/bin/bash
 
-mkdir /opt/tomcat/webapps/ROOT/WEB-INF/classes 
+# https://www.server-world.info/en/note?os=CentOS_7&p=tomcat9
+
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/testing/nix-tomcat-daytime.sh | sudo bash -s 
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/testing/nix-tomcat-daytime.sh | sudo bash -s 
+
+# Create directory
+mkdir /opt/tomcat/webapps/ROOT/WEB-INF/classes
+
+# Set permissions
 chown tomcat. /opt/tomcat/webapps/ROOT/WEB-INF/classes 
 
+# Create daytime.java file
 sudo tee /opt/tomcat/webapps/ROOT/WEB-INF/classes/daytime.java <<\EOF
 import java.io.*;
 import javax.servlet.*;
@@ -26,10 +35,13 @@ public class daytime extends HttpServlet {
 }
 EOF
 
+# Java compile
 javac -classpath /opt/tomcat/lib/servlet-api.jar /opt/tomcat/webapps/ROOT/WEB-INF/classes/daytime.java
 
+# Create backup of web.xml
 cp /opt/tomcat/webapps/ROOT/WEB-INF/web.xml /opt/tomcat/webapps/ROOT/WEB-INF/web.xml.bak
 
+# Create new web.xml file
 sudo tee /opt/tomcat/webapps/ROOT/WEB-INF/web.xml <<\EOF
 <web-app>
   <servlet>
