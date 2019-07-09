@@ -1,9 +1,9 @@
 # test
 
-mkdir /opt/tomcat9/webapps/ROOT/WEB-INF/classes 
-chown tomcat. /opt/tomcat9/webapps/ROOT/WEB-INF/classes 
+mkdir /opt/tomcat/webapps/ROOT/WEB-INF/classes 
+chown tomcat. /opt/tomcat/webapps/ROOT/WEB-INF/classes 
 
-sudo tee /opt/tomcat9/webapps/ROOT/WEB-INF/classes/daytime.java <<\EOF
+sudo tee /opt/tomcat/webapps/ROOT/WEB-INF/classes/daytime.java <<\EOF
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -26,11 +26,11 @@ public class daytime extends HttpServlet {
 }
 EOF
 
-javac -classpath /opt/tomcat9/lib/servlet-api.jar /opt/tomcat9/webapps/ROOT/WEB-INF/classes/daytime.java
+javac -classpath /opt/tomcat/lib/servlet-api.jar /opt/tomcat/webapps/ROOT/WEB-INF/classes/daytime.java
 
-cp /opt/tomcat9/webapps/ROOT/WEB-INF/web.xml /opt/tomcat9/webapps/ROOT/WEB-INF/web.xml.bak
+cp /opt/tomcat/webapps/ROOT/WEB-INF/web.xml /opt/tomcat/webapps/ROOT/WEB-INF/web.xml.bak
 
-sudo tee /opt/tomcat9/webapps/ROOT/WEB-INF/web.xml <<\EOF
+sudo tee /opt/tomcat/webapps/ROOT/WEB-INF/web.xml <<\EOF
 <web-app>
   <servlet>
      <servlet-name>daytime</servlet-name>
