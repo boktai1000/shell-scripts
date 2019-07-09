@@ -2,8 +2,8 @@
 
 # https://www.server-world.info/en/note?os=CentOS_7&p=tomcat9
 
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/testing/nix-tomcat-daytime.sh | sudo bash
-# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/testing/nix-tomcat-daytime.sh | sudo bash
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/testing/nix-tomcat-daytime.sh | sudo bash
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/testing/nix-tomcat-daytime.sh | sudo bash
 
 # Create directory
 mkdir /opt/tomcat/webapps/ROOT/WEB-INF/classes
