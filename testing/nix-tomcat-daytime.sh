@@ -35,7 +35,7 @@ public class daytime extends HttpServlet {
 }
 EOF
 
-# Java compile
+# Java compile with classpath
 javac -classpath /opt/tomcat/lib/servlet-api.jar /opt/tomcat/webapps/ROOT/WEB-INF/classes/daytime.java
 
 # Create backup of web.xml
