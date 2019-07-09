@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Append desired version followed by desired port number - otherwise latest version and default port will be selected
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/applications/testing/nix-tomcat-test.sh | sudo bash -s 
-# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/applications/testing/nix-tomcat-test.sh | sudo bash -s 
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/testing/nix-tomcat-test.sh | sudo bash -s 
+# curl -s https://bitbucket.org/boktai1000/shell-scripts/raw/master/testing/nix-tomcat-test.sh | sudo bash -s 
 
 tomcatlatest="$(curl -s https://api.github.com/repos/apache/tomcat/tags | grep '"name"' | head -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")"
 tomcatminorversion=${1:-$tomcatlatest}
