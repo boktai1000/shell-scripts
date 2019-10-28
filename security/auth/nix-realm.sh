@@ -13,8 +13,8 @@
 
 # Note: Hostname must be 15 characters or less
 
-# You can run this script directly with the following command, append domain name, workgroup, and then Admin password in that order
-# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/security/auth/el7-realm-ad-fqn.sh | sudo bash -s 
+# You can run this script directly with the following command, $1 is your domain and $2 is your Administrator@ad.example.com password
+# curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/security/auth/nix-realm.sh | sudo bash -s 
 
 # Install required packages for AD integration / join via realm
 apt-get install realmd packagekit
