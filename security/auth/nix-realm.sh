@@ -27,3 +27,7 @@ echo "Be sure to join domain with command realm join - currently not scripted"
 # Fix Home Directories
 # https://help.ubuntu.com/lts/serverguide/sssd-ad.html
 echo "Be sure to fix Home Directories manually at https://help.ubuntu.com/lts/serverguide/sssd-ad.html - currently not scripted"
+
+# Fix FQDN Requirement
+# Comment out requirement to use fully qualified names, effectively disabling
+# sudo sed -i -e 's|use_fully_qualified_names = True|#use_fully_qualified_names = True|' /etc/sssd/sssd.conf
