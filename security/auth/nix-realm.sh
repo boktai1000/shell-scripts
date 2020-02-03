@@ -20,4 +20,10 @@
 apt-get install realmd packagekit
 
 # ex: "realm join ad.example.com" - $1 is your domain and $2 is your Administrator@ad.example.com password
-echo $2 | realm join $1
+# Note: This is not working currently in the script - commenting out
+# echo $2 | realm join $1
+echo `Be sure to join domain with command "realm join" - currently not scripted`
+
+# Fix Home Directories
+# https://help.ubuntu.com/lts/serverguide/sssd-ad.html
+echo `Be sure to fix Home Directories manually at https://help.ubuntu.com/lts/serverguide/sssd-ad.html - currently not scripted`
