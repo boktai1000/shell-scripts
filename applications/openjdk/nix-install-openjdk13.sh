@@ -19,20 +19,20 @@ if [ "$EUID" -ne "0" ]; then
 fi
 
 # Download OpenJDK
-(cd /tmp && curl -O https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_linux-x64_bin.tar.gz)
+(cd /tmp && curl -O https://download.java.net/java/GA/jdk13.0.2/d4173c853231432d94f001e99d882ca7/8/GPL/openjdk-13.0.2_linux-x64_bin.tar.gz)
 
 # Un-tar OpenJDK to installation location
-tar zxvf /tmp/openjdk-12.0.1_linux-x64_bin.tar.gz -C "$JAVA_DIR"/
+tar zxvf /tmp/openjdk-13.0.2_linux-x64_bin.tar.gz -C "$JAVA_DIR"/
 
 # Cleanup downloaded tar file
-rm -f /tmp/openjdk-12.0.1_linux-x64_bin.tar.gz
+rm -f /tmp/openjdk-13.0.2_linux-x64_bin.tar.gz
 
 # Create jdk.sh file that will set variables when users login to system
-echo export JAVA_HOME="$JAVA_DIR"/jdk-12.0.1 | sudo tee /etc/profile.d/jdk12.sh
-echo 'export PATH=$PATH:$JAVA_HOME/bin' | sudo tee -a /etc/profile.d/jdk12.sh
+echo export JAVA_HOME="$JAVA_DIR"/jdk-13.0.2 | sudo tee /etc/profile.d/jdk13.sh
+echo 'export PATH=$PATH:$JAVA_HOME/bin' | sudo tee -a /etc/profile.d/jdk13.sh
 
 # Load the script now so variables are set
-. /etc/profile.d/jdk12.sh
+. /etc/profile.d/jdk13.sh
 
 # Validate and show current Java version
 java -version
