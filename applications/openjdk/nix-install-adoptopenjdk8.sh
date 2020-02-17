@@ -28,7 +28,7 @@ tar zxvf /tmp/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz -C "$JAVA_DIR"/
 rm -f /tmp/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz
 
 # Create jdk.sh file that will set variables when users login to system
-echo export JAVA_HOME="$JAVA_DIR"/jdk-8.0.242 | sudo tee /etc/profile.d/jdk8.sh
+echo export JAVA_HOME="$JAVA_DIR"/jdk8u242-b08 | sudo tee /etc/profile.d/jdk8.sh
 echo 'export PATH=$PATH:$JAVA_HOME/bin' | sudo tee -a /etc/profile.d/jdk8.sh
 
 # Load the script now so variables are set
