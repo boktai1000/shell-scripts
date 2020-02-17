@@ -19,7 +19,7 @@ if [ "$EUID" -ne "0" ]; then
 fi
 
 # Download OpenJDK
-(cd /tmp && curl -O https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz)
+(cd /tmp && wget -q https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz)
 
 # Un-tar OpenJDK to installation location
 tar zxvf /tmp/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz -C "$JAVA_DIR"/
