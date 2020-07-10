@@ -26,6 +26,9 @@ echo "Be sure to join domain with command realm join - currently not scripted"
 
 # Fix Home Directories
 # https://help.ubuntu.com/lts/serverguide/sssd-ad.html
+# https://www.systutorials.com/docs/linux/man/8-pam_mkhomedir/
+# https://linux.die.net/man/8/pam_mkhomedir
+# https://debian-administration.org/article/403/Giving_users_a_home_directory_automatically
 echo "Be sure to fix Home Directories manually at https://help.ubuntu.com/lts/serverguide/sssd-ad.html - currently not scripted"
 
 # Fix FQDN Requirement
