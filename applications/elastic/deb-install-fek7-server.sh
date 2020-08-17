@@ -26,6 +26,13 @@ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee 
 # Install Elasticsearch
 sudo apt-get update && sudo apt-get install elasticsearch
 
+# Backup elasticsearch.yml file and allow all hosts to communicate to it
+cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak-"$(date --utc +%FT%T.%3NZ)"
+
+echo "network.host: 0.0.0.0" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+echo "discovery.seed_hosts: [\"$yourip\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+echo "cluster.initial_master_nodes: [\"$yourip\"]" | sudo tee -a /etc/elasticsearch/elasticsearch.yml
+
 # Run Elasticsearch via systemd
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable elasticsearch.service
@@ -36,6 +43,12 @@ curl -X GET http://localhost:9200
 
 # Install Kibana
 sudo apt-get update && sudo apt-get install kibana
+
+# Backup kibana.yml file and allow all hosts to communicate to it
+cp /etc/kibana/kibana.yml /etc/kibana/kibana.yml.bak-"$(date --utc +%FT%T.%3NZ)"
+
+echo "server.host: $yourip" | sudo tee -a /etc/kibana/kibana.yml
+echo "elasticsearch.hosts: [\"http://$yourip:9200\"]" | sudo tee -a /etc/kibana/kibana.yml
 
 # Run Kibana via systemd
 sudo /bin/systemctl daemon-reload
