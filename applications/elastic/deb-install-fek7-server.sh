@@ -38,8 +38,13 @@ sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable elasticsearch.service
 sudo systemctl start elasticsearch.service
 
-# Test Elasticsearch
+# Test Elasticsearch - localhost
+echo Test connecting to Elasticsearch via localhost
 curl -X GET http://localhost:9200
+
+# Test Elasticsearch - local IP
+echo Test connecting to Elasticsearch via IPv4 Address
+curl -X GET http://"$yourip":9200
 
 # Install Kibana
 sudo apt-get update && sudo apt-get install kibana
