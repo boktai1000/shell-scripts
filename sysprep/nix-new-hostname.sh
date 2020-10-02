@@ -9,3 +9,5 @@ hostnamectl set-hostname $yourhostname
 # Update /etc/hosts file
 # Remove old 127.0.0.1 entry and replace with new hostname
 # vi /etc/hosts
+
+echo 'update your /etc/hosts'
