@@ -36,3 +36,9 @@ echo "Be sure to fix Home Directories manually at https://help.ubuntu.com/lts/se
 # Fix FQDN Requirement
 # Comment out requirement to use fully qualified names, effectively disabling
 # sudo sed -i -e 's|use_fully_qualified_names = True|#use_fully_qualified_names = True|' /etc/sssd/sssd.conf
+
+# Leaving realm (noted for documentation / sysprep / etc - not actually a part of setup)
+# http://manpages.ubuntu.com/manpages/bionic/man8/realm.8.html
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/windows_integration_guide/cmd-realmd
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/windows_integration_guide/realmd-ad-unenroll
+# realm leave
