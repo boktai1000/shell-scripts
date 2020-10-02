@@ -3,7 +3,7 @@
 # vi /etc/netplan/50-cloud-init.yaml
 # vi /etc/netplan/*.yaml
 
-# Script running order: ./nix-new-ip.sh -s yourip yourgateway yourdns1 yourdns2 yourdomain
+# Script running order: ./nix-new-ip.sh yourip yourgateway yourdns1 yourdns2 yourdomain
 
 yourip=${1:-192.168.1.117/24}
 yourgateway=${2:-192.168.1.1}
