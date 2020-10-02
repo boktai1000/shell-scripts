@@ -5,11 +5,11 @@
 
 # Script running order: ./nix-new-ip.sh -s yourip yourgateway yourdns1 yourdns2 yourdomain
 
-yourip={1:-192.168.1.117/24}
-yourgateway={2:-192.168.1.1}
-yourdns1={3:-192.168.1.1}
-yourdns2={4:-192.168.1.1}
-yourdomain={5:-WORKGROUP}
+yourip=${1:-192.168.1.117/24}
+yourgateway=${2:-192.168.1.1}
+yourdns1=${3:-192.168.1.1}
+yourdns2=${4:-192.168.1.1}
+yourdomain=${5:-WORKGROUP}
 
 # Backup original file
 cp /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bak-"$(date --utc +%FT%T.%3NZ)"
