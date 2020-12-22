@@ -6,7 +6,7 @@
 # https://community.cisco.com/t5/ip-telephony-and-phones/cucm-backup-with-openssh/td-p/2611429
 
 # Backup files before continuing
-cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Define ciphers for SSH configuration file
 echo "Ciphers +aes128-cbc" | sudo tee -a /etc/ssh/sshd_config
