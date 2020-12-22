@@ -2,9 +2,9 @@
 # curl -s https://raw.githubusercontent.com/boktai1000/shell-scripts/master/security/openssh/openssh-harden-pubkey.sh | sudo bash
 
 # Backup files before continuing
-cp /etc/issue /etc/issue.bak
-cp /etc/issue.net /etc/issue.net.bak
-cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+cp /etc/issue /etc/issue.bak-"$(date --utc +%FT%T.%3NZ)"
+cp /etc/issue.net /etc/issue.net.bak-"$(date --utc +%FT%T.%3NZ)"
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Create Warning Banners for System Access
 echo "Unauthorised access prohibited. Logs are recorded and monitored." | sudo tee /etc/issue
