@@ -39,7 +39,7 @@ EOF
 javac -classpath /opt/tomcat/lib/servlet-api.jar /opt/tomcat/webapps/ROOT/WEB-INF/classes/daytime.java
 
 # Create backup of web.xml
-cp /opt/tomcat/webapps/ROOT/WEB-INF/web.xml /opt/tomcat/webapps/ROOT/WEB-INF/web.xml.bak
+cp /opt/tomcat/webapps/ROOT/WEB-INF/web.xml /opt/tomcat/webapps/ROOT/WEB-INF/web.xml.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Create new web.xml file
 sudo tee /opt/tomcat/webapps/ROOT/WEB-INF/web.xml <<\EOF
