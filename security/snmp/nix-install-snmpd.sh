@@ -39,7 +39,7 @@ if [ -f /etc/lsb-release ]; then
 fi
 
 # Create a backup copy of the distros SNMP config file
-cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.bak
+cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Define new SNMP settings
 echo "rocommunity $SNMP_COMMUNITY" > /etc/snmp/snmpd.conf
