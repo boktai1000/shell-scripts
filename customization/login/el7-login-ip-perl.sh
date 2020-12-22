@@ -6,7 +6,7 @@
 sudo yum install -y perl
 
 # Backup /etc/issue
-sudo cp /etc/issue /etc/issue.bak
+sudo cp /etc/issue /etc/issue.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Create script and place in /sbin/
 sudo tee /sbin/ifup-local <<\EOF
