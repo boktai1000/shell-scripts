@@ -6,7 +6,7 @@
 # https://docs.fluentd.org/v1.0/articles/before-install
 # https://docs.fluentd.org/v0.12/articles/before-install
 
-cp /etc/security/limits.conf /etc/security/limits.conf.bak
+cp /etc/security/limits.conf /etc/security/limits.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "root soft nofile 65536
 root hard nofile 65536
 * soft nofile 65536
@@ -16,7 +16,7 @@ root hard nofile 65536
 # ulimit -n
 # 1024 = insufficient;65536 = safe
 
-cp /etc/sysctl.conf /etc/sysctl.conf.bak
+cp /etc/sysctl.conf /etc/sysctl.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 echo "net.core.somaxconn = 1024
 net.core.netdev_max_backlog = 5000
 net.core.rmem_max = 16777216
