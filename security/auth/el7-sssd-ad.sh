@@ -11,7 +11,7 @@
 yum install -y krb5-workstation samba-common-tools sssd-ad oddjob-mkhomedir
 
 # Backup krb5.conf file before modifying
-cp /etc/krb5.conf /etc/krb5.conf.bak
+cp /etc/krb5.conf /etc/krb5.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Create custom krb5.conf file
 echo "[logging]
@@ -27,7 +27,7 @@ echo "[logging]
  forwardable = yes" > /etc/krb5.conf
 
 # Backup Samba configuration file
-cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+cp /etc/samba/smb.conf /etc/samba/smb.conf.bak-"$(date --utc +%FT%T.%3NZ)"
 
 # Configure the Samba server to connect to the AD server.
 echo "# See smb.conf.example for a more detailed config file or
