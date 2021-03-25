@@ -36,3 +36,7 @@ echo 'export PATH=$PATH:$JAVA_HOME/bin' | sudo tee -a /etc/profile.d/jdk8.sh
 
 # Validate and show current Java version
 java -version
+
+# Configure alternatives to use OpenJDK
+update-alternatives --install /usr/bin/java java /opt/jdk8u242-b08 1000
+update-alternatives --set java /opt/jdk8u242-b08
